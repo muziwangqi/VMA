@@ -10,7 +10,6 @@ import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
 import java.util.List;
-import java.util.Map;
 
 import com.soling.R;
 import com.soling.model.LyricLine;

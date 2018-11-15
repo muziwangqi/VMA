@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -172,5 +174,15 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
 	public void play(Music music) {
 		// TODO Auto-generated method stub	
 	}
+
+    public void delete(Music music) {
+        if (TextUtils.equals(getPlayingMusic().getPath(), music.getPath())) {
+            playNext();
+        }
+        File file = new File(music.getPath());
+        if (file.exists() && file.isFile()) {
+            file.delete();
+        }
+    }
 
 }

@@ -21,7 +21,13 @@ public class WordsNavigation extends View {
 	private int itemWidth;
 	private int itemHeight;
 	private int touchIndex=0;
-	private onWordsChangeListener listener;
+	private int w;
+	private int h;
+	private float eventY;//滑动的高度
+	private ISideBarSelectCallBack callBack;
+	private Canvas canvas;
+	private float scaleWidth;//缩放离原始的宽度
+	private int itemH;
 	/*
 	 * 初始化画笔
 	 */
@@ -88,23 +94,32 @@ public class WordsNavigation extends View {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub		
 		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-		case MotionEvent.ACTION_MOVE:
-			float y = event.getY();
-			int index = (int) (y/itemHeight);
-			if(index!=touchIndex){
-				touchIndex=index;
-				if(listener!=null&&touchIndex<=0&&touchIndex<=words.length-1){
-					listener.wordsChange(words[touchIndex]);
+			case MotionEvent.ACTION_DOWN:
+			case MotionEvent.ACTION_MOVE:
+				if (event.getX() > (w - getPaddingRight() - itemHeight - 10)) {
+					eventY = event.getY();
+					invalidate();
+					return true;
+				} else {
+					eventY = 0;
+					invalidate();
+					break;
 				}
+		case MotionEvent.ACTION_CANCEL:
+				eventY = 0;
 				invalidate();
-				break;
-			}
+				return true;
 		case MotionEvent.ACTION_UP:
-			break;		
+			if(event.getX() > (w - getPaddingRight() - itemHeight - 10)){
+				eventY = 0;
+				invalidate();
+				return true;
+			}else
+					break;
 		}
-		return true;
+		return super.onTouchEvent(event);
 	}
+
 	/*
 	 * 设置当前按下的是哪个字母
 	 */
@@ -113,22 +128,16 @@ public class WordsNavigation extends View {
 			if(word.equals(words[i])){
 				touchIndex = i;
 				invalidate();
-				return;
+				return ;
 			}
 		}
 	}
-	
-/*
- * 设置手指按下字母改变监听
- */
-	public void setonWordsChangeListener(onWordsChangeListener listener) {
-		this.listener = listener;
-	}
+
 	/*
 	 * 自定义内部接口
 	 */
-	public interface onWordsChangeListener {
-		void wordsChange(String word);
+	public interface ISideBarSelectCallBack {
+		void onSelectStr(int index, String selectStr);
 	}
 }
 

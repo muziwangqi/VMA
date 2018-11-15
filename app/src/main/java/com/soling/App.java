@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.soling.model.Music;
 
-
 public class App extends Application {
 
     private static final String TAG = "App";
@@ -14,7 +13,6 @@ public class App extends Application {
     private List<Music> localMusics;
 
     private static App INSTANCE = null;
-
     @Override
     public void onCreate() {
         super.onCreate();

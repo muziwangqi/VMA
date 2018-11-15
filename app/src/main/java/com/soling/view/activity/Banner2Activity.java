@@ -30,6 +30,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class Banner2Activity extends Activity implements OnClickListener {
+
+	private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
+
 	private Button enterButtn;
 	private TextView textView;
 	private LinearLayout linearLayout;
@@ -94,11 +97,26 @@ public class Banner2Activity extends Activity implements OnClickListener {
 
 		});
 
-		// 请求权限 hyw
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-		}
+		requestPermission();
 
+	}
+
+	// 请求权限 hyw
+	private void requestPermission() {
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+		}
+	}
+
+	// hyw
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		switch (requestCode) {
+			case WRITE_EXTERNAL_STORAGE_REQUEST_CODE:
+				if (!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+					requestPermission();
+				}
+		}
 	}
 
 	private void addPoint() {

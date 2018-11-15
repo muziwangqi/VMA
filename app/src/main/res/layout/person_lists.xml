@@ -3,12 +3,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6E6FA"
-    android:orientation="vertical"  >  
-   <ListView android:id="@+id/person_list"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"        
-     />	
-	 
-
-
+    android:orientation="vertical"  >
+   <TextView android:id="@+id/tv_text1"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:textColor="#595959"
+       android:background="#D1EEEE"
+       android:text="我的"/>
+   <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+   <ImageView android:id="@+id/tvmy_heading"
+       android:layout_width="wrap_content"
+       android:layout_height="45dp"
+       android:focusable="false"
+       android:background="@drawable/p"
+       />
+   <TextView android:id="@+id/tvmy_name"
+       android:paddingLeft="20dp"
+       android:layout_width="wrap_content"
+       android:layout_height="30dp"
+       android:textSize="15dp"
+       android:gravity="center_vertical"
+       android:layout_toRightOf="@+id/tvmy_heading"
+       android:text="liqiqi"/>
+   <TextView android:id="@+id/tvmy_status"
+       android:layout_width="wrap_content"
+       android:layout_height="15dp"
+       android:gravity="center_vertical"
+       android:layout_toRightOf="@+id/tvmy_heading"
+       android:layout_below="@+id/tvmy_name"
+       android:text="在线"
+       android:textSize="10dp"
+       android:textColor="#FF0000"
+       android:paddingLeft="20dp"/>
+</RelativeLayout>
+   <TextView android:id="@+id/tv_text2"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:textColor="#595959"
+       android:background="#D1EEEE"
+       android:text="好友列表"
+       android:layout_marginTop="20dp"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+      <ListView android:id="@+id/person_list"
+          android:layout_height="match_parent"
+          android:layout_width="match_parent"
+          android:paddingTop="2dp"/>
+      <com.soling.model.WordsNavigation
+          android:id="@+id/words"
+          android:layout_width="30dp"
+          android:layout_height="match_parent"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="0dp"/>
+      <TextView android:id="@+id/tv"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:background="#C1FFC1"
+          android:visibility="gone"
+          android:gravity="center"
+          android:textColor="#6495ED"
+          android:textSize="40sp"
+          />
+   </RelativeLayout>
 </LinearLayout>

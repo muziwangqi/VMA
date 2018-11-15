@@ -75,7 +75,9 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                view.showSearchResult(searchLocal(s), searchNetWork(s));
+                localResult = searchLocal(s);
+                networkResult = searchNetWork(s);
+                view.showSearchResult(localResult, networkResult);
             }
         }).start();
     }
@@ -96,7 +98,7 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
     }
 
     @Override
-    public void playNetword(int position) {
+    public void playNetworK(int position) {
 
     }
 

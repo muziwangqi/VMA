@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+=======
+            "outputFile": "F:\\projects\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "map": [
+                {
+                    "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+>>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
                     "from": {
                         "startLines": "7",
                         "startColumns": "4",

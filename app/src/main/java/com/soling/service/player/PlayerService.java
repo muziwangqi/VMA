@@ -92,7 +92,9 @@ public class PlayerService extends Service implements IPlayer {
     }
 
     public void play(Music music) {
-        player.play();
+        player.play(music);
+        notifyPlayStateChanged();
+        loadNetworkResource();
     }
 
     @Override

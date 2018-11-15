@@ -85,6 +85,7 @@ public final class R {
         public static final int chronometer = 0x7f08002d;
         public static final int end_padder = 0x7f080043;
         public static final int forever = 0x7f080050;
+<<<<<<< HEAD
         public static final int icon = 0x7f08005e;
         public static final int icon_group = 0x7f08005f;
         public static final int info = 0x7f080093;
@@ -106,6 +107,29 @@ public final class R {
         public static final int text2 = 0x7f080104;
         public static final int time = 0x7f080111;
         public static final int title = 0x7f080112;
+=======
+        public static final int icon = 0x7f080060;
+        public static final int icon_group = 0x7f080061;
+        public static final int info = 0x7f080084;
+        public static final int italic = 0x7f080085;
+        public static final int line1 = 0x7f08008c;
+        public static final int line3 = 0x7f08008d;
+        public static final int media_actions = 0x7f08009a;
+        public static final int normal = 0x7f0800ad;
+        public static final int notification_background = 0x7f0800ae;
+        public static final int notification_main_column = 0x7f0800af;
+        public static final int notification_main_column_container = 0x7f0800b0;
+        public static final int right_icon = 0x7f0800bd;
+        public static final int right_side = 0x7f0800be;
+        public static final int status_bar_latest_event_content = 0x7f0800ee;
+        public static final int tag_transition_group = 0x7f0800f3;
+        public static final int tag_unhandled_key_event_manager = 0x7f0800f4;
+        public static final int tag_unhandled_key_listeners = 0x7f0800f5;
+        public static final int text = 0x7f0800f6;
+        public static final int text2 = 0x7f0800f8;
+        public static final int time = 0x7f080105;
+        public static final int title = 0x7f080106;
+>>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
     }
     public static final class integer {
         public static final int cancel_button_image_alpha = 0x7f090004;

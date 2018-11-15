@@ -40,6 +40,7 @@ public class MusicFileManager {
                 if (!isExist(path)) {
                     continue;
                 }
+                int id = c.getInt(c.getColumnIndexOrThrow(MediaStore.Audio.Media._ID));
                 String name = c.getString(c.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME));
                 String album = c.getString(c.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM));
                 String artist = c.getString(c.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
@@ -51,7 +52,7 @@ public class MusicFileManager {
                 if ("song".equals(album)) {
                     album = "";
                 }
-                Music music = new Music(name, album, path, artist, size, duration);
+                Music music = new Music(id, name, album, path, artist, size, duration);
                 if (music.getDuration() > MIN_DURATION)
                     localMusics.add(music);
             }
