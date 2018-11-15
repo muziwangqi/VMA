@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "outputFile": "F:\\projects\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
                     "from": {
                         "startLines": "3,11",
                         "startColumns": "4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
+                    "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",

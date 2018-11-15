@@ -3,6 +3,7 @@ package com.soling.service.player;
 import android.media.MediaPlayer;
 import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
 
     private MediaPlayer mediaPlayer;
     private PlayList playList;
+    private Music playingMusic;
     private boolean playing;
     private Model model;
 
@@ -42,12 +44,20 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
     @Override
     public void play() {
         Music music = playList.getPlayingMusic();
-        if (music != null)
-            play(playList.getPlayingMusic());
+        if (music != null) {
+            File file = new File(music.getPath());
+            if (file.exists()) {
+                play(playList.getPlayingMusic());
+            }
+            else {
+                playNext();
+            }
+        }
     }
 
     public void play(Music music) {
         try {
+            playingMusic = music;
             mediaPlayer.reset();
             mediaPlayer.setDataSource(music.getPath());
             mediaPlayer.prepare();
@@ -150,7 +160,7 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
 
     @Override
     public Music getPlayingMusic() {
-        return playList.getPlayingMusic();
+        return playingMusic;
     }
 
     @Override

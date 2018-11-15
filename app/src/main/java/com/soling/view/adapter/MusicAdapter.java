@@ -17,8 +17,9 @@ import com.soling.model.Music;
 public class MusicAdapter extends RecyclerView.Adapter {
 
     private List<Music> musics;
-    private OnItemClickListener onItemClickListener;
     private boolean showDeleteBtn = false;
+    private OnItemClickListener onItemClickListener;
+    private OnItemDeleteClickListener onItemDeleteClickListener;
 
     public MusicAdapter(List<Music> musics) {
         this.musics = musics;
@@ -32,12 +33,7 @@ public class MusicAdapter extends RecyclerView.Adapter {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_music, viewGroup, false);
-
-        ViewHolder holder = new ViewHolder(view);
-        if (showDeleteBtn) {
-            holder.ibDelete.setVisibility(View.VISIBLE);
-        }
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -52,6 +48,17 @@ public class MusicAdapter extends RecyclerView.Adapter {
                 MusicAdapter.this.onItemClickListener.onItemClick(view, position);
             }
         });
+        if (showDeleteBtn) {
+            holder.ibDelete.setVisibility(View.VISIBLE);
+            holder.ibDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemDeleteClickListener != null) {
+                        onItemDeleteClickListener.onItemDeleteClick(position);
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -85,12 +92,25 @@ public class MusicAdapter extends RecyclerView.Adapter {
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemDeleteClickListener(OnItemDeleteClickListener onItemDeleteClickListener) {
+        this.onItemDeleteClickListener = onItemDeleteClickListener;
+    }
+
     public void setMusics(List<Music> musics) {
         this.musics = musics;
+    }
+
+    public List<Music> getMusics() {
+        return musics;
     }
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
+
+    public interface OnItemDeleteClickListener {
+        void onItemDeleteClick(int position);
+    }
+
 
 }
