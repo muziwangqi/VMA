@@ -1,7 +1,9 @@
 package com.soling.view.fragment;
 import java.util.ArrayList;
 
+import com.soling.service.player.PlayerService;
 import com.soling.view.activity.AboutActivity;
+import com.soling.view.activity.HelpActivity;
 import com.soling.view.adapter.ShakeListener;
 import com.soling.view.adapter.ShakeListener.OnShakeListener;
 import com.soling.view.adapter.TimePickerDialog;
@@ -10,9 +12,11 @@ import com.soling.view.adapter.WiperSwitch.IOnChangedListener;
 import com.soling.R;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,10 +33,12 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 	private WiperSwitch wiperSwitch1;// 摇一摇
 	private WiperSwitch wiperSwitch2;// 线控
 	private AlertDialog alertDialog;// 对话框
-	private ShakeListener shakeListener;// 震动监听
 	private TimePickerDialog timePickerDialog;
 	private Context context;
 	private OnShakeListener onShakeListener;
+    private ShakeListener shakeListener;// 震动监听
+    private PlayerFragment playerFragment=new PlayerFragment();
+    private PlayerService playerService;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -85,12 +91,19 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 
 			public void onShake() {
 				// qiege
-				Toast.makeText(context, "sqiege", Toast.LENGTH_SHORT).show();
+                            Intent service=new Intent(context,PlayerService.class);
+                            service.setAction(PlayerService.ACTION_PLAY_NEXT);
+                            context.startService(service);
+//                            if (service!=null){
+//                            	playerService.playNext();
+//							}
+
+							Toast.makeText(context, "sqiege", Toast.LENGTH_SHORT).show();
 			}
 		});
 
 		wiperSwitch1 = (WiperSwitch) view
-				.findViewById(R.id.id_kaiguan_shakesong);// main.xml获取setting.xml
+				.findViewById(R.id.id_kaiguan_shakesong);
 		wiperSwitch1.setChecked(false);// 初始冠
 		wiperSwitch1.setOnChangedListener(new IOnChangedListener() {
 
@@ -125,6 +138,17 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 				new OnClickListener() {
 					public void onClick(View arg0) {
 						Intent intent = new Intent(context, AboutActivity.class);
+						startActivity(intent);
+					}
+				});
+
+
+		//help
+		view.findViewById(R.id.id_ib_help).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent=new Intent(context,HelpActivity.class);
 						startActivity(intent);
 					}
 				});

@@ -59,13 +59,13 @@ public class TimePickerDialog extends Dialog implements OnTimeChangedListener {
 
 		timePicker.setCurrentHour(hourI);
 		timePicker.setCurrentMinute(minuteI);
-		// ��ȡviewGroup������numberPicker
+		// 获取ȡviewGroup numberPicker
 		NumberPicker minuteSpinner = findNumberPicker(timePicker).get(
 				findNumberPicker(timePicker).size() - 1);
 		minuteSpinner.setMaxValue(59);
 		minuteSpinner.setMinValue(0);
 		minuteSpinner.setDisplayedValues(selector);
-		minuteSpinner.setOnLongPressUpdateInterval(1000);// �೤ʱ�们��
+		minuteSpinner.setOnLongPressUpdateInterval(1000);//
 		timePicker.setOnTimeChangedListener(this);
 		alertDialogBuilder = new AlertDialog.Builder(context);
 		alertDialogBuilder.setView(view);
@@ -76,11 +76,11 @@ public class TimePickerDialog extends Dialog implements OnTimeChangedListener {
 				if (onTimeChangedListener != null) {
 					onTimeChangedListener.onTimeChanged(hour, minute);
 				}
-				Toast.makeText(context, hour + "Сʱ" + minute + "���Ӻ�",
+				Toast.makeText(context, hour + "小时" + minute + "分钟后",
 						Toast.LENGTH_SHORT).show();
 			}
 		});
-		alertDialogBuilder.setNegativeButton("ȡ��", null);
+		alertDialogBuilder.setNegativeButton("分钟", null);
 		alertDialogBuilder.create().show();
 	}
 

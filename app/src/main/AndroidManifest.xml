@@ -28,6 +28,7 @@
         </activity>
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
+        <activity android:name="com.soling.view.activity.HelpActivity"></activity>
         <!-- 线控切歌注册广播 -->
         <receiver android:name="com.soling.view.adapter.MediaButtonReceiver">
             <intent-filter>

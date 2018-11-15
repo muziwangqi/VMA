@@ -1,10 +1,10 @@
 package com.soling.view.activity;
 
-import com.soling.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
+
+import com.soling.R;
 
 public class AboutActivity extends Activity {
 	@Override

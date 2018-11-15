@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 		fragments.add(new SettingFragment());
 		
 		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
-		System.out.println("setAdapter");
+		//System.out.println("setAdapter");
 
 	// addMenu
 			addMenu = (ImageButton) findViewById(R.id.id_ib_add);

@@ -2,13 +2,11 @@ package com.soling.view.activity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import com.soling.view.fragment.SettingFragment;
 import com.soling.R;
 
 import android.Manifest;
-import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -78,7 +76,7 @@ public class Banner2Activity extends Activity implements OnClickListener {
 					}
 				}
 				if (index == pictures.length - 1) {
-					enterButtn.setVisibility(View.VISIBLE);// ���һ��ͼƬʱ��ť�ɼ�
+					enterButtn.setVisibility(View.VISIBLE);// kejian
 				} else {
 					enterButtn.setVisibility(View.GONE);
 				}
@@ -119,12 +117,12 @@ public class Banner2Activity extends Activity implements OnClickListener {
 	}
 
 	private void isFirst() {
-		// ��ȡactivity��״̬ ���Ƿ��ǵ�һ�ν���ҳ��
-		sharedPreferences = getSharedPreferences("state", MODE_PRIVATE);
+
+		sharedPreferences = getSharedPreferences("drawable", MODE_PRIVATE);
 		if (sharedPreferences.getBoolean("isFirst", false)) {
 			Intent intent = new Intent(this, SettingFragment.class);
 			startActivity(intent);
-			finish();// ����activity����������
+			finish();
 		}
 	}
 
@@ -150,7 +148,6 @@ public class Banner2Activity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onStop() {
-		// ��תҳ��ʱ message��������activity�رն�ֹͣ���ֶ�ֹͣ
 		if (handler != null) {
 			handler.removeMessages(0);
 		}

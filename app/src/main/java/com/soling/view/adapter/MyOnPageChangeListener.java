@@ -6,8 +6,8 @@ import android.view.animation.TranslateAnimation;
 
 public class MyOnPageChangeListener implements OnPageChangeListener {
 
-	private int one;//������
-	private int offset=0;//������ʼƫ����
+	private int one;
+	private int offset=0;
 	private int currentPageIndex=0;
 	private int two;
 	
