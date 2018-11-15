@@ -1,27 +1,28 @@
 package com.soling.view.fragment;
 
-import java.util.Date;
 import java.util.List;
 
-import com.soling.api.NeteaseAPIAdapter;
-import com.soling.database.UserList;
+import com.soling.model.PhoneDto;
 import com.soling.model.User;
 import com.soling.presenter.MainActivityInterface;
-import com.soling.presenter.MainPresenter;
+import com.soling.utils.PhoneUtil;
 import com.soling.view.activity.InformationActivity;
+import com.soling.view.adapter.PhoneAdapter;
 import com.soling.view.adapter.UserAdapter;
 import com.soling.R;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 public class PhoneFragment extends Fragment implements MainActivityInterface{
 	
@@ -31,23 +32,19 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 	private View view ;
 	private String userId;
 	private User user;
-//	private ImageView myHead;
+	private PhoneAdapter phoneAdapter;
+	//	private ImageView myHead;
 //	private TextView myName;
-	//private MainPresenter mainPresenter = new MainPresenter();
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub		
 		super.onAttach(activity);
-		user = UserList.buildUser("h", new Date(16660812), 1, 1, 40000);
-		users  =UserList.getUsers(); 
-		userAdapter = new UserAdapter(getActivity(),R.layout.person_list,users);
 	}	
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-			
 	}	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,8 +52,8 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 		// TODO Auto-generated method stub
 		view =  inflater.inflate(R.layout.person_lists,container,false);
 		personListView = view.findViewById(R.id.person_list);
-		personListView.setAdapter(userAdapter);
-		//mainPresenter.showPhoneList();
+		refreshPhoneList1();
+		personListView.setAdapter(phoneAdapter);
 		personListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
@@ -73,21 +70,32 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 			}
 		});
 		return view;
-	}	
-
+	}
 	public void refreshPhoneList(User user, List<User> users) {
-		// TODO Auto-generated method stub
-		user = UserList.buildUser("h", new Date(16660812), 1, 1, 40000);
-		users  =UserList.getUsers(); 
+			// TODO Auto-generated method stub
+//		user = UserList.buildUser("h", new Date(16660812), 1, 1, 40000);
+//		users  =UserList.getUsers();
+			ImageView myHeading = view.findViewById(R.id.tvmy_heading);
+			TextView myNickname = view.findViewById(R.id.tvmy_name);
+			TextView myStatus = view.findViewById(R.id.tvmy_status);
+		final int minCircularSize = Math.min(user.getAvatarUrl().getHeight(), user.getAvatarUrl().getWidth());
+		int mCornerRadius = minCircularSize / 2;
+		RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(view.getResources(), user.getAvatarUrl());
+		drawable.setCircular(true);
+		drawable.setCornerRadius(mCornerRadius);
+		myHeading.setImageDrawable(drawable);
+		myNickname.setText(user.getNickName());
+		myStatus.setText(user.getStatus());
 		userAdapter = new UserAdapter(getActivity(),R.layout.person_list,users);	
 	}
-
-	public void runOnUiThread(Runnable runnable) {
-		// TODO Auto-generated method stub
-		
+	public void refreshPhoneList1(){
+		PhoneDto phoneDto = new PhoneDto();
+		PhoneUtil phoneUtil = new PhoneUtil(view.getContext());
+		List<PhoneDto> phoneDtos =  phoneUtil.getPhone();
+		phoneAdapter = new PhoneAdapter(getActivity(),R.layout.person_list,phoneDtos);
 	}
-		
-			
+
+
 //	}
 	
 }

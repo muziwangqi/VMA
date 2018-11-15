@@ -14,7 +14,6 @@ public class App extends Application {
     private List<Music> localMusics;
 
     private static App INSTANCE = null;
-
     @Override
     public void onCreate() {
         super.onCreate();

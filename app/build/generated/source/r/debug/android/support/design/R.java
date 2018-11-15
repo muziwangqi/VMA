@@ -1129,12 +1129,12 @@ public final class R {
         public static final int transition_position = 0x7f08010a;
         public static final int transition_scene_layoutid_cache = 0x7f08010b;
         public static final int transition_transform = 0x7f08010c;
-        public static final int uniform = 0x7f080115;
-        public static final int unlabeled = 0x7f080116;
-        public static final int up = 0x7f080117;
-        public static final int view_offset_helper = 0x7f080122;
-        public static final int visible = 0x7f080123;
-        public static final int wrap_content = 0x7f080126;
+        public static final int uniform = 0x7f08011b;
+        public static final int unlabeled = 0x7f08011c;
+        public static final int up = 0x7f08011d;
+        public static final int view_offset_helper = 0x7f080128;
+        public static final int visible = 0x7f080129;
+        public static final int wrap_content = 0x7f08012d;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur = 0x7f090000;

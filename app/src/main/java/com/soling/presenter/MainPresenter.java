@@ -3,8 +3,6 @@ package com.soling.presenter;
 import java.util.Date;
 import java.util.List;
 
-import com.soling.api.NeteaseAPIAdapter;
-import com.soling.database.UserList;
 import com.soling.model.User;
 import com.soling.view.fragment.PhoneFragment;
 
@@ -19,7 +17,7 @@ public class MainPresenter implements MainPresenterInterface {
 //				List<User> users = NeteaseAPIAdapter.getInstance().getMyAttention(user.getUserId());
 				final User user = UserList.buildUser("h", new Date(16660812), 1, 1, 40000);
 				final List<User> users  =UserList.getUsers(); 
-				phoneFragment.runOnUiThread(new Runnable() {					
+				phoneFragment.getActivity().runOnUiThread(new Runnable() {
 					public void run() {						
 						phoneFragment.refreshPhoneList(user, users);
 					}

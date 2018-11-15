@@ -9,6 +9,7 @@ import com.soling.model.Music;
 import com.soling.model.User;
 import com.soling.view.activity.LoginActivity;
 import com.soling.view.activity.MainActivity;
+import com.soling.view.fragment.PhoneFragment;
 
 import android.content.Context;
 import android.os.Handler;
@@ -30,22 +31,20 @@ public class LoginPresenter {
 	private Handler handler;
 	private TextView tv;
 	private String url;
-	private MainActivity mainActivity=new MainActivity();
-	
+	private PhoneFragment pf = new PhoneFragment();
 	public LoginPresenter(LoginActivity loginActivity) {
 		super();
 		this.loginActivity = loginActivity;
 	}
-
 	public void Login(final Context context,final String userNumber,final String userPassword){
 		new Thread(new Runnable() {			
 			public void run() {
 				// TODO Auto-generated method stub
 				user = NeteaseAPIAdapter.getInstance().getuser(userNumber, userPassword);		
 				users = NeteaseAPIAdapter.getInstance().getMyAttention(user.getUserId());
-				mainActivity.runOnUiThread(new Runnable() {					
-					public void run() {						
-						
+				pf.getActivity().runOnUiThread(new Runnable() {
+					public void run() {
+						pf.refreshPhoneList(user,users);
 					}
 				});
 			}
