@@ -34,7 +34,6 @@ public class MusicListFragment extends Fragment {
     private String title;
     private int icon;
     private MusicAdapter musicAdapter;
-    private OnItemClickListener onItemClickListener;
 
     public MusicListFragment() {
     }
@@ -73,16 +72,12 @@ public class MusicListFragment extends Fragment {
         rvMusicList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.onItemClickListener = listener;
-        musicAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Log.d(TAG, "onItemClick: " + position);
-                Log.d(TAG, "onItemClick: " + musicList.get(position));
-                onItemClickListener.onItemClick(view, position);
-            }
-        });
+    public void setOnItemClickListener(MusicAdapter.OnItemClickListener listener) {
+        musicAdapter.setOnItemClickListener(listener);
+    }
+
+    public void setOnItemDeleteClickListener(MusicAdapter.OnItemDeleteClickListener onItemDeleteClickListener) {
+        musicAdapter.setOnItemDeleteClickListener(onItemDeleteClickListener);
     }
 
     public void setMusicList(List<Music> musicList) {
@@ -97,18 +92,16 @@ public class MusicListFragment extends Fragment {
         this.icon = icon;
     }
 
-    public static MusicListFragment build(String title, int icon, List<Music> musicList) {
+    public static MusicListFragment build(String title, int icon, MusicAdapter adapter) {
         MusicListFragment fragment = new MusicListFragment();
         fragment.setIcon(icon);
-        fragment.setMusicList(musicList);
         fragment.setTitle(title);
-        fragment.musicAdapter = new MusicAdapter(musicList);
+        fragment.musicAdapter = adapter;
         return fragment;
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
+    public void showDelete() {
+        musicAdapter.setShowDeleteBtn(true);
     }
-
 
 }

@@ -1,17 +1,13 @@
 package com.soling.view.fragment;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
@@ -25,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +39,7 @@ import com.soling.presenter.PlayerPresenter;
 import com.soling.service.player.IPlayer;
 import com.soling.utils.BlurUtil;
 import com.soling.utils.MusicFileManager;
+import com.soling.view.adapter.MusicAdapter;
 
 public class PlayerFragment extends BaseFragment implements PlayerContract.View, View.OnClickListener {
 
@@ -89,7 +85,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         initView();
         initData();
         initEvent();
-        requestPermission();
         sbTimer = new Timer();
         lyricTimer = new Timer();
     }
@@ -114,6 +109,8 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private void initData() {
         Bitmap bitmap = BlurUtil.doBlur(BitmapFactory.decodeResource(getResources(), R.drawable.jay), 3, 100);
         rlPlay.setBackground(new BitmapDrawable(getResources(), bitmap));
+
+        initPlayer();
     }
 
     private void initEvent() {
@@ -157,30 +154,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     private void initPlayer() {
         presenter.bindPlayService();
-    }
-
-    private void requestPermission() {
-        if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
-        else {
-            initPlayer();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    initPlayer();
-                } else {
-                    Toast.makeText(getContext(), "未授权访问外部存储权限，无法使用应用！", Toast.LENGTH_LONG).show();
-
-                }
-                break;
-            default:
-        }
     }
 
     private void playToggle() {
@@ -351,15 +324,27 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private void initMusicListFragments() {
         Log.d(TAG, "initMusicListFragments: ");
         musicListFragments = new ArrayList<>();
-        MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, presenter.getMusicList());
-        MusicListFragment loveListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, presenter.getMusicList());
-        localListFragment.setOnItemClickListener(new MusicListFragment.OnItemClickListener() {
+        final MusicAdapter localAdapter = new MusicAdapter(App.getInstance().getLocalMusics());
+        localAdapter.setShowDeleteBtn(true);
+        localAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Log.d(TAG, "onItemClick: " + position);
                 presenter.play(position);
             }
         });
+        localAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
+            @Override
+            public void onItemDeleteClick(int position) {
+                presenter.delete(localAdapter.getMusics().get(position));
+                localAdapter.notifyDataSetChanged();
+            }
+        });
+        final MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, localAdapter);
+
+
+        MusicListFragment loveListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, localAdapter);
+
         musicListFragments.add(localListFragment);
         musicListFragments.add(loveListFragment);
         vpMusicList.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {

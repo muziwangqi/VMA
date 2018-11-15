@@ -3,7 +3,7 @@ package com.soling.api;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.graphics.Bitmap;
+
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.User;
@@ -48,7 +48,7 @@ public class NeteaseAPIAdapter implements MusicAPI {
             json = json.getJSONObject("al");
             String coverPath = json.getString("picUrl");
 
-            music.setId(musicId);
+            music.setAId(musicId);
             music.setAlbumId(albumId);
             music.setCoverPath(coverPath);
 
@@ -59,14 +59,14 @@ public class NeteaseAPIAdapter implements MusicAPI {
 
     public void getLyric(Music music) {
         try {
-            if (music.getId() == null) {
+            if (music.getAId() == null) {
                 getInfo(music);
-                if (music.getId() == null) {
+                if (music.getAId() == null) {
                     return;
                 }
             }
             List<LyricLine> lyric = null;
-            JSONObject json = NeteaseAPI.getLyric(music.getId());
+            JSONObject json = NeteaseAPI.getLyric(music.getAId());
             if (json != null) {
                 json = json.getJSONObject("lrc");
                 lyric = new ArrayList<>();

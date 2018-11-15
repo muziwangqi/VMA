@@ -4,17 +4,17 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.List;
-import java.util.Map;
 
 public class Music {
 
     private static final String TAG = "Music";
 
+    private int id;
     private String name;        // 歌曲名
     private String album;       // 专辑名
     private Integer albumId;    // API中对应的专辑ID
     private String coverPath;   // 专辑封面对应的位置
-    private Integer id;         // API中对应的歌曲ID
+    private Integer aId;         // API中对应的歌曲ID
     private List<LyricLine> lyric;       // 歌词
     private String path;        // 路径
     private String artist;      // 艺术家
@@ -25,9 +25,10 @@ public class Music {
     private static final String[] QQ_SUFFIXS = {"[mqms2]", "[mqms]"};
     private static final String QQ_SPLIT = "-";
 
-    public Music(String name, String album, String path, String artist, long size, int duration) {
+    public Music(int id, String name, String album, String path, String artist, long size, int duration) {
 
 //        this.name = name;
+        this.id = id;
         this.album = album;
         this.path = path;
         this.artist = artist;
@@ -122,12 +123,12 @@ public class Music {
         this.coverPath = coverPath;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getAId() {
+        return aId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAId(Integer aId) {
+        this.aId = aId;
     }
 
     public List<LyricLine> getLyric() {

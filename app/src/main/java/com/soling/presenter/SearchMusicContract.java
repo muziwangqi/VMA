@@ -28,8 +28,9 @@ public interface SearchMusicContract {
 
         void playLocal(int position);
 
-        void playNetword(int position);
+        void playNetworK(int position);
 
     }
 
 }
+
