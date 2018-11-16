@@ -142,7 +142,7 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
 
     @Override
     public boolean isPlaying() {
-        return mediaPlayer.isPlaying() && playing;
+        return mediaPlayer.isPlaying() & playing;
     }
 
     @Override

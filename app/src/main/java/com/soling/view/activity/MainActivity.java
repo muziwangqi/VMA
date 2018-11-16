@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener {
+public class MainActivity extends BaseActivity implements OnClickListener {
     private ViewPager viewPager;
     private List<Fragment> fragments = new ArrayList<Fragment>();
     private TextView tvPhone, tvMusic, tvSetting;
@@ -48,21 +48,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 				.inflate(R.layout.fragment_phone, null);
 		View layoutMusic = layoutInflater
 				.inflate(R.layout.fragment_music, null);*/
-<<<<<<< HEAD
-		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
-		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
-		tvMusic = (TextView) findViewById(R.id.id_tv_music);
-		tvSetting = (TextView) findViewById(R.id.id_tv_setting);
-		tvPhone.setOnClickListener(this);
-		tvMusic.setOnClickListener(this);
-		tvSetting.setOnClickListener(this);
-		fragments.add(new PhoneFragment());
-		fragments.add(new PlayerFragment());
-		fragments.add(new SettingFragment());
-		
-		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
-		//System.out.println("setAdapter");
-=======
+//		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
+//		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
+//		tvMusic = (TextView) findViewById(R.id.id_tv_music);
+//		tvSetting = (TextView) findViewById(R.id.id_tv_setting);
+//		tvPhone.setOnClickListener(this);
+//		tvMusic.setOnClickListener(this);
+//		tvSetting.setOnClickListener(this);
+//		fragments.add(new PhoneFragment());
+//		fragments.add(new PlayerFragment());
+//		fragments.add(new SettingFragment());
+//
+//		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
+//		//System.out.println("setAdapter");
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -98,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
     }
->>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
 
     public void onClick(View view) {
         switch (view.getId()) {

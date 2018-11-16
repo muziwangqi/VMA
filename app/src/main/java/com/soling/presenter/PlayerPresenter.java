@@ -1,9 +1,11 @@
 package com.soling.presenter;
 
 import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.IBinder;
 import android.text.TextUtils;
@@ -11,13 +13,14 @@ import android.util.Log;
 
 import java.io.File;
 import java.util.List;
-import java.util.Map;
 
+import com.soling.App;
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.PlayList;
 import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
+import com.soling.utils.DBHelper;
 
 public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observer {
 
@@ -172,17 +175,49 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
 
 	@Override
 	public void play(Music music) {
-		// TODO Auto-generated method stub	
+		playerService.play(music);
 	}
 
-    public void delete(Music music) {
+    public void delete(List<Music> musicList, int position) {
+        Music music = musicList.get(position);
         if (TextUtils.equals(getPlayingMusic().getPath(), music.getPath())) {
             playNext();
         }
         File file = new File(music.getPath());
         if (file.exists() && file.isFile()) {
             file.delete();
+            musicList.remove(position);
         }
+        if (music.isLike()) {
+            deleteLike(music);
+        }
+    }
+
+    public boolean likeToggle(Music music) {
+        if (music.isLike()) {
+            deleteLike(music);
+        }
+        else {
+            insertLike(music);
+        }
+        music.setLike(!music.isLike());
+        return music.isLike();
+    }
+
+    private void insertLike(Music music) {
+        App.getInstance().getLikeMusics().add(music);
+        SQLiteDatabase db = App.getInstance().getDbHelper().getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.Table.MusicLike.COLUMN_MUSIC_ID, music.getId());
+        db.insert(DBHelper.Table.MusicLike.TABLE_NAME, null, values);
+        db.close();
+    }
+
+    private void deleteLike(Music music) {
+        App.getInstance().getLikeMusics().remove(music);
+        SQLiteDatabase db = App.getInstance().getDbHelper().getWritableDatabase();
+        db.delete(DBHelper.Table.MusicLike.TABLE_NAME, DBHelper.Table.MusicLike.COLUMN_MUSIC_ID + "==?", new String[]{Integer.toString(music.getId())});
+        db.close();
     }
 
 }

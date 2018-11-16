@@ -41,7 +41,6 @@ public class PlayerService extends Service implements IPlayer {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onCreate: ");
         player = Player.getInstance();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -56,7 +55,6 @@ public class PlayerService extends Service implements IPlayer {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null) {
             String action = intent.getAction();
-            Log.d(TAG, "onStartCommand: " + action);
             if (TextUtils.equals(action, ACTION_PLAY_LAST)) {
                 playNext();
             }
@@ -80,7 +78,6 @@ public class PlayerService extends Service implements IPlayer {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onDestroy: ");
         player.release();
     }
 
