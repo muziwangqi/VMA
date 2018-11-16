@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
-=======
             "outputFile": "F:\\projects\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
                     "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
->>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
                     "from": {
                         "startLines": "3,15,11",
                         "startColumns": "4,4,4",
@@ -30,11 +23,7 @@
                     }
                 },
                 {
-<<<<<<< HEAD
-                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
-=======
                     "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
->>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",

@@ -38,21 +38,21 @@ public interface IPlayer {
 
     Music getPlayingMusic();
 
-    int getPlayingIndex();
-
     void changeModel();
 
     Player.Model getModel();
 
-    List<Music> getMusicList();
+    void unregisterObserver(Observer observer);
+
+    void registerObserver(Observer observer);
 
     interface Observer {
 
-        void onSkipNext();
+        void onPlayNext();
 
-        void onSkipLast();
+        void onPlayLast();
 
-        void onPlayStateChanged();
+        void onPlayToggle();
 
         void onCoverLoad(Bitmap cover);
 

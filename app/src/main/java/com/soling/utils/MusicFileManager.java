@@ -3,6 +3,7 @@ package com.soling.utils;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -10,6 +11,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.soling.App;
 import com.soling.model.Music;
 
 public class MusicFileManager {
@@ -53,6 +55,7 @@ public class MusicFileManager {
                     album = "";
                 }
                 Music music = new Music(id, name, album, path, artist, size, duration);
+                Log.d(TAG, "getLocalMusics: " + music.toString());
                 if (music.getDuration() > MIN_DURATION)
                     localMusics.add(music);
             }
@@ -61,7 +64,19 @@ public class MusicFileManager {
         } finally {
             if (c != null) c.close();
         }
-        Log.d(TAG, "getLocalMusics() returned: " + localMusics);
+        DBHelper dbHelper = App.getInstance().getDbHelper();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query(DBHelper.Table.MusicLike.TABLE_NAME, null, null, null, null, null, null, null);
+        while(cursor.moveToNext()) {
+            int music_id = cursor.getInt(cursor.getColumnIndex(DBHelper.Table.MusicLike.COLUMN_MUSIC_ID));
+            Log.d(TAG, "getLocalMusics: likeToggle " + music_id);
+            Music music = Music.findMusicById(localMusics, music_id);
+            if (music != null) {
+                music.setLike(true);
+            }
+        }
+        cursor.close();
+        db.close();
         return localMusics;
     }
 

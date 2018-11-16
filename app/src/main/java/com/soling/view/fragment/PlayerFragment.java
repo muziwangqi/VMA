@@ -56,6 +56,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private ImageButton ibPlayLast;
     private ImageButton ibPlayNext;
     private ImageButton ibChangeModel;
+    private ImageButton ibLike;
     private ImageButton ibList;
     private TextView tvName;
     private TextView tvArtist;
@@ -66,17 +67,17 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private LyricView lyricView;
     private ViewPager vpMusicList;
     private List<MusicListFragment> musicListFragments;
+    private ImageView ivAlbumCover;
+    private MusicAdapter likeAdapter;
 
     private PlayerPresenter presenter;
     private Timer sbTimer;
     private Timer lyricTimer;
-    private ImageView ivAlbumCover;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_player, container, false);
-        return root;
+        return inflater.inflate(R.layout.fragment_player, container, false);
     }
 
     @Override
@@ -95,6 +96,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ibPlayNext = (ImageButton) findViewById(R.id.ib_play_next);
         ibChangeModel = (ImageButton) findViewById(R.id.ib_change_model);
         ibList = (ImageButton) findViewById(R.id.ib_list);
+        ibLike = (ImageButton) findViewById(R.id.ib_like);
         tvName = (TextView) findViewById(R.id.tv_name);
         tvArtist = (TextView) findViewById(R.id.tv_artist);
         tvCurrentPosition = (TextView) findViewById(R.id.tv_current_position);
@@ -150,6 +152,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ibPlayLast.setOnClickListener(this);
         ibChangeModel.setOnClickListener(this);
         ibList.setOnClickListener(this);
+        ibLike.setOnClickListener(this);
     }
 
     private void initPlayer() {
@@ -167,7 +170,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     @Override
     public void refreshView() {
-        Log.d(TAG, "refreshView: ");
         final Music music = presenter.getPlayingMusic();
         if (music == null) return;
         tvName.setText(music.getName());
@@ -180,6 +182,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         else {
             ibPlay.setImageResource(R.drawable.ic_play);
         }
+        refreshIbLike(music.isLike());
         startRefreshSeekBar();
     }
 
@@ -213,6 +216,15 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 lyricView.setLyric(lyric);
             }
         });
+    }
+
+    private void refreshIbLike(boolean like) {
+        if (like) {
+            ibLike.setImageResource(R.drawable.ic_heart);
+        }
+        else {
+            ibLike.setImageResource(R.drawable.ic_heart_outline);
+        }
     }
 
     private void startRefreshSeekBar() {
@@ -299,6 +311,11 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                     vpMusicList.setVisibility(View.VISIBLE);
                 }
                 break;
+            case R.id.ib_like:
+                boolean like = presenter.likeToggle(presenter.getPlayingMusic());
+                refreshIbLike(like);
+                likeAdapter.notifyDataSetChanged();
+                break;
         }
     }
 
@@ -316,7 +333,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         PlayList playList = new PlayList(musics);
         presenter.play(playList, 0);
         presenter.pause();
-//        refreshView();
         initMusicListFragments();
         startRefreshLyric();
     }
@@ -324,29 +340,44 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private void initMusicListFragments() {
         Log.d(TAG, "initMusicListFragments: ");
         musicListFragments = new ArrayList<>();
+        likeAdapter = new MusicAdapter(App.getInstance().getLikeMusics());
+        likeAdapter.setShowDeleteBtn(true);
+        likeAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                presenter.play(App.getInstance().getLikeMusics().get(position));
+            }
+        });
+        likeAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
+            @Override
+            public void onItemDeleteClick(int position) {
+                presenter.likeToggle(App.getInstance().getLikeMusics().get(position));
+                likeAdapter.notifyDataSetChanged();
+                refreshIbLike(false);
+            }
+        });
+        MusicListFragment likeListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, likeAdapter);
+
         final MusicAdapter localAdapter = new MusicAdapter(App.getInstance().getLocalMusics());
         localAdapter.setShowDeleteBtn(true);
         localAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.d(TAG, "onItemClick: " + position);
                 presenter.play(position);
             }
         });
         localAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
             @Override
             public void onItemDeleteClick(int position) {
-                presenter.delete(localAdapter.getMusics().get(position));
+                presenter.delete(localAdapter.getMusics(), position);
                 localAdapter.notifyDataSetChanged();
+                likeAdapter.notifyDataSetChanged();
             }
         });
-        final MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, localAdapter);
-
-
-        MusicListFragment loveListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, localAdapter);
+        MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, localAdapter);
 
         musicListFragments.add(localListFragment);
-        musicListFragments.add(loveListFragment);
+        musicListFragments.add(likeListFragment);
         vpMusicList.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
