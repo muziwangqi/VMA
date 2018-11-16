@@ -219,11 +219,11 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (localMusic != null && localMusic.size() > 0) {
+                if (localMusic != null) {
                     localAdapter.setMusics(localMusic);
                     localAdapter.notifyDataSetChanged();
                 }
-                if (netMusics != null && netMusics.size() > 0) {
+                if (netMusics != null) {
                     netAdapter.setMusics(netMusics);
                     netAdapter.notifyDataSetChanged();
                 }

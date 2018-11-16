@@ -7,12 +7,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.soling.R;
+=======
+import com.soling.App;
+import com.soling.R;
+import com.soling.utils.DBHelper;
+import com.soling.utils.MusicFileManager;
+>>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
 
 public abstract class BaseActivity extends AppCompatActivity{
 
     private boolean isShowTitle=true;
     private static Toast toast;
+<<<<<<< HEAD
+=======
+
+>>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         initViews();
         initDatas();
         setListeners();
+<<<<<<< HEAD
     }
     public void setTitle(boolean isShow){
         isShowTitle=isShow;
@@ -29,6 +41,23 @@ public abstract class BaseActivity extends AppCompatActivity{
     public void initViews(){};
     public void initDatas(){};
     public void setListeners(){};
+=======
+
+        // 添加dbHelper hyw
+        App app = (App) getApplication();
+        if (app.getDbHelper() == null) {
+            app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
+        }
+    }
+
+    public void setTitle(boolean isShow){
+        isShowTitle=isShow;
+    }
+
+    public void initViews(){}
+    public void initDatas(){}
+    public void setListeners(){}
+>>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
     public void longToast(String str){
         if (toast==null){
             toast=new Toast(this);
@@ -63,4 +92,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         intent.putExtras(bundle);
         startActivity(intent);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.soling.model.PhoneDto;
@@ -38,8 +39,16 @@ public class SortAdapter extends BaseAdapter {
         return null;
     }
     final static class ViewHolder{
-        TextView catalog;
+        TextView phone;
         TextView name;
+        TextView word;
+        TextView informationContext;
+        TextView informationTime;
+        TextView informationNumber;
+        TextView callName;
+        TextView callTime;
+        TextView callNumber;
+        ImageView callType;
     }
     //获取catalog第一次出现的位置
     public int getPositionForSerction(String catalog){

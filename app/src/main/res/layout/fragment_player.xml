@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_artist"
-        android:layout_above="@id/ll_play_progress"
+        android:layout_above="@+id/ll_play_progress"
         android:orientation="vertical"
         android:src="@drawable/ic_record_01"
         android:scaleType="fitCenter"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_artist"
-        android:layout_above="@id/ll_play_progress"
+        android:layout_above="@+id/ll_play_progress"
         android:visibility="invisible"
         android:layout_marginBottom="100dp"
         android:layout_marginStart="16dp"
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_above="@id/ll_play_control"
+        android:layout_above="@+id/ll_play_control"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentStart="true"
-        android:layout_above="@id/ll_other_control"
+        android:layout_above="@+id/ll_other_control"
         android:gravity="center"
         android:layout_marginBottom="8dp"
         >
@@ -173,7 +173,7 @@
         >
 
         <ImageButton
-            android:id="@+id/ib_collect"
+            android:id="@+id/ib_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_heart_outline"
@@ -183,11 +183,13 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:background="#fff"
         android:id="@+id/vp_music_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignTop="@id/iv_album_cover"
-        android:visibility="invisible"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="7dp"
+        android:background="#fff"
+        android:visibility="invisible" />
 
 </RelativeLayout>

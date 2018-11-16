@@ -20,6 +20,7 @@ public class Music {
     private String artist;      // 艺术家
     private long size;          // 文件大小
     private int duration;       // 时长
+    private boolean like;
 
 
     private static final String[] QQ_SUFFIXS = {"[mqms2]", "[mqms]"};
@@ -35,6 +36,7 @@ public class Music {
         this.size = size;
         this.duration = duration;
         this.name = resolveName(name);
+        this.like = false;
     }
 
     public Music() {
@@ -43,7 +45,6 @@ public class Music {
     private String resolveName(String name) {
         String[] strs = name.split("[\\\\.](?=((?![\\\\.]).)*$)");
         name = strs[0];
-        Log.i(TAG, "resolveName: name = " + name);
         for (String suffix : QQ_SUFFIXS) {
             if (name.endsWith(suffix)) {
                 String[] nameMap = name.split("-");
@@ -139,16 +140,42 @@ public class Music {
         this.lyric = lyric;
     }
 
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Music{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", album='" + album + '\'' +
+                ", albumId=" + albumId +
+                ", coverPath='" + coverPath + '\'' +
+                ", aId=" + aId +
+                ", lyric=" + lyric +
                 ", path='" + path + '\'' +
                 ", artist='" + artist + '\'' +
                 ", size=" + size +
                 ", duration=" + duration +
                 '}';
+    }
+
+    public static Music findMusicById(List<Music> musics, int id) {
+        for (Music music : musics) {
+            if (music.getId() == id) {
+                return music;
+            }
+        }
+        return null;
     }
 
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.soling.R;
@@ -55,6 +56,7 @@ public class MusicAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     if (onItemDeleteClickListener != null) {
                         onItemDeleteClickListener.onItemDeleteClick(position);
+                        MusicAdapter.this.notifyDataSetChanged();
                     }
                 }
             });

@@ -32,6 +32,7 @@ import android.widget.TextView;
 public class Banner2Activity extends Activity implements OnClickListener {
 
 	private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
+	private static final int READ_CONTACTS_REQUEST_CODE = 2;
 
 	private Button enterButtn;
 	private TextView textView;
@@ -106,6 +107,9 @@ public class Banner2Activity extends Activity implements OnClickListener {
 		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
 		}
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_REQUEST_CODE);
+		}
 	}
 
 	// hyw
@@ -113,6 +117,7 @@ public class Banner2Activity extends Activity implements OnClickListener {
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 		switch (requestCode) {
 			case WRITE_EXTERNAL_STORAGE_REQUEST_CODE:
+			case READ_CONTACTS_REQUEST_CODE:
 				if (!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
 					requestPermission();
 				}
