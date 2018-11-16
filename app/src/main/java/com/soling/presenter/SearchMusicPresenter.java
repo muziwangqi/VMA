@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import com.soling.App;
 import com.soling.api.NeteaseAPI;
 import com.soling.model.Music;
+import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
 
     private SearchMusicContract.View view;
 
-    private PlayerService playerService;
+    private IPlayer player;
     private List<Music> localResult = new ArrayList<>();
     private List<Music> networkResult = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             PlayerService.LocalBinder binder = (PlayerService.LocalBinder) service;
-            playerService = binder.getService();
+            player = binder.getService().getPlayer();
         }
 
         @Override
@@ -94,7 +95,7 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
 
     @Override
     public void playLocal(int position) {
-        playerService.play(localResult.get(position));
+        player.play(localResult.get(position));
     }
 
     @Override
