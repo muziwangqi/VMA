@@ -1,16 +1,22 @@
 package com.soling.service.player;
 
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.soling.api.MusicAPI;
+import com.soling.api.MusicAPIFactory;
+import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.PlayList;
+import com.soling.utils.HttpUtil;
 
-public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
+public class Player implements IPlayer {
 
     private static final String TAG = "Player";
 
@@ -20,25 +26,19 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
     private boolean playing;
     private Model model;
 
-    private static volatile Player INSTANCE;
+    private List<Observer> observers = new ArrayList<>();
 
-    private Player() {
+    public Player() {
         mediaPlayer = new MediaPlayer();
-        mediaPlayer.setOnCompletionListener(this);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                playNext();
+            }
+        });
         playing = false;
         playList = new PlayList();
         model = Model.LOOP_ALL;
-    }
-
-    public static Player getInstance() {
-        if (INSTANCE == null) {
-            synchronized (Player.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new Player();
-                }
-            }
-        }
-        return INSTANCE;
     }
 
     @Override
@@ -66,6 +66,8 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        notifyPlayToggle();
+        loadNetworkResource();
     }
 
     @Override
@@ -91,12 +93,14 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
         Log.d(TAG, "pause: ");
         mediaPlayer.pause();
         playing = false;
+        notifyPlayToggle();
     }
 
     @Override
     public void resume() {
         playing = true;
         mediaPlayer.start();
+        notifyPlayToggle();
     }
 
     @Override
@@ -113,6 +117,7 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
                 playList.skipRandom();
         }
         play();
+        notifyPlayNext();
     }
 
     @Override
@@ -128,16 +133,12 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
                 playList.skipRandom();
         }
         play();
+        notifyPlayLast();
     }
 
     @Override
     public void seekTo(int progress) {
         mediaPlayer.seekTo(progress);
-    }
-
-    @Override
-    public void onCompletion(MediaPlayer mediaPlayer) {
-        playNext();
     }
 
     @Override
@@ -155,17 +156,11 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
         Log.d(TAG, "release: ");
         mediaPlayer.release();
         playList = null;
-        INSTANCE = null;
     }
 
     @Override
     public Music getPlayingMusic() {
         return playingMusic;
-    }
-
-    @Override
-    public int getPlayingIndex() {
-        return playList.getPlayingIndex();
     }
 
     @Override
@@ -190,12 +185,61 @@ public class Player implements IPlayer, MediaPlayer.OnCompletionListener {
     }
 
     @Override
-    public List<Music> getMusicList() {
-        return playList.getMusics();
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
     }
 
-    public void setOnCompletionListener(MediaPlayer.OnCompletionListener onCompletionListener) {
-        mediaPlayer.setOnCompletionListener(onCompletionListener);
+    @Override
+    public void unregisterObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    private void loadNetworkResource() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Music music = getPlayingMusic();
+                if (music == null) return;
+                MusicAPI api = MusicAPIFactory.getMusicAPI();
+                api.getInfo(music);
+                if (music.getCoverPath() != null) {
+                    Bitmap cover = HttpUtil.requestBitmap(music.getCoverPath(), HttpUtil.METHOD_GET);
+                    notifyCoverLoaded(cover);
+                }
+                api.getLyric(music);
+                notifyLyricLoaded(music.getLyric());
+            }
+        }).start();
+    }
+
+    private void notifyCoverLoaded(Bitmap cover) {
+        if (cover == null) return;
+        for (Observer c : observers) {
+            c.onCoverLoad(cover);
+        }
+    }
+
+    private void notifyLyricLoaded(List<LyricLine> lyric) {
+        for (Observer c : observers) {
+            c.onLyricLoad(lyric);
+        }
+    }
+    public void notifyPlayNext() {
+        for (Observer c : observers) {
+            c.onPlayNext();
+        }
+    }
+
+    public void notifyPlayLast() {
+        for (Observer c : observers) {
+            c.onPlayLast();
+        }
+    }
+
+    public void notifyPlayToggle() {
+        for (Observer c : observers) {
+            c.onPlayToggle();
+        }
     }
 
 }

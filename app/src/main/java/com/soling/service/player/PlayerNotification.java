@@ -11,6 +11,7 @@ import android.widget.RemoteViews;
 
 import java.util.List;
 
+import com.soling.App;
 import com.soling.R;
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
@@ -22,9 +23,9 @@ public class PlayerNotification implements IPlayer.Observer {
 
     private NotificationCompat.Builder builder;
     private RemoteViews remoteViews;
-    private PlayerService player;
+    private Player player;
 
-    public PlayerNotification(PlayerService player) {
+    public PlayerNotification(Player player) {
         this.player = player;
         this.player.registerObserver(this);
         initMediaNotification();
@@ -55,7 +56,7 @@ public class PlayerNotification implements IPlayer.Observer {
     }
 
     private void show() {
-        NotificationManager manager = (NotificationManager) player.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager) App.getInstance().getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             builder.setChannelId(CHANEL_ID);
             NotificationChannel channel = new NotificationChannel(CHANEL_ID, CHANEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
@@ -67,20 +68,21 @@ public class PlayerNotification implements IPlayer.Observer {
     }
 
     private void initMediaNotification() {
-        PendingIntent playLastIntent = PendingIntent.getService(player, 0,
-                new Intent(player, PlayerService.class).setAction(PlayerService.ACTION_PLAY_LAST), 0);
-        PendingIntent playToggleIntent = PendingIntent.getService(player, 0,
-                new Intent(player, PlayerService.class).setAction(PlayerService.ACTION_PLAY_TOGGLE), 0);
-        PendingIntent playNextIntent = PendingIntent.getService(player, 0,
-                new Intent(player, PlayerService.class).setAction(PlayerService.ACTION_PLAY_NEXT), 0);
-        remoteViews = new RemoteViews(player.getPackageName(), R.layout.remote_play_notifaction);
+        Context context = App.getInstance();
+        PendingIntent playLastIntent = PendingIntent.getService(context, 0,
+                new Intent(context, PlayerService.class).setAction(PlayerService.ACTION_PLAY_LAST), 0);
+        PendingIntent playToggleIntent = PendingIntent.getService(context, 0,
+                new Intent(context, PlayerService.class).setAction(PlayerService.ACTION_PLAY_TOGGLE), 0);
+        PendingIntent playNextIntent = PendingIntent.getService(context, 0,
+                new Intent(context, PlayerService.class).setAction(PlayerService.ACTION_PLAY_NEXT), 0);
+        remoteViews = new RemoteViews(context.getPackageName(), R.layout.remote_play_notifaction);
 
         remoteViews.setOnClickPendingIntent(R.id.ib_play_last, playLastIntent);
         remoteViews.setOnClickPendingIntent(R.id.ib_play_toggle, playToggleIntent);
         remoteViews.setOnClickPendingIntent(R.id.ib_play_next, playNextIntent);
         remoteViews.setImageViewResource(R.id.iv_album_cover, R.drawable.record);
 
-        builder = new NotificationCompat.Builder(player, CHANEL_ID);
+        builder = new NotificationCompat.Builder(context, CHANEL_ID);
         builder.setSmallIcon(R.drawable.ic_music_note)
                 .setSound(null)
                 .setContent(remoteViews)
@@ -89,19 +91,19 @@ public class PlayerNotification implements IPlayer.Observer {
 
 
     @Override
-    public void onSkipNext() {
+    public void onPlayNext() {
         refreshText();
         refreshButton();
     }
 
     @Override
-    public void onSkipLast() {
+    public void onPlayLast() {
         refreshText();
         refreshButton();
     }
 
     @Override
-    public void onPlayStateChanged() {
+    public void onPlayToggle() {
         refreshText();
         refreshButton();
     }

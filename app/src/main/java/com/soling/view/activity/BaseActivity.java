@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.soling.App;
 import com.soling.R;
 import com.soling.utils.DBHelper;
+import com.soling.utils.MusicFileManager;
 
 public abstract class BaseActivity extends AppCompatActivity{
 
@@ -32,9 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity{
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
         }
     }
+
     public void setTitle(boolean isShow){
         isShowTitle=isShow;
     }
+
     public void initViews(){}
     public void initDatas(){}
     public void setListeners(){}

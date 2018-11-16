@@ -28,20 +28,20 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
 
     private Context context;
     private PlayerContract.View view;
-    private PlayerService playerService;
+    private IPlayer player;
 
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             PlayerService.LocalBinder binder = (PlayerService.LocalBinder) iBinder;
-            playerService = binder.getService();
-            playerService.registerObserver(PlayerPresenter.this);
+            PlayerService playerService = binder.getService();
+            player = playerService.getPlayer();
+            player.registerObserver(PlayerPresenter.this);
             view.onPlayServiceBound();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
-            playerService = null;
         }
     };
 
@@ -58,108 +58,82 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
 
     @Override
     public void unbindPlayService() {
-        playerService.unregisterObserver(this);
+        player.unregisterObserver(this);
         context.unbindService(conn);
     }
 
     @Override
-    public void play() {
-        playerService.play();
-    }
-
-    @Override
     public void play(int index) {
-        playerService.play(index);
-    }
-
-    @Override
-    public void play(PlayList playList) {
-        playerService.play(playList);
+        player.play(index);
     }
 
     @Override
     public void play(PlayList playList, int startIndex) {
-        playerService.play(playList, startIndex);
+        player.play(playList, startIndex);
     }
 
     @Override
     public void pause() {
-        playerService.pause();
+        player.pause();
     }
 
     @Override
     public void resume() {
-        playerService.resume();
+        player.resume();
     }
 
     @Override
     public void playNext() {
-        playerService.playNext();
+        player.playNext();
     }
 
     @Override
     public void playLast() {
-        playerService.playLast();
+        player.playLast();
     }
 
     @Override
     public void seekTo(int progress) {
-        playerService.seekTo(progress);
+        player.seekTo(progress);
     }
 
     @Override
     public boolean isPlaying() {
-        return playerService.isPlaying();
+        return player.isPlaying();
     }
 
     @Override
     public int getProgress() {
-        return playerService.getProgress();
-    }
-
-    @Override
-    public void release() {
-        playerService.release();
+        return player.getProgress();
     }
 
     @Override
     public Music getPlayingMusic() {
-        return playerService.getPlayingMusic();
-    }
-
-    @Override
-    public int getPlayingIndex() {
-        return playerService.getPlayingIndex();
+        return player.getPlayingMusic();
     }
 
     @Override
     public void changeModel() {
-        playerService.changeModel();
+        player.changeModel();
     }
 
     @Override
-    public Model getModel() {
-        return playerService.getModel();
+    public IPlayer.Model getModel() {
+        return player.getModel();
     }
 
     @Override
-    public List<Music> getMusicList() {
-        return playerService.getMusicList();
-    }
-
-
-    @Override
-    public void onSkipNext() {
+    public void onPlayNext() {
         view.refreshView();
     }
 
     @Override
-    public void onSkipLast() {
+    public void onPlayLast() {
         view.refreshView();
     }
 
     @Override
-    public void onPlayStateChanged() {
+    public void onPlayToggle() {
         view.refreshView();
     }
 
@@ -173,9 +147,9 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
         view.refreshLyric(lyric);
     }
 
-	@Override
+    @Override
 	public void play(Music music) {
-		playerService.play(music);
+        player.play(music);
 	}
 
     public void delete(List<Music> musicList, int position) {

@@ -1,11 +1,15 @@
 package com.soling.presenter;
 
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 
 import java.util.List;
 
 import com.soling.model.LyricLine;
+import com.soling.model.Music;
+import com.soling.model.PlayList;
 import com.soling.service.player.IPlayer;
+import com.soling.service.player.Player;
 
 public interface PlayerContract {
 
@@ -21,11 +25,37 @@ public interface PlayerContract {
 
     }
 
-    interface Presenter extends IPlayer {
+    interface Presenter {
 
         void bindPlayService();
 
         void unbindPlayService();
+
+        void play(int index);
+
+        void play(Music music);
+
+        void play(PlayList playList, int startIndex);
+
+        void pause();
+
+        void resume();
+
+        void playNext();
+
+        void playLast();
+
+        void seekTo(int progress);
+
+        boolean isPlaying();
+
+        int getProgress();
+
+        Music getPlayingMusic();
+
+        void changeModel();
+
+        Player.Model getModel();
 
     }
 

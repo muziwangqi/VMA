@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.soling.model.Music;
 import com.soling.utils.DBHelper;
+import com.soling.utils.MusicFileManager;
 
 public class App extends Application {
 
@@ -22,6 +23,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        MusicFileManager musicFileManager = MusicFileManager.getInstance(this);
     }
 
     public List<Music> getLocalMusics() {

@@ -77,8 +77,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_player, container, false);
-        return root;
+        return inflater.inflate(R.layout.fragment_player, container, false);
     }
 
     @Override
@@ -171,7 +170,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     @Override
     public void refreshView() {
-        Log.d(TAG, "refreshView: ");
         final Music music = presenter.getPlayingMusic();
         if (music == null) return;
         tvName.setText(music.getName());
