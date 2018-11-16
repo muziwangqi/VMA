@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		View layoutMusic = layoutInflater
 				.inflate(R.layout.fragment_music, null);*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -60,6 +61,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 //<<<<<<< HEAD
 >>>>>>> d31494114299b5c5287d03943db7cec989f666bd
 >>>>>>> 6e5d727ef9768036f36fbea0c815e82268cccdf5
+=======
+>>>>>>> 94231ecf1b43ca2597c25ab9958dda55305a84e4
 		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
 		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
 		tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -74,6 +77,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
 		//System.out.println("setAdapter");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -82,6 +86,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 //=======
 =======
 >>>>>>> 6e5d727ef9768036f36fbea0c815e82268cccdf5
+=======
+>>>>>>> 94231ecf1b43ca2597c25ab9958dda55305a84e4
 //		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
 //		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
 //		tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -96,11 +102,15 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 //		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
 //		//System.out.println("setAdapter");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
 >>>>>>> d31494114299b5c5287d03943db7cec989f666bd
 >>>>>>> 6e5d727ef9768036f36fbea0c815e82268cccdf5
+=======
+
+>>>>>>> 94231ecf1b43ca2597c25ab9958dda55305a84e4
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -137,6 +147,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         });
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -144,6 +155,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 //>>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
 >>>>>>> d31494114299b5c5287d03943db7cec989f666bd
 >>>>>>> 6e5d727ef9768036f36fbea0c815e82268cccdf5
+=======
+>>>>>>> 94231ecf1b43ca2597c25ab9958dda55305a84e4
 
     public void onClick(View view) {
         switch (view.getId()) {

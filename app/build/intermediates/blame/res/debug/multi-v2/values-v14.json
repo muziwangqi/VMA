@@ -1,0 +1,86 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "3,15,11",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "57,583,447",
+                        "endLines": "9,19,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "439,774,575"
+                    },
+                    "to": {
+                        "startLines": "5,12,17",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "199,580,772",
+                        "endLines": "11,16,19",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "575,767,898"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "157,57,105",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "198,99,151"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,101,148",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "96,143,194"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "3,15,11",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "57,583,447",
+                        "endLines": "9,19,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "439,774,575"
+                    },
+                    "to": {
+                        "startLines": "5,12,17",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "199,580,772",
+                        "endLines": "11,16,19",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "575,767,898"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\values-v14\\colors.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "157,57,105",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "198,99,151"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,101,148",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "96,143,194"
+                    }
+                }
+            ]
+        }
+    ]
+}

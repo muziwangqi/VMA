@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- timeselector -->
+
+    <Button
+        android:id="@+id/id_button_ontimestop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:text="@string/ontimestop"
+        android:textSize="16sp" />
+
+    <!-- linecontrol -->
+
+    <RelativeLayout
+        android:id="@+id/id_rl_linecontrol"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/id_tv_linecontrol"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="@string/linecontrol"
+            android:textSize="16sp" />
+
+        <com.soling.view.adapter.WiperSwitch
+            android:id="@+id/id_kaiguan_linecontrol"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <!-- shake -->
+
+    <RelativeLayout
+        android:id="@+id/id_rl_shakesong"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/id_tv_shakesong"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="@string/shakesong"
+            android:textSize="16sp" />
+
+        <com.soling.view.adapter.WiperSwitch
+            android:id="@+id/id_kaiguan_shakesong"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <!-- about -->
+
+    <RelativeLayout
+        android:id="@+id/id_rl_aboutvmusic"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/id_tv_aboutv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutvmusic"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/id_ib_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:src="@drawable/jiantou" />
+    </RelativeLayout>
+
+    <!-- help -->
+
+    <RelativeLayout
+        android:id="@+id/id_rl_help"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/id_tv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/help"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/id_ib_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:src="@drawable/jiantou" />
+    </RelativeLayout>
+
+    <!-- login -->
+
+    <Button
+        android:id="@+id/id_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:text="@string/login"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/id_button_exitlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:text="@string/exitlogin"
+        android:textSize="16sp" />
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\mtrl_layout_snackbar.xml",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout-sw600dp-v13\\mtrl_layout_snackbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
+    }
+]

@@ -98,24 +98,6 @@ public class SettingModuleFragment extends Fragment {
             }
         });
 
-//        btnMore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //more
-//                SetLight setLight=new SetLight();
-//                setLight.setting();
-//            }
-//        });
-//
-//        btnLess.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SetLight setLight=new SetLight();
-//                setLight.setting();
-//            }
-//        });
-
-
 
         return view;
     }
