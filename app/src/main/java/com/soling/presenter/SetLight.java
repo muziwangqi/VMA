@@ -23,11 +23,19 @@ public class SetLight {
         this.brightness=getBright(activity);
     }
 
-    public void setting(){
+    public void settingMore(){
         isAutoBright(activity);
         stopAutoBright(activity);
         getBright(activity);
-        setBright(activity,brightness);
+        setBrightMore(activity,brightness);
+        saveBright(contentResolver,brightness);
+    }
+
+    public void settingLess(){
+        isAutoBright(activity);
+        stopAutoBright(activity);
+        getBright(activity);
+        setBrightLess(activity,brightness);
         saveBright(contentResolver,brightness);
     }
 
@@ -62,17 +70,24 @@ public class SetLight {
     }
 
     //set     有问题
-    public static void setBright(Activity activity,int brightness){
+    public static void setBrightMore(Activity activity,int brightness){
         WindowManager.LayoutParams layoutParams=activity.getWindow().getAttributes();
-        for (int i=0;i<256;i++){
+        for (int i=0;i<=255;i++){
             layoutParams.screenBrightness=(brightness<=0?1:brightness)/255f+brightness%5;
             activity.getWindow().setAttributes(layoutParams);
             if (brightness>255){
                 Toast.makeText(activity, "亮度已达到最大", Toast.LENGTH_SHORT).show();
             }
-            System.out.println("setbrght:"+brightness+"              "+layoutParams.screenBrightness);
+            System.out.println("setbrght:"+brightness+"           "+layoutParams.screenBrightness);
         }
     }
+
+    public static void setBrightLess(Activity activity,int brightness){
+        WindowManager.LayoutParams layoutParams=activity.getWindow().getAttributes();
+        layoutParams.screenBrightness=(brightness<=0?1:brightness)/255f-brightness%5;
+        activity.getWindow().setAttributes(layoutParams);
+    }
+
     //save
     public static void saveBright(ContentResolver contentResolver,int brightness){
         Uri uri=android.provider.Settings.System.getUriFor("screen_brightness");

@@ -18,7 +18,6 @@ public class LightActivity extends BaseActivity{
         btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //more
                 SetLight setLight=new SetLight(LightActivity.this);
                 setLight.setting();
             }
