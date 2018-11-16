@@ -16,4 +16,17 @@
     <string name="addcontacts">添加联系人</string>
     <string name="login">登录</string>
     <string name="exitlogin">退出登录</string>
+    <string name="aboutaccount">账号相关</string>
+    <string name="aboutquality">歌曲质量</string>
+    <string name="aboutdownload">播放下载</string>
+    <string name="aboutother">其他问题</string>
+    <string name="productionadvice">产品建议</string>
+    <string name="processerror">程序错误</string>
+    <string name="shortofsong">缺少歌曲</string>
+    <string name="version">版权申诉</string>
+    <string name="commit">提交</string>
+    <string name="questionhelp">问题求助</string>
+    <string name="choosequestion">选择你的问题类型</string>
+    <string name="advice">意见反馈</string>
+    <string name="chooseadvice">选择你的反馈类型</string>
 </resources>

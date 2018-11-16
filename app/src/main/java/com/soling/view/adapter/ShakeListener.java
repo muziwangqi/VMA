@@ -1,5 +1,5 @@
 package com.soling.view.adapter;
-//ҡһҡ
+
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -10,16 +10,16 @@ import android.widget.Toast;
 
 public class ShakeListener implements SensorEventListener {
 
-	private static final int SPEED_SHAKE=3000;//���ٶȴﵽ��ֵʱ�и�
-	private static final int UPDATE_TIME=70;//���μ���ʱ����
-	private SensorManager sensorManager;//������������
-	private Sensor sensor;//������
+	private static final int SPEED_SHAKE=3000;
+	private static final int UPDATE_TIME=70;//时间间隔
+	private SensorManager sensorManager;
+	private Sensor sensor;
 	private Context context;
-	private float lastX;//�ֻ���һ��λ�õ�x����
+	private float lastX;
 	private float lastY;
 	private float lastZ;
-	private long lastTime;//�ϴμ��ʱ��
-	private OnShakeListener onShakeListener;//������Ӧ�����
+	private long lastTime;
+	private OnShakeListener onShakeListener;
 		
 	public ShakeListener(Context context) {
 		this.context=context;
@@ -31,41 +31,38 @@ public class ShakeListener implements SensorEventListener {
 //				Toast.makeText(context, "heheheh", Toast.LENGTH_SHORT).show();
 //			}
 //		};
-		//��ȡ��������
+
 		start();
 	}
 
-	//��ʼ���
+	//start监测
 	public void start() {
-		sensorManager=(SensorManager) context.getSystemService(Context.SENSOR_SERVICE);//��ȡ������������
+		sensorManager=(SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
 		if (sensorManager!=null) {
-			sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);//��ȡ������
+			sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		}
 		if (sensor!=null) {
-			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME);//�����������������������ӳ�
+			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME);
 		}
 	}
-	//ֹͣ���
+
 	public void stop(){
 		sensorManager.unregisterListener(this);
 	}
 	
-	//�����𶯼���
+
 	public void setOnShakeListener(OnShakeListener listener){
 		this.onShakeListener=listener;
 	}
 	
 
 	public void onSensorChanged(SensorEvent sensorEvent) {
-		// ��⵱ǰʱ��
 		long currentTime=System.currentTimeMillis();
-		//���μ��ʱ���
 		long timeDiff=currentTime-lastTime;
 		if (timeDiff<UPDATE_TIME) {
 			return;
 		}
 		lastTime=currentTime;
-		//��ȡ x y z ����
 		float currentX=sensorEvent.values[0];
 		float currentY=sensorEvent.values[1];
 		float currentZ=sensorEvent.values[2];
@@ -79,7 +76,7 @@ public class ShakeListener implements SensorEventListener {
 		lastZ=currentZ;
 		
 		double speed=Math.sqrt(xDiff*xDiff+yDiff*yDiff+zDiff*zDiff)/timeDiff*10000;
-		System.out.println(speed+"-------------");
+		//System.out.println(speed+"-------------");
 		
 		if (speed>=SPEED_SHAKE) {
 			onShakeListener.onShake();//null
@@ -87,7 +84,6 @@ public class ShakeListener implements SensorEventListener {
 		
 	}
 
-	//�ӿ�
 	public interface OnShakeListener {
 		public void onShake();
 	}

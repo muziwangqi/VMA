@@ -7,6 +7,7 @@ import com.soling.model.User;
 import com.soling.presenter.MainActivityInterface;
 import com.soling.utils.PhoneUtil;
 import com.soling.view.activity.InformationActivity;
+import com.soling.view.adapter.ListAdapter;
 import com.soling.view.adapter.PhoneAdapter;
 import com.soling.view.adapter.UserAdapter;
 import com.soling.R;
@@ -25,7 +26,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
 public class PhoneFragment extends Fragment implements MainActivityInterface{
-	
+
 	private List<User> users;
 	private ListView personListView;
 	private UserAdapter userAdapter;
@@ -33,6 +34,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 	private String userId;
 	private User user;
 	private PhoneAdapter phoneAdapter;
+	private ListAdapter listAdapter;
 	//	private ImageView myHead;
 //	private TextView myName;
 	@Override
@@ -60,8 +62,8 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 				// TODO Auto-generated method stub
 //				position =1;
 //				User user = users.get(position);
-				InformationActivity in = new InformationActivity();
-				in.actionStart(getActivity(), user);
+//				InformationActivity in = new InformationActivity();
+//				in.actionStart(getActivity(), user);
 //				if(position==1){			
 //					in.actionStart(getActivity(), user);
 //				}else{
@@ -86,12 +88,13 @@ public class PhoneFragment extends Fragment implements MainActivityInterface{
 		myHeading.setImageDrawable(drawable);
 		myNickname.setText(user.getNickName());
 		myStatus.setText(user.getStatus());
-		userAdapter = new UserAdapter(getActivity(),R.layout.person_list,users);	
+		//userAdapter = new UserAdapter(getActivity(),R.layout.person_list,users);
 	}
 	public void refreshPhoneList1(){
 		PhoneDto phoneDto = new PhoneDto();
 		PhoneUtil phoneUtil = new PhoneUtil(view.getContext());
 		List<PhoneDto> phoneDtos =  phoneUtil.getPhone();
+		listAdapter = new ListAdapter(getActivity(),phoneDtos);
 		phoneAdapter = new PhoneAdapter(getActivity(),R.layout.person_list,phoneDtos);
 	}
 

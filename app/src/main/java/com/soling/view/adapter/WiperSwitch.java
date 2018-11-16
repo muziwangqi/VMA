@@ -1,5 +1,5 @@
 package com.soling.view.adapter;
-//���ذ�ť
+
 import com.soling.R;
 
 import android.content.Context;
@@ -16,9 +16,9 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 
 	private Bitmap bitmapOn,bitmapOff,slipbtn;
 	private float currentX,pressedX;
-	private boolean onslip=false;//�Ƿ��ڻ���
-	private boolean currentStatus;//��ǰ״̬
-	private IOnChangedListener onChangedListener;//�����ӿ�
+	private boolean onslip=false;//滑动
+	private boolean currentStatus;
+	private IOnChangedListener onChangedListener;
 	
 	public WiperSwitch(Context context) {
 		super(context);
@@ -60,7 +60,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 		}else {
 			canvas.drawBitmap(bitmapOn, matrix, paint);
 		}
-		//���鲻�ܻ�������
+
 		if (onslip==true) {
 			if (currentX>=(bitmapOn.getWidth())) {
 				x=bitmapOn.getWidth()-slipbtn.getWidth()/2;
@@ -98,7 +98,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 			break;
 		case MotionEvent.ACTION_UP:
 			onslip=false;
-			if (motionEvent.getX()>=(bitmapOn.getWidth()/2)) {//����һ�뼴Ϊ��
+			if (motionEvent.getX()>=(bitmapOn.getWidth()/2)) {
 				currentStatus=true;
 				currentX=motionEvent.getX();
 			}else{
@@ -109,9 +109,9 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 				onChangedListener.onChange(this, currentStatus);
 			}
 			break;
-		case MotionEvent.ACTION_CANCEL://���⿨���м�
+		case MotionEvent.ACTION_CANCEL://避免卡在中间
 			onslip=false;
-			if (motionEvent.getX()>=(bitmapOn.getWidth()/2)) {//����һ�뼴Ϊ��
+			if (motionEvent.getX()>=(bitmapOn.getWidth()/2)) {
 				currentStatus=true;
 				currentX=motionEvent.getX();
 			}else{
@@ -126,7 +126,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 		invalidate();//
 		return true;
 	}
-	//���ü������ṩ�ⲿ���õķ���
+
 	public void setOnChangedListener(IOnChangedListener onChangedListener) {
 		this.onChangedListener = onChangedListener;
 	}
@@ -138,7 +138,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 			currentX=0;
 		}
 	}
-	//�ص��ӿ�
+
 	public interface IOnChangedListener {
 		public void onChange(WiperSwitch wiperSwitch,boolean checkStat);
 	}
