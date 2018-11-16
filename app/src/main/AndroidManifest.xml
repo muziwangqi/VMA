@@ -20,6 +20,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
+    
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -43,6 +46,9 @@
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
         <activity android:name="com.soling.view.activity.HelpActivity"></activity>
+
+        <activity android:name=".view.activity.WirelessActivity"></activity>
+        <activity android:name=".view.activity.LightActivity"></activity>
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name=".view.adapter.MediaButtonReceiver">
