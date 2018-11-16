@@ -1,16 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\values-night-v8\\values-night-v8.xml",
-=======
-            "outputFile": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d5bac7ca5a23f47ae8903c6fd28b464a\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -22,11 +16,10 @@
             ]
         },
         {
-            "outputFile": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d5bac7ca5a23f47ae8903c6fd28b464a\\res\\values-night-v8\\values-night-v8.xml",
->>>>>>> d31494114299b5c5287d03943db7cec989f666bd
+                    "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",

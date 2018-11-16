@@ -1,14 +1,14 @@
 [
     {
-        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_linear_out_slow_in.xml",
-        "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0bc850d43709136a84a5f3af2561125d\\res\\interpolator-v21\\mtrl_linear_out_slow_in.xml"
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_linear_out_slow_in.xml",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\interpolator-v21\\mtrl_linear_out_slow_in.xml"
     },
     {
-        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_fast_out_slow_in.xml",
-        "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0bc850d43709136a84a5f3af2561125d\\res\\interpolator-v21\\mtrl_fast_out_slow_in.xml"
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_fast_out_slow_in.xml",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\interpolator-v21\\mtrl_fast_out_slow_in.xml"
     },
     {
-        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_fast_out_linear_in.xml",
-        "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0bc850d43709136a84a5f3af2561125d\\res\\interpolator-v21\\mtrl_fast_out_linear_in.xml"
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21\\mtrl_fast_out_linear_in.xml",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\interpolator-v21\\mtrl_fast_out_linear_in.xml"
     }
 ]

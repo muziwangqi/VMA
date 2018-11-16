@@ -38,20 +38,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.AboutActivity" />
         <activity android:name=".view.activity.HelpActivity" />
-=======
+
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
         <activity android:name="com.soling.view.activity.HelpActivity"></activity>
-<<<<<<< HEAD
-        <activity android:name=".view.activity.WirelessActivity"></activity>
-        <activity android:name=".view.activity.LightActivity"></activity>
-=======
->>>>>>> f01468819ae371d307634f267ddf256a2db0e29c
->>>>>>> d31494114299b5c5287d03943db7cec989f666bd
+
+        <activity android:name="com.soling.view.activity.WirelessActivity"></activity>
+        <activity android:name="com.soling.view.activity.LightActivity"></activity>
+
         <!-- 线控切歌注册广播 -->
         <receiver android:name=".view.adapter.MediaButtonReceiver">
             <intent-filter>
