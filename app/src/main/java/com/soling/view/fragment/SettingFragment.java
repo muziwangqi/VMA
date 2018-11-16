@@ -54,28 +54,48 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 					public void onClick(View arg0) {
 						//System.out.println("===========");
 						final String[] items = { "不开启", "十分钟后", "二十分钟后",
-								"十三分钟后", "自定义" };
+								"三十分钟后", "自定义" };
 						AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 								context);
 						alertBuilder.setTitle("定时停止播放");
-						// DialogInterface.OnClickListener() {单选对话框
+						// DialogInterface.OnClickListener() {单选
 						alertBuilder.setItems(items,
-								new DialogInterface.OnClickListener() { // 列表对话框
+								new DialogInterface.OnClickListener() { // 列表
 
 									public void onClick(
 											DialogInterface dialogInterface,
-											int i) {
+											final int i) {
 										if (i < items.length - 1) {
-											Toast.makeText(context, items[i],
-													Toast.LENGTH_SHORT).show();
-											// 停止播放
-
+											// 停止
+											class Test{
+												public void main(String[] args){
+													Test test=new Test();
+													MyThread myThread=test.new MyThread();
+													myThread.start();
+												}
+												class MyThread extends Thread{
+													@Override
+													public void run() {
+														super.run();
+														try {
+															Thread.currentThread().sleep(Integer.parseInt(items[i])*60000);
+														}catch (InterruptedException e){
+															e.printStackTrace();
+														}
+													}
+												}
+											}
+											Intent intent=new Intent(context,PlayerService.class);
+											intent.setAction(PlayerService.ACTION_PLAY_TOGGLE);
+											context.startService(intent);
+											//System.out.println("thread");
+											Toast.makeText(context, items[i],Toast.LENGTH_SHORT).show();
 										} else if (i == items.length - 1) {
 											// 自定义shijianxuanzeqi
-											timePickerDialog = new TimePickerDialog(
-													context);
-											// 停止播放
-
+											timePickerDialog = new TimePickerDialog(context);
+											Intent intent=new Intent(context,PlayerService.class);
+											intent.setAction(PlayerService.ACTION_PLAY_TOGGLE);
+											context.startService(intent);
 										}
 									}
 								});
@@ -125,10 +145,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 		wiperSwitch2.setOnChangedListener(new IOnChangedListener() {
 
 			public void onChange(WiperSwitch wiperSwitch, boolean checkStat) {
+				Intent intent=new Intent(context,PlayerService.class);
 				if (checkStat) {
 					Toast.makeText(context, "开关已打开", Toast.LENGTH_SHORT).show();
+					intent.setAction(PlayerService.ACTION_PLAY_NEXT);
+					context.startService(intent);
 				} else if (!checkStat) {
 					Toast.makeText(context, "开关已关闭", Toast.LENGTH_SHORT).show();
+					intent.setAction(PlayerService.ACTION_PLAY_TOGGLE);
+					context.startService(intent);
 				}
 			}
 		});

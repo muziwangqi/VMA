@@ -8,6 +8,7 @@ import com.soling.view.fragment.PhoneFragment;
 import com.soling.view.fragment.PlayerFragment;
 import com.soling.view.fragment.SettingFragment;
 import com.soling.R;
+import com.soling.view.fragment.SettingModuleFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private PhoneFragment phoneFragment;
     private PlayerFragment playerFragment;
     private SettingFragment settingFragment;
+    private SettingModuleFragment settingModuleFragment;
     private FragmentManager fragmentManager;
     private ImageButton ibSearch;
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 				.inflate(R.layout.fragment_phone, null);
 		View layoutMusic = layoutInflater
 				.inflate(R.layout.fragment_music, null);*/
-<<<<<<< HEAD
+
 		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
 		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
 		tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -58,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 		tvSetting.setOnClickListener(this);
 		fragments.add(new PhoneFragment());
 		fragments.add(new PlayerFragment());
-		fragments.add(new SettingFragment());
+		fragments.add(new SettingModuleFragment());
 		
 		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
 		//System.out.println("setAdapter");
-=======
+
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -73,11 +75,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvSetting.setOnClickListener(this);
         fragments.add(new PhoneFragment());
         fragments.add(new PlayerFragment());
-        fragments.add(new SettingFragment());
+        fragments.add(new SettingModuleFragment());
 
         ibSearch.setOnClickListener(this);
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
-        System.out.println("setAdapter");
+        //System.out.println("setAdapter");
 
         // addMenu
         addMenu = (ImageButton) findViewById(R.id.id_ib_add);
@@ -98,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
     }
->>>>>>> 6d0060cba469c5e8dc4bc00558bab81f6e8d0212
 
     public void onClick(View view) {
         switch (view.getId()) {
