@@ -43,6 +43,7 @@ public class Player implements IPlayer {
 
     @Override
     public void play() {
+        if (playList.getPlayingMusic() == null) return;
         Music music = playList.getPlayingMusic();
         if (music != null) {
             File file = new File(music.getPath());

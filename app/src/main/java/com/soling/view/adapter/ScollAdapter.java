@@ -30,8 +30,5 @@ public class ScollAdapter extends FragmentPagerAdapter {
 		// TODO Auto-generated method stub
 		return fragments.size();
 	}
-//	@Override
-//	public void destroyItem(ViewGroup container, int position, Object object) {
-//		fragments.re
-//	}
+
 }

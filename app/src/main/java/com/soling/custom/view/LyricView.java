@@ -63,12 +63,12 @@ public class LyricView extends View {
                 y += staticLayouts.get(i).getHeight() + marginBottom;
             }
             canvas.save();
-            if (i == curLine) {
-                textPaint.setColor(Color.WHITE);
-            }
-            else {
-                textPaint.setColor(Color.GRAY);
-            }
+//            if (i == curLine) {
+                textPaint.setColor(Color.BLACK);
+//            }
+//            else {
+//                textPaint.setColor(Color.GRAY);
+//            }
             drawText(canvas, staticLayouts.get(i), y);
             canvas.restore();
         }

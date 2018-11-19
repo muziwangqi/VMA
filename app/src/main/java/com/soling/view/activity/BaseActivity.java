@@ -9,12 +9,15 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.soling.App;
+
 import com.soling.R;
 
 
-import com.soling.utils.DBHelper;
+import com.soling.utils.db.DBHelper;
 
 import com.soling.utils.MusicFileManager;
+import com.soling.utils.db.DBHelper;
+
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -38,14 +41,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (app.getDbHelper() == null) {
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
         }
+
     }
     public void initViews(){}
     public void initDatas(){}
-    public void setListeners(){}
-        public void setTitle(boolean isShow){
-            isShowTitle=isShow;
-     }
 
+    public void setListeners(){}
+
+
+
+    public void setTitle(boolean isShow){
+        isShowTitle=isShow;
+    }
 
     public void longToast(String str){
         if (toast==null){
@@ -70,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     //wucan
-    public void intentJump(Context context,Class<?> cls){
+    public void intentJump(Context context, Class<?> cls){
         Intent intent=new Intent(context,cls);
         startActivity(intent);
     }

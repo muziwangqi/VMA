@@ -49,10 +49,6 @@
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
         <activity android:name="com.soling.view.activity.HelpActivity"></activity>
-
-        <activity android:name=".view.activity.WirelessActivity"></activity>
-        <activity android:name=".view.activity.LightActivity"></activity>
-
         <activity android:name="com.soling.view.activity.WirelessActivity"></activity>
         <activity android:name="com.soling.view.activity.LightActivity"></activity>
 
