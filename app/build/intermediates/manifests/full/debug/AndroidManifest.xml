@@ -26,6 +26,7 @@
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.soling.view.activity.Banner2Activity"
@@ -39,8 +40,9 @@
         <activity android:name="com.soling.view.activity.MainActivity" />
         <activity android:name="com.soling.view.activity.AboutActivity" />
         <activity android:name="com.soling.view.activity.HelpActivity" />
-        <activity android:name="com.soling.view.activity.WirelessActivity" />
-        <activity android:name="com.soling.view.activity.LightActivity" />
+        <activity android:name="com.soling.view.activity.MainActivity" />
+        <activity android:name="com.soling.view.activity.AboutActivity" />
+        <activity android:name="com.soling.view.activity.HelpActivity" />
         <activity android:name="com.soling.view.activity.WirelessActivity" />
         <activity android:name="com.soling.view.activity.LightActivity" />
 

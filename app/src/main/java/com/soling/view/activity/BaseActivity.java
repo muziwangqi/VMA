@@ -37,9 +37,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void initDatas(){};
     public void setListeners(){}
 
-
-
-
     public void setTitle(boolean isShow){
         isShowTitle=isShow;
     }
