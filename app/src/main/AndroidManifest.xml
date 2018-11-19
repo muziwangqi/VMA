@@ -4,7 +4,6 @@
     package="com.soling"
     android:versionCode="1"
     android:versionName="1.0">
-
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="21" />
@@ -39,10 +38,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.AboutActivity" />
+        <activity android:name=".view.activity.HelpActivity" />
 
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
         <activity android:name="com.soling.view.activity.HelpActivity"></activity>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb5a1f296a9311a2112c418f2abae548c5f1f1d7
         <activity android:name=".view.activity.WirelessActivity"></activity>
         <activity android:name=".view.activity.LightActivity"></activity>
 
