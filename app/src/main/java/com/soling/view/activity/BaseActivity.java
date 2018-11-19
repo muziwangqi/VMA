@@ -6,8 +6,19 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 
+<<<<<<< HEAD
+=======
+
+import com.soling.R;
+=======
+>>>>>>> d83aa6d1d62dd0e0e67e50d7843080c1286764f7
 import com.soling.App;
 import com.soling.utils.DBHelper;
+<<<<<<< HEAD
+=======
+import com.soling.utils.MusicFileManager;
+
+>>>>>>> d83aa6d1d62dd0e0e67e50d7843080c1286764f7
 
 public abstract class BaseActivity extends AppCompatActivity{
 
@@ -24,7 +35,18 @@ public abstract class BaseActivity extends AppCompatActivity{
         initDatas();
         setListeners();
 
+<<<<<<< HEAD
     }
+=======
+    }
+    public void setTitle(boolean isShow){
+        isShowTitle=isShow;
+    }
+    public void initViews(){};
+    public void initDatas(){};
+    public void setListeners(){};
+
+>>>>>>> d83aa6d1d62dd0e0e67e50d7843080c1286764f7
 
         // 添加dbHelper hyw
         App app = (App) getApplication();
