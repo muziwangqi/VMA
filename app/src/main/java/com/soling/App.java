@@ -1,5 +1,6 @@
 package com.soling;
 
+
 import android.app.Application;
 
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class App extends Application {
         return INSTANCE;
     }
 
-    public DBHelper getDbHelper() {
+    public  DBHelper getDbHelper() {
         return dbHelper;
     }
 

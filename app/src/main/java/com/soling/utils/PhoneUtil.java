@@ -18,6 +18,7 @@ import java.util.List;
 public class PhoneUtil {
     public final static String NUM = ContactsContract.CommonDataKinds.Phone.NUMBER;
     public final static String NAME = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
+    public static final String SORT_KEY_PARMARY = "sort_key";
     private Context context;
     private Uri uri;
     public PhoneUtil(Context context){
@@ -28,33 +29,40 @@ public class PhoneUtil {
     }
 
     /*
-    获取手机上联系人
-     */
-    public List<PhoneDto> getPhone(){
-        uri =  ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-        List<PhoneDto> photoList = new ArrayList<PhoneDto>();
-        ContentResolver cr = context.getContentResolver();
-        Cursor cursor = cr.query(uri,new String[]{NUM,NAME},null,null,null);
-        while(cursor.moveToNext()){
-            PhoneDto photoDao = new PhoneDto(cursor.getString(cursor.getColumnIndex(NAME)),cursor.getString(cursor.getColumnIndex(NUM)));
-            photoList.add(photoDao);
+     获取手机联系人信息
+      */
+    public List<PhoneDto> getPhoneList() {
+        ArrayList<PhoneDto> phoneDtos = new ArrayList<PhoneDto>();
+        Cursor cursor = null;
+        uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        cursor = context.getContentResolver().query(uri, new String[]{
+                "display_name",
+                "sort_key",
+                "contact_id",
+                "data1",
+        }, null, null, "sort_key");
+        if (cursor != null) {
+            try {
+                while (cursor.moveToNext()) {
+                    PhoneDto phoneDto = new PhoneDto();
+                    phoneDto.setName(cursor.getString(0));
+                    //phoneDto.setFirstLetter(phoneDto.setFirstLetter(cursor.getString(1)));
+                    phoneDto.setId(cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID)));
+                    phoneDto.setTelPhone(cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)));
+                    phoneDtos.add(phoneDto);
+                }
+                return phoneDtos;
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                cursor.close();
+            }
         }
-        return photoList;
+        return null;
     }
-    /*
-    获取SIM卡联系人
-     */
-    public List<PhoneDto> getPhoneSIM(){
-        uri = Uri.parse("content://icc/adn");
-        List<PhoneDto> photoList = new ArrayList<PhoneDto>();
-        ContentResolver cr = context.getContentResolver();
-        Cursor cursor = cr.query(uri,new String[]{NUM,NAME},null,null,null);
-        while(cursor.moveToFirst()){
-            PhoneDto photoDao = new PhoneDto(cursor.getString(cursor.getColumnIndex(NAME)),cursor.getString(cursor.getColumnIndex(NUM)));
-            photoList.add(photoDao);
-        }
-        return photoList;
-    }
+
+
+
     /*
     获取手机短信信息
      */
@@ -152,4 +160,5 @@ public class PhoneUtil {
       }
         return null;
     }
+
 }

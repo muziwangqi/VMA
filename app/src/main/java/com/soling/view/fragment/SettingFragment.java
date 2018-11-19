@@ -12,6 +12,7 @@ import com.soling.view.adapter.WiperSwitch.IOnChangedListener;
 import com.soling.R;
 
 import android.app.AlertDialog;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
