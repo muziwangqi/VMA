@@ -44,12 +44,20 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\dikuang.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\theme_day.jpg",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\theme_day.jpg"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\about.png",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\about.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\slip.png",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\slip.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\theme_night.jpg",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\theme_night.jpg"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_heart.png",

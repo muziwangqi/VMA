@@ -41,12 +41,9 @@
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.AboutActivity" />
         <activity android:name=".view.activity.HelpActivity" />
-
-        <activity android:name="com.soling.view.activity.MainActivity"></activity>
-        <activity android:name="com.soling.view.activity.AboutActivity"></activity>
-        <activity android:name="com.soling.view.activity.HelpActivity"></activity>
         <activity android:name="com.soling.view.activity.WirelessActivity"></activity>
         <activity android:name="com.soling.view.activity.LightActivity"></activity>
+        <activity android:name=".view.activity.ThemeActivity"></activity>
 
 
         <!-- 线控切歌注册广播 -->

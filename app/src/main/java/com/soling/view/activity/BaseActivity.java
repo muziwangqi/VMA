@@ -42,25 +42,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void longToast(String str){
-        if (toast==null){
-            toast=new Toast(this);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.show();
-        }else{
-            toast.setText(str);
-            toast.show();
-        }
+        Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
     }
 
     public void shortToast(String str){
-        if (toast==null){
-            toast=new Toast(this);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.show();
-        }else{
-            toast.setText(str);
-            toast.show();
-        }
+        Toast.makeText(this,str,Toast.LENGTH_LONG).show();
     }
 
     //wucan
