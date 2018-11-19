@@ -41,6 +41,8 @@
         <activity android:name="com.soling.view.activity.HelpActivity" />
         <activity android:name="com.soling.view.activity.WirelessActivity" />
         <activity android:name="com.soling.view.activity.LightActivity" />
+        <activity android:name="com.soling.view.activity.WirelessActivity" />
+        <activity android:name="com.soling.view.activity.LightActivity" />
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name="com.soling.view.adapter.MediaButtonReceiver" >

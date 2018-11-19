@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    android:background="#E6E6FA"
+    android:orientation="vertical"  >
+   <TextView android:id="@+id/tv_text1"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:textColor="#595959"
+       android:background="#D1EEEE"
+       android:text="我的"/>
+   <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="2dp">
+   <ImageView android:id="@+id/tvmy_heading"
+       android:layout_width="wrap_content"
+       android:layout_height="45dp"
+       android:focusable="false"
+       android:background="@drawable/p"
+       />
+   <TextView android:id="@+id/tvmy_name"
+       android:paddingLeft="20dp"
+       android:layout_width="wrap_content"
+       android:layout_height="30dp"
+       android:textSize="15dp"
+       android:gravity="center_vertical"
+       android:layout_toRightOf="@+id/tvmy_heading"
+       android:text="liqiqi"/>
+   <TextView android:id="@+id/tvmy_status"
+       android:layout_width="wrap_content"
+       android:layout_height="15dp"
+       android:gravity="center_vertical"
+       android:layout_toRightOf="@+id/tvmy_heading"
+       android:layout_below="@+id/tvmy_name"
+       android:text="在线"
+       android:textSize="10dp"
+       android:textColor="#FF0000"
+       android:paddingLeft="20dp"/>
+</RelativeLayout>
+   <TextView android:id="@+id/tv_text2"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:textColor="#595959"
+       android:background="#D1EEEE"
+       android:text="好友列表"
+       android:layout_marginTop="5dp"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="400dp">
+      <ListView android:id="@+id/person_list"
+          android:layout_height="match_parent"
+          android:layout_width="match_parent"
+          android:paddingTop="2dp"/>
+      <com.soling.model.WordsNavigation
+          android:id="@+id/words"
+          android:layout_width="20dp"
+          android:layout_height="match_parent"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="0dp"/>
+      <TextView android:id="@+id/tv"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:background="#C1FFC1"
+          android:visibility="gone"
+          android:gravity="center"
+          android:textColor="#6495ED"
+          android:textSize="40sp"
+          />
+   </RelativeLayout>
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="50dp"
+       android:background="#EEE5DE"
+       android:layout_marginTop="5dp">
+      <ImageView
+          android:id="@+id/call_log"
+          android:layout_width="wrap_content"
+          android:layout_height="50dp"
+          android:background="@drawable/phone_vol"
+          android:paddingLeft="20dp"
+          android:layout_marginLeft="50dp"/>
+      <ImageView
+          android:id="@+id/phone_list"
+          android:layout_width="50dp"
+          android:layout_height="wrap_content"
+          android:background="@drawable/phone_vol"
+          android:layout_toRightOf="@+id/call_log"
+          android:layout_marginLeft="50dp"/>
+      <ImageView
+          android:id="@+id/information_log"
+          android:layout_width="50dp"
+          android:layout_height="wrap_content"
+          android:background="@drawable/phone_vol"
+          android:layout_toRightOf="@+id/phone_list"
+          android:layout_marginLeft="50dp"/>
+   </RelativeLayout>
+</LinearLayout>

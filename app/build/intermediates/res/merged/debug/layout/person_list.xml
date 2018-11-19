@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp" >
+	<TextView android:id="@+id/tv_word"
+		android:layout_width="match_parent"
+		android:layout_height="20dp"
+		android:textColor="#595959"
+		android:background="#D1EEEE"
+		android:text="我的"/>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dp">
+		<ImageView android:id="@+id/tv_heading"
+			android:layout_width="wrap_content"
+			android:layout_height="45dp"
+			android:focusable="false"
+			android:background="@drawable/p"
+			/>
+		<TextView android:id="@+id/tv_name"
+			android:paddingLeft="20dp"
+			android:layout_width="wrap_content"
+			android:layout_height="30dp"
+			android:textSize="15dp"
+			android:gravity="center_vertical"
+			android:layout_toRightOf="@+id/tv_heading"
+			android:text="liqiqi"/>
+		<TextView android:id="@+id/tv_phone"
+			android:layout_width="wrap_content"
+			android:layout_height="15dp"
+			android:gravity="center_vertical"
+			android:layout_toRightOf="@+id/tv_heading"
+			android:layout_below="@+id/tv_name"
+			android:text="在线"
+			android:textSize="10dp"
+			android:textColor="#FF0000"
+			android:paddingLeft="20dp"/>
+	</RelativeLayout>
+
+</LinearLayout>

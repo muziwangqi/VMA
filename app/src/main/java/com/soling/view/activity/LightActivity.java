@@ -19,7 +19,7 @@ public class LightActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 SetLight setLight=new SetLight(LightActivity.this);
-                setLight.setting();
+                setLight.settingMore();
             }
         });
 
@@ -27,7 +27,7 @@ public class LightActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 SetLight setLight=new SetLight(LightActivity.this);
-                setLight.setting();
+                setLight.settingLess();
             }
         });
     }
