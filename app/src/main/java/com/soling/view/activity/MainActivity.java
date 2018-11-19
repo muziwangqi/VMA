@@ -62,11 +62,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private SettingModuleFragment settingModuleFragment;
     private android.app.FragmentManager fragmentManager;
     private ImageButton ibSearch;
-<<<<<<< HEAD
+
     private SharedPreferences sharedPreferences;
-=======
     private RelativeLayout rlMain;
->>>>>>> d218d0aabc28059c56374fcee69dfecee2d8b719
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +88,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		View layoutMusic = layoutInflater
 				.inflate(R.layout.fragment_music, null);*/
 
-<<<<<<< HEAD
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -104,8 +101,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
         //System.out.println("setAdapter");
-=======
->>>>>>> d218d0aabc28059c56374fcee69dfecee2d8b719
 
 
 //		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);

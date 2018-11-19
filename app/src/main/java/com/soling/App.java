@@ -7,14 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.soling.model.Music;
-<<<<<<< HEAD
-import com.soling.utils.DBHelper;
+
 import com.soling.utils.MusicFileManager;
 import com.soling.utils.SharedPreferenceUtil;
-=======
 import com.soling.model.PlayList;
 import com.soling.utils.db.DBHelper;
->>>>>>> d218d0aabc28059c56374fcee69dfecee2d8b719
 
 public class App extends Application {
 
@@ -32,11 +29,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
-<<<<<<< HEAD
         MusicFileManager musicFileManager = MusicFileManager.getInstance(this);
         //isThemec();
-=======
->>>>>>> d218d0aabc28059c56374fcee69dfecee2d8b719
     }
    /* public static boolean isThemec(){
         if (SharedPreferenceUtil.get(App.getInstance(), "theme", "dayTheme").equals(THEMEC)) {
@@ -75,11 +69,6 @@ public class App extends Application {
         return likeMusics;
     }
 
-<<<<<<< HEAD
-    public void setLikeMusics(List<Music> likeMusics) {
-        this.likeMusics = likeMusics;
-    }
-
     public void setTHEMEC(boolean THEMEC) {
         this.THEMEC = THEMEC;
     }
@@ -88,6 +77,4 @@ public class App extends Application {
         return THEMEC;
     }
 
-=======
->>>>>>> d218d0aabc28059c56374fcee69dfecee2d8b719
 }
