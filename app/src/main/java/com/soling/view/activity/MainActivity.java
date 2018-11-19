@@ -10,13 +10,15 @@ import com.soling.view.fragment.SettingFragment;
 import com.soling.R;
 import com.soling.view.fragment.SettingModuleFragment;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.view.ViewPager;
+//import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -137,8 +139,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 popupMenu
                         .setOnMenuItemClickListener(new OnMenuItemClickListener() {
                             public boolean onMenuItemClick(MenuItem menuItem) {
-                                Toast.makeText(MainActivity.this, "item",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "item",Toast.LENGTH_SHORT).show();
                                 return true;
                             }
                         });
