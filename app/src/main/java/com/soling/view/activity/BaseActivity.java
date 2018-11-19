@@ -8,9 +8,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.soling.App;
-import com.soling.R;
-import com.soling.utils.DBHelper;
-import com.soling.utils.MusicFileManager;
+import com.soling.utils.db.DBHelper;
 
 public abstract class BaseActivity extends AppCompatActivity{
 

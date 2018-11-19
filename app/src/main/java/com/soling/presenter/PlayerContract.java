@@ -1,14 +1,12 @@
 package com.soling.presenter;
 
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
 
 import java.util.List;
 
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.PlayList;
-import com.soling.service.player.IPlayer;
 import com.soling.service.player.Player;
 
 public interface PlayerContract {
@@ -19,9 +17,13 @@ public interface PlayerContract {
 
         void refreshView();
 
-        void refreshCover(Bitmap cover);
+        void refreshLike(boolean like);
 
-        void refreshLyric(List<LyricLine> lyric);
+        void loadCover(Bitmap cover);
+
+        void loadLyric(List<LyricLine> lyric);
+
+        void changeModel();
 
     }
 
@@ -30,10 +32,6 @@ public interface PlayerContract {
         void bindPlayService();
 
         void unbindPlayService();
-
-        void play(int index);
-
-        void play(Music music);
 
         void play(PlayList playList, int startIndex);
 
@@ -56,6 +54,10 @@ public interface PlayerContract {
         void changeModel();
 
         Player.Model getModel();
+
+        void delete(List<Music> musicList, int position);
+
+        void likeToggle(Music music);
 
     }
 

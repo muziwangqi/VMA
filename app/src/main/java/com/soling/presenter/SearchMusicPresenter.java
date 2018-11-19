@@ -105,7 +105,7 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
 
     private List<Music> searchLocal(String s) {
         List<Music> result = new ArrayList<>();
-        List<Music> localMusics = App.getInstance().getLocalMusics();
+        List<Music> localMusics = App.getInstance().getLocalMusics().getMusics();
         if (localMusics == null || localMusics.size() == 0) return null;
         for (int i = 0; i < localMusics.size(); i++) {
             Music music = localMusics.get(i);

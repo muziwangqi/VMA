@@ -12,7 +12,6 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatSeekBar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +38,7 @@ import com.soling.presenter.PlayerPresenter;
 import com.soling.service.player.IPlayer;
 import com.soling.utils.BlurUtil;
 import com.soling.utils.MusicFileManager;
+import com.soling.utils.StringUtil;
 import com.soling.view.adapter.MusicAdapter;
 
 public class PlayerFragment extends BaseFragment implements PlayerContract.View, View.OnClickListener {
@@ -82,7 +82,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        presenter = new PlayerPresenter(this, getContext());
+        presenter = new PlayerPresenter(this);
         initView();
         initData();
         initEvent();
@@ -111,8 +111,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private void initData() {
         Bitmap bitmap = BlurUtil.doBlur(BitmapFactory.decodeResource(getResources(), R.drawable.jay), 3, 100);
         rlPlay.setBackground(new BitmapDrawable(getResources(), bitmap));
-
-        initPlayer();
+        presenter.bindPlayService();
     }
 
     private void initEvent() {
@@ -133,7 +132,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tvCurrentPosition.setText(msToString(seekBar.getProgress()));
+                tvCurrentPosition.setText(StringUtil.msToString(seekBar.getProgress()));
             }
 
             @Override
@@ -156,16 +155,68 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     private void initPlayer() {
-        presenter.bindPlayService();
+        musicFileManager = MusicFileManager.getInstance(getContext());
+        List<Music> musics = musicFileManager.getLocalMusics();
+        PlayList playList = new PlayList(musics);
+        ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(playList);
+        presenter.play(App.getInstance().getLocalMusics(), 0);
+        presenter.pause();
+        initMusicListFragments();
+        startRefreshLyric();
     }
 
-    private void playToggle() {
-        if (presenter.isPlaying()) {
-            presenter.pause();
-        }
-        else {
-            presenter.resume();
-        }
+    private void initMusicListFragments() {
+        musicListFragments = new ArrayList<>();
+        likeAdapter = new MusicAdapter(App.getInstance().getLikeMusics().getMusics());
+        likeAdapter.setShowDeleteBtn(true);
+        likeAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                presenter.play(App.getInstance().getLikeMusics(), position);
+//                presenter.play(App.getInstance().getLikeMusics().getMusics().get(position));
+            }
+        });
+        likeAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
+            @Override
+            public void onItemDeleteClick(int position) {
+                presenter.likeToggle(App.getInstance().getLikeMusics().getMusics().get(position));
+
+            }
+        });
+        MusicListFragment likeListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, likeAdapter);
+
+        final MusicAdapter localAdapter = new MusicAdapter(App.getInstance().getLocalMusics().getMusics());
+        localAdapter.setShowDeleteBtn(true);
+        localAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                presenter.play(App.getInstance().getLocalMusics(), position);
+//                presenter.play(position);
+            }
+        });
+        localAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
+            @Override
+            public void onItemDeleteClick(int position) {
+                presenter.delete(localAdapter.getMusics(), position);
+                localAdapter.notifyDataSetChanged();
+                likeAdapter.notifyDataSetChanged();
+            }
+        });
+        MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, localAdapter);
+
+        musicListFragments.add(localListFragment);
+        musicListFragments.add(likeListFragment);
+        vpMusicList.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                return musicListFragments.get(i);
+            }
+
+            @Override
+            public int getCount() {
+                return musicListFragments.size();
+            }
+        });
     }
 
     @Override
@@ -174,7 +225,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         if (music == null) return;
         tvName.setText(music.getName());
         tvArtist.setText("- " + music.getArtist() + " -");
-        tvDuration.setText(msToString(music.getDuration()));
+        tvDuration.setText(StringUtil.msToString(music.getDuration()));
         seekBar.setMax(music.getDuration());
         if (presenter.isPlaying()) {
             ibPlay.setImageResource(R.drawable.ic_pause);
@@ -182,12 +233,24 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         else {
             ibPlay.setImageResource(R.drawable.ic_play);
         }
-        refreshIbLike(music.isLike());
+        refreshLike(music.isLike());
         startRefreshSeekBar();
     }
 
     @Override
-    public void refreshCover(final Bitmap cover) {
+    public void refreshLike(boolean like) {
+        if (like) {
+            ibLike.setImageResource(R.drawable.ic_heart);
+        }
+        else {
+            ibLike.setImageResource(R.drawable.ic_heart_outline);
+        }
+        if (likeAdapter != null)
+            likeAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void loadCover(final Bitmap cover) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -208,7 +271,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     @Override
-    public void refreshLyric(final List<LyricLine> lyric) {
+    public void loadLyric(final List<LyricLine> lyric) {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -216,15 +279,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 lyricView.setLyric(lyric);
             }
         });
-    }
-
-    private void refreshIbLike(boolean like) {
-        if (like) {
-            ibLike.setImageResource(R.drawable.ic_heart);
-        }
-        else {
-            ibLike.setImageResource(R.drawable.ic_heart_outline);
-        }
     }
 
     private void startRefreshSeekBar() {
@@ -260,16 +314,8 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         }, 0, REFRESH_LYRIC_PERIOD);
     }
 
-    public void playNext() {
-        presenter.playNext();
-    }
-
-    public void playLast() {
-        presenter.playLast();
-    }
-
+    @Override
     public void changeModel() {
-        presenter.changeModel();
         IPlayer.Model model = presenter.getModel();
         ImageButton ibChangeModel = (ImageButton) findViewById(R.id.ib_change_model);
         int imageResource = 0;
@@ -291,19 +337,23 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ib_play_next:
-                playNext();
+                presenter.playNext();
                 break;
             case R.id.ib_play_last:
-                playLast();
+                presenter.playLast();
                 break;
             case R.id.ib_play:
-                playToggle();
+                if (presenter.isPlaying()) {
+                    presenter.pause();
+                }
+                else {
+                    presenter.resume();
+                }
                 break;
             case R.id.ib_change_model:
-                changeModel();
+                presenter.changeModel();
                 break;
             case R.id.ib_list:
-                Log.d(TAG, "onClick: " + "ib_list");
                 if (vpMusicList.getVisibility() == View.VISIBLE) {
                     vpMusicList.setVisibility(View.INVISIBLE);
                 }
@@ -312,9 +362,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 }
                 break;
             case R.id.ib_like:
-                boolean like = presenter.likeToggle(presenter.getPlayingMusic());
-                refreshIbLike(like);
-                likeAdapter.notifyDataSetChanged();
+                presenter.likeToggle(presenter.getPlayingMusic());
                 break;
         }
     }
@@ -327,77 +375,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     @Override
     public void onPlayServiceBound() {
-        musicFileManager = MusicFileManager.getInstance(getContext());
-        List<Music> musics = musicFileManager.getLocalMusics();
-        ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(musics);
-        PlayList playList = new PlayList(musics);
-        presenter.play(playList, 0);
-        presenter.pause();
-        initMusicListFragments();
-        startRefreshLyric();
-    }
-
-    private void initMusicListFragments() {
-        Log.d(TAG, "initMusicListFragments: ");
-        musicListFragments = new ArrayList<>();
-        likeAdapter = new MusicAdapter(App.getInstance().getLikeMusics());
-        likeAdapter.setShowDeleteBtn(true);
-        likeAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                presenter.play(App.getInstance().getLikeMusics().get(position));
-            }
-        });
-        likeAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
-            @Override
-            public void onItemDeleteClick(int position) {
-                presenter.likeToggle(App.getInstance().getLikeMusics().get(position));
-                likeAdapter.notifyDataSetChanged();
-                refreshIbLike(false);
-            }
-        });
-        MusicListFragment likeListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, likeAdapter);
-
-        final MusicAdapter localAdapter = new MusicAdapter(App.getInstance().getLocalMusics());
-        localAdapter.setShowDeleteBtn(true);
-        localAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                presenter.play(position);
-            }
-        });
-        localAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
-            @Override
-            public void onItemDeleteClick(int position) {
-                presenter.delete(localAdapter.getMusics(), position);
-                localAdapter.notifyDataSetChanged();
-                likeAdapter.notifyDataSetChanged();
-            }
-        });
-        MusicListFragment localListFragment = MusicListFragment.build("本地列表", R.drawable.ic_shuffle, localAdapter);
-
-        musicListFragments.add(localListFragment);
-        musicListFragments.add(likeListFragment);
-        vpMusicList.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                return musicListFragments.get(i);
-            }
-
-            @Override
-            public int getCount() {
-                return musicListFragments.size();
-            }
-        });
-    }
-
-    private static String msToString(int millisecond) {
-        int second = millisecond / 1000;
-        int min = second / 60;
-        second = second % 60;
-        return String.valueOf(min) +
-                (second < 10 ? ":0" : ":") +
-                second;
+        initPlayer();
     }
 
 }

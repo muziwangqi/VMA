@@ -231,12 +231,6 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         });
     }
 
-    public void showLocalResult(List<Music> music) {
-        Log.d(TAG, "showLocalResult: " + music);
-        localAdapter.setMusics(music);
-        localAdapter.notifyDataSetChanged();
-    }
-
     private void saveSearchRecord(String s) {
         if (searchHistory.size() >= MAX_RECORD) {
             searchHistory.remove(searchHistory.size() - 1);

@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.soling.App;
 import com.soling.model.Music;
+import com.soling.utils.db.DBHelper;
 
 public class MusicFileManager {
 

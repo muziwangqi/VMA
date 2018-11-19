@@ -7,7 +7,7 @@ public class PlayList {
 
     private static final String TAG = "PlayList";
 
-    private List<Music> musics = new ArrayList<Music>();
+    private List<Music> musics;
     private int playingIndex;
 
     public PlayList() {
@@ -15,13 +15,8 @@ public class PlayList {
     }
 
     public PlayList(List<Music> musics) {
-        this.musics.clear();
-        this.musics.addAll(musics);
+        this.musics = musics;
         playingIndex = musics.size() > 0 ? 0 : -1;
-    }
-
-    public int getPlayingIndex() {
-        return playingIndex;
     }
 
     public boolean setPlayingIndex(int playingIndex) {
