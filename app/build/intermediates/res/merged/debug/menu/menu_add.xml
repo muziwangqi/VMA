@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.sl.vtest.MainActivity" >
+
+    <item
+        android:id="@+id/id_item_scan"
+        android:title="@string/scan"/>
+    <item
+        android:id="@+id/id_item_addcontacts"
+        android:title="@string/addcontacts"/>
+
+</menu>

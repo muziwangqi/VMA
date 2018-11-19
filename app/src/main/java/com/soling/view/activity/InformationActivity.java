@@ -182,14 +182,14 @@ public void onClick(View view) {
 //			updateInformation = new Intent(InformationActivity.this, ChatActivity.class);
 //			updateInformation.putExtra("userId", user.getUserId());
 //		}
-		
+
 	}	
 }
 
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	// TODO Auto-generated method stub
-	
+
 	switch (resultCode) {
 	case 1:
 		if(resultCode==RESULT_OK){
@@ -209,7 +209,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 				setPicToView(head);
 				image.setImageBitmap(head);
 			}
-			
 		}
 	default:
 		break;
@@ -218,10 +217,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 private void setPicToView(Bitmap mBitmap) {
 	// TODO Auto-generated method stub
-	String sdStatus = Environment.getExternalStorageState();  
-    if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用  
-           return;  
-       }  
+	String sdStatus = Environment.getExternalStorageState();
+    if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
+           return;
+       }
     FileOutputStream b = null;
     File file = new File(path);
     file.mkdirs();// 创建文件夹
@@ -229,7 +228,7 @@ private void setPicToView(Bitmap mBitmap) {
     try {
         b = new FileOutputStream(fileName);
         mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
-         
+
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     } finally {
@@ -239,7 +238,7 @@ private void setPicToView(Bitmap mBitmap) {
             b.close();
         } catch (IOException e) {
             e.printStackTrace();
-	
+
 }
     }
 }

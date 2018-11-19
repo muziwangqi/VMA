@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_tooltip_exit.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_tooltip_exit.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\11106c8c90221c8ab3135178d316d651\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\11106c8c90221c8ab3135178d316d651\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_tooltip_enter.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_tooltip_enter.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\11106c8c90221c8ab3135178d316d651\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\11106c8c90221c8ab3135178d316d651\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "F:\\projects\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\anim\\abc_popup_enter.xml"
+    }
+]

@@ -8,9 +8,14 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.soling.App;
+<<<<<<< HEAD
 import com.soling.utils.db.DBHelper;
+=======
+import com.soling.utils.DBHelper;
+>>>>>>> 45d8cd9f4f2ffb812eb707017768dea03eb5eb9c
 
-public abstract class BaseActivity extends AppCompatActivity{
+
+public abstract class BaseActivity extends AppCompatActivity {
 
     private boolean isShowTitle=true;
     private static Toast toast;
@@ -24,21 +29,22 @@ public abstract class BaseActivity extends AppCompatActivity{
         initViews();
         initDatas();
         setListeners();
-
         // 添加dbHelper hyw
         App app = (App) getApplication();
+
         if (app.getDbHelper() == null) {
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
         }
     }
 
+    public void initViews(){};
+    public void initDatas(){};
+    public void setListeners(){}
+
     public void setTitle(boolean isShow){
         isShowTitle=isShow;
     }
 
-    public void initViews(){}
-    public void initDatas(){}
-    public void setListeners(){}
     public void longToast(String str){
         if (toast==null){
             toast=new Toast(this);
@@ -62,7 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     }
 
     //wucan
-    public void intentJump(Context context,Class<?> cls){
+    public void intentJump(Context context, Class<?> cls){
         Intent intent=new Intent(context,cls);
         startActivity(intent);
     }
@@ -73,5 +79,4 @@ public abstract class BaseActivity extends AppCompatActivity{
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
 }

@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="F:\projects\VMA\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="F:\projects\VMA\app\src\debug\jniLibs"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="C:\Users\xuewang\Desktop\demo\VMA\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\xuewang\Desktop\demo\VMA\app\src\debug\jniLibs"/></dataSet></merger>
+>>>>>>> 45d8cd9f4f2ffb812eb707017768dea03eb5eb9c

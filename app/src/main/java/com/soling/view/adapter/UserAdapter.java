@@ -42,7 +42,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 		}
 		ImageView myHeading = view.findViewById(R.id.tv_heading);
 		TextView myNickname = view.findViewById(R.id.tv_name);
-		TextView myStatus = view.findViewById(R.id.tv_status);
+		//TextView myStatus = view.findViewById(R.id.tv_status);
 		final int minCircularSize = Math.min(user.getAvatarUrl().getHeight(), user.getAvatarUrl().getWidth());
 		int mCornerRadius = minCircularSize / 2;
 		RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(view.getResources(), user.getAvatarUrl());
@@ -50,7 +50,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 		drawable.setCornerRadius(mCornerRadius);
 		myHeading.setImageDrawable(drawable);
 		myNickname.setText(user.getNickName());
-		myStatus.setText(user.getStatus());
+//		myStatus.setText(user.getStatus());
 		return view;
 /*		ViewHolder holder;
 		if(convertView!=null){

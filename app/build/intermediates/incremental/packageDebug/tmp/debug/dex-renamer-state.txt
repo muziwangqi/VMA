@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Fri Nov 16 18:22:41 CST 2018
 path.3=classes.dex
 path.2=classes.dex
@@ -11,3 +12,9 @@ base.3=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\deb
 base.2=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 base.1=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
 base.0=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+=======
+#Mon Nov 19 11:00:13 CST 2018
+base.0=C\:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
+>>>>>>> 45d8cd9f4f2ffb812eb707017768dea03eb5eb9c

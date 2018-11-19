@@ -1,4 +1,5 @@
 #Internal package file, do not edit.
+<<<<<<< HEAD
 #Fri Nov 16 18:22:41 CST 2018
 1.base=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 2.path=classes.dex
@@ -17,3 +18,11 @@ count=4
 0.base=F\:\\projects\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
 2.baseType=DIRECTORY
 1.path=classes.dex
+=======
+#Mon Nov 19 11:00:14 CST 2018
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1
+>>>>>>> 45d8cd9f4f2ffb812eb707017768dea03eb5eb9c

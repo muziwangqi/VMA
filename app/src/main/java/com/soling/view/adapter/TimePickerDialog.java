@@ -69,18 +69,40 @@ public class TimePickerDialog extends Dialog implements OnTimeChangedListener {
 		timePicker.setOnTimeChangedListener(this);
 		alertDialogBuilder = new AlertDialog.Builder(context);
 		alertDialogBuilder.setView(view);
-		alertDialogBuilder.setTitle("�Զ���ʱ��ֹͣ����");
-		alertDialogBuilder.setPositiveButton("ȷ��", new OnClickListener() {
+		alertDialogBuilder.setTitle("自定义停止播放");
+		alertDialogBuilder.setPositiveButton("确定", new OnClickListener() {
 
 			public void onClick(DialogInterface dialogInterface, int arg1) {
 				if (onTimeChangedListener != null) {
 					onTimeChangedListener.onTimeChanged(hour, minute);
 				}
+				int h=Integer.parseInt(hour);
+				int m=Integer.parseInt(minute);
+				final int time=h*3600000+m*60000;
+				class Test{
+					public void main(String[] args){
+						Test test=new Test();
+						MyThread myThread=test.new MyThread();
+						myThread.start();
+					}
+
+					class MyThread extends Thread{
+						@Override
+						public void run() {
+							super.run();
+							try {
+								Thread.currentThread().sleep(time);
+							}catch (InterruptedException e){
+								e.printStackTrace();
+							}
+						}
+					}
+				}
 				Toast.makeText(context, hour + "小时" + minute + "分钟后",
 						Toast.LENGTH_SHORT).show();
 			}
 		});
-		alertDialogBuilder.setNegativeButton("分钟", null);
+		alertDialogBuilder.setNegativeButton("取消", null);
 		alertDialogBuilder.create().show();
 	}
 

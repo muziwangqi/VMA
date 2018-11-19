@@ -9,9 +9,6 @@ import android.widget.Button;
 
 public class IsLoginActivity extends Activity implements OnClickListener{
 
-	private Button buttonLogin;
-	private Button buttonExitLogin;
-	private SharedPreferences sharedPreferences;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -1,29 +1,28 @@
 package com.soling.view.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.soling.view.adapter.ScollAdapter;
-import com.soling.view.fragment.PhoneFragment;
-import com.soling.view.fragment.PlayerFragment;
-import com.soling.view.fragment.SettingFragment;
-import com.soling.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.PopupMenu.OnMenuItemClickListener;
+
+import com.soling.R;
+import com.soling.view.adapter.ScollAdapter;
+import com.soling.view.fragment.PhoneFragment;
+import com.soling.view.fragment.PlayerFragment;
+import com.soling.view.fragment.SettingFragment;
+import com.soling.view.fragment.SettingModuleFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
     private ViewPager viewPager;
@@ -33,6 +32,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private PhoneFragment phoneFragment;
     private PlayerFragment playerFragment;
     private SettingFragment settingFragment;
+    private SettingModuleFragment settingModuleFragment;
     private FragmentManager fragmentManager;
     private ImageButton ibSearch;
 
@@ -48,19 +48,21 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				.inflate(R.layout.fragment_phone, null);
 		View layoutMusic = layoutInflater
 				.inflate(R.layout.fragment_music, null);*/
-//		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
-//		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
-//		tvMusic = (TextView) findViewById(R.id.id_tv_music);
-//		tvSetting = (TextView) findViewById(R.id.id_tv_setting);
-//		tvPhone.setOnClickListener(this);
-//		tvMusic.setOnClickListener(this);
-//		tvSetting.setOnClickListener(this);
-//		fragments.add(new PhoneFragment());
-//		fragments.add(new PlayerFragment());
-//		fragments.add(new SettingFragment());
-//
-//		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
-//		//System.out.println("setAdapter");
+
+		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
+		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
+		tvMusic = (TextView) findViewById(R.id.id_tv_music);
+		tvSetting = (TextView) findViewById(R.id.id_tv_setting);
+		tvPhone.setOnClickListener(this);
+		tvMusic.setOnClickListener(this);
+		tvSetting.setOnClickListener(this);
+		fragments.add(new PhoneFragment());
+		fragments.add(new PlayerFragment());
+		fragments.add(new SettingModuleFragment());
+		
+		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
+		//System.out.println("setAdapter");
+
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
@@ -71,11 +73,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         tvSetting.setOnClickListener(this);
         fragments.add(new PhoneFragment());
         fragments.add(new PlayerFragment());
-        fragments.add(new SettingFragment());
+        fragments.add(new SettingModuleFragment());
 
         ibSearch.setOnClickListener(this);
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
-        System.out.println("setAdapter");
+        //System.out.println("setAdapter");
 
         // addMenu
         addMenu = (ImageButton) findViewById(R.id.id_ib_add);
@@ -87,8 +89,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 popupMenu
                         .setOnMenuItemClickListener(new OnMenuItemClickListener() {
                             public boolean onMenuItemClick(MenuItem menuItem) {
-                                Toast.makeText(MainActivity.this, "item",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "item",Toast.LENGTH_SHORT).show();
                                 return true;
                             }
                         });
