@@ -8,11 +8,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.soling.App;
-<<<<<<< HEAD
 import com.soling.utils.db.DBHelper;
-=======
-import com.soling.utils.DBHelper;
->>>>>>> 45d8cd9f4f2ffb812eb707017768dea03eb5eb9c
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -35,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (app.getDbHelper() == null) {
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
         }
+
     }
 
     public void initViews(){};

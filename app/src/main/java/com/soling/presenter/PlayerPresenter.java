@@ -18,6 +18,7 @@ import com.soling.model.PlayList;
 import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
 import com.soling.utils.FileUtil;
+import com.soling.utils.VolumeUtil;
 import com.soling.utils.db.MusicLikeHelper;
 
 public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observer {
@@ -165,6 +166,20 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
         view.refreshLike(music.isLike());
     }
 
+    @Override
+    public int getMaxVolume() {
+        return VolumeUtil.getMaxVolume();
+    }
+
+    @Override
+    public int getVolume() {
+        return VolumeUtil.getVolume();
+    }
+
+    @Override
+    public void setVolume(int progress) {
+        VolumeUtil.setVolume(progress);
+    }
 
 
 }

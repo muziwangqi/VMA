@@ -4,8 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CircularBorderDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -24,8 +26,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import com.soling.App;
 import com.soling.R;
@@ -36,6 +36,7 @@ import com.soling.model.PlayList;
 import com.soling.presenter.PlayerContract;
 import com.soling.presenter.PlayerPresenter;
 import com.soling.service.player.IPlayer;
+import com.soling.utils.BitmapUtil;
 import com.soling.utils.BlurUtil;
 import com.soling.utils.MusicFileManager;
 import com.soling.utils.StringUtil;
@@ -45,8 +46,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     public static final String PLAY_INDEX = "PLAY_INDEX";
     private static final String TAG = "PlayerFragment";
-    private static final int REFRESH_SEEK_BAR_PERIOD = 1000;
-    private static final int REFRESH_LYRIC_PERIOD = 1000;
+    private static final int PERIOD_REFRESH_SEEK_BAR = 1000;
+    private static final int PERIOD_REFRESH_LYRIC = 1000;
+    private static final int DELAY_HIDE_SB_VOLUME = 2000;
 
     private MusicFileManager musicFileManager;
 
@@ -58,11 +60,13 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private ImageButton ibChangeModel;
     private ImageButton ibLike;
     private ImageButton ibList;
+    private ImageButton ibVolume;
     private TextView tvName;
     private TextView tvArtist;
     private TextView tvCurrentPosition;
     private TextView tvDuration;
-    private AppCompatSeekBar seekBar;
+    private AppCompatSeekBar sbMusic;
+    private AppCompatSeekBar sbVolume;
     private RelativeLayout rlPlay;
     private LyricView lyricView;
     private ViewPager vpMusicList;
@@ -70,9 +74,12 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private ImageView ivAlbumCover;
     private MusicAdapter likeAdapter;
 
+    private Handler handler;
+    private Runnable taskHideSBVolume;
+    private Runnable taskRefreshLyric;
+    private Runnable taskRefreshSBMusic;
+
     private PlayerPresenter presenter;
-    private Timer sbTimer;
-    private Timer lyricTimer;
 
     @Nullable
     @Override
@@ -86,8 +93,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         initView();
         initData();
         initEvent();
-        sbTimer = new Timer();
-        lyricTimer = new Timer();
     }
 
     private void initView() {
@@ -97,21 +102,59 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ibChangeModel = (ImageButton) findViewById(R.id.ib_change_model);
         ibList = (ImageButton) findViewById(R.id.ib_list);
         ibLike = (ImageButton) findViewById(R.id.ib_like);
+        ibVolume = (ImageButton) findViewById(R.id.ib_volume);
         tvName = (TextView) findViewById(R.id.tv_name);
         tvArtist = (TextView) findViewById(R.id.tv_artist);
         tvCurrentPosition = (TextView) findViewById(R.id.tv_current_position);
         tvDuration = (TextView) findViewById(R.id.tv_duration);
         ivAlbumCover = (ImageView) findViewById(R.id.iv_album_cover);
         lyricView = (LyricView) findViewById(R.id.lyric_view);
-        seekBar = (AppCompatSeekBar) findViewById(R.id.seek_bar);
+        sbMusic = (AppCompatSeekBar) findViewById(R.id.seek_bar);
+        sbVolume = (AppCompatSeekBar) findViewById(R.id.sb_volume);
         rlPlay = (RelativeLayout) findViewById(R.id.rl_play);
         vpMusicList = (ViewPager) findViewById(R.id.vp_music_list);
     }
 
     private void initData() {
-        Bitmap bitmap = BlurUtil.doBlur(BitmapFactory.decodeResource(getResources(), R.drawable.jay), 3, 100);
-        rlPlay.setBackground(new BitmapDrawable(getResources(), bitmap));
+//        Bitmap bitmap = BlurUtil.doBlur(BitmapFactory.decodeResource(getResources(), R.drawable.jay), 3, 100);
+//        rlPlay.setBackground(new BitmapDrawable(getResources(), bitmap));
         presenter.bindPlayService();
+
+        handler = new Handler();
+        taskHideSBVolume = new Runnable(){
+            @Override
+            public void run() {
+                PlayerFragment.this.sbVolume.setVisibility(View.INVISIBLE);
+            }
+        };
+        taskRefreshLyric = new Runnable() {
+            @Override
+            public void run() {
+                lyricView.refresh(presenter.getProgress());
+                handler.postDelayed(this, PERIOD_REFRESH_LYRIC);
+            }
+        };
+        taskRefreshSBMusic = new Runnable() {
+            @Override
+            public void run() {
+                if (presenter.isPlaying() && !isSeeking) {
+                    sbMusic.setProgress(presenter.getProgress());
+                }
+                handler.postDelayed(this, PERIOD_REFRESH_LYRIC);
+            }
+        };
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ivAlbumCover.setImageDrawable(drawable);
+                    }
+                });
+            }
+        }).start();
     }
 
     private void initEvent() {
@@ -129,7 +172,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 ivAlbumCover.setVisibility(View.VISIBLE);
             }
         });
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sbMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 tvCurrentPosition.setText(StringUtil.msToString(seekBar.getProgress()));
@@ -146,12 +189,31 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 isSeeking = false;
             }
         });
+
+        sbVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                handler.removeCallbacks(PlayerFragment.this.taskHideSBVolume);
+                presenter.setVolume(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                handler.postDelayed(PlayerFragment.this.taskHideSBVolume, PlayerFragment.DELAY_HIDE_SB_VOLUME);
+            }
+        });
         ibPlay.setOnClickListener(this);
         ibPlayNext.setOnClickListener(this);
         ibPlayLast.setOnClickListener(this);
         ibChangeModel.setOnClickListener(this);
         ibList.setOnClickListener(this);
         ibLike.setOnClickListener(this);
+        ibVolume.setOnClickListener(this);
     }
 
     private void initPlayer() {
@@ -173,7 +235,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             @Override
             public void onItemClick(View view, int position) {
                 presenter.play(App.getInstance().getLikeMusics(), position);
-//                presenter.play(App.getInstance().getLikeMusics().getMusics().get(position));
             }
         });
         likeAdapter.setOnItemDeleteClickListener(new MusicAdapter.OnItemDeleteClickListener() {
@@ -183,7 +244,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
             }
         });
-        MusicListFragment likeListFragment = MusicListFragment.build("我喜欢的", R.drawable.ic_heart_outline, likeAdapter);
+        MusicListFragment likeListFragment = MusicListFragment.build("我喜欢的", R.drawable.player_unlike, likeAdapter);
 
         final MusicAdapter localAdapter = new MusicAdapter(App.getInstance().getLocalMusics().getMusics());
         localAdapter.setShowDeleteBtn(true);
@@ -226,12 +287,12 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         tvName.setText(music.getName());
         tvArtist.setText("- " + music.getArtist() + " -");
         tvDuration.setText(StringUtil.msToString(music.getDuration()));
-        seekBar.setMax(music.getDuration());
+        sbMusic.setMax(music.getDuration());
         if (presenter.isPlaying()) {
-            ibPlay.setImageResource(R.drawable.ic_pause);
+            ibPlay.setImageResource(R.drawable.player_pause);
         }
         else {
-            ibPlay.setImageResource(R.drawable.ic_play);
+            ibPlay.setImageResource(R.drawable.player_play);
         }
         refreshLike(music.isLike());
         startRefreshSeekBar();
@@ -240,10 +301,10 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     @Override
     public void refreshLike(boolean like) {
         if (like) {
-            ibLike.setImageResource(R.drawable.ic_heart);
+            ibLike.setImageResource(R.drawable.player_like);
         }
         else {
-            ibLike.setImageResource(R.drawable.ic_heart_outline);
+            ibLike.setImageResource(R.drawable.player_unlike);
         }
         if (likeAdapter != null)
             likeAdapter.notifyDataSetChanged();
@@ -255,15 +316,11 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             @Override
             public void run() {
                 if (cover == null) return;
-                final RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), cover);
-                roundedBitmapDrawable.setAntiAlias(true);
-                roundedBitmapDrawable.setCornerRadius(Math.min(cover.getWidth(), cover.getHeight()));
-                final Bitmap background = BlurUtil.doBlur(cover, 3, 200);
+                final RoundedBitmapDrawable roundedBitmapDrawable = BitmapUtil.roundedBitmapDrawable(cover);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         ivAlbumCover.setImageDrawable(roundedBitmapDrawable);
-                        rlPlay.setBackground(new BitmapDrawable(getResources(), background));
                     }
                 });
             }
@@ -282,36 +339,12 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     private void startRefreshSeekBar() {
-        sbTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (presenter.isPlaying()) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (!isSeeking) {
-                                seekBar.setProgress(presenter.getProgress());
-                            }
-                        }
-                    });
-                }
-            }
-        }, 0, REFRESH_SEEK_BAR_PERIOD);
+        handler.postDelayed(taskRefreshSBMusic, PERIOD_REFRESH_SEEK_BAR);
     }
 
 
     private void startRefreshLyric() {
-        lyricTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        lyricView.refresh(presenter.getProgress());
-                    }
-                });
-            }
-        }, 0, REFRESH_LYRIC_PERIOD);
+        handler.postDelayed(taskRefreshLyric, PERIOD_REFRESH_LYRIC);
     }
 
     @Override
@@ -327,10 +360,19 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 imageResource = R.drawable.ic_repeat_once;
                 break;
             case LOOP_ALL:
-                imageResource = R.drawable.ic_repeat;
+                imageResource = R.drawable.player_repeat;
                 break;
         }
         ibChangeModel.setImageResource(imageResource);
+    }
+
+    private void showVolumeManagerBar() {
+        int maxVolume = presenter.getMaxVolume();
+        int volume = presenter.getVolume();
+        sbVolume.setProgress(volume);
+        sbVolume.setMax(maxVolume);
+        sbVolume.setVisibility(View.VISIBLE);
+        handler.postDelayed(taskHideSBVolume, DELAY_HIDE_SB_VOLUME);
     }
 
     @Override
@@ -363,6 +405,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 break;
             case R.id.ib_like:
                 presenter.likeToggle(presenter.getPlayingMusic());
+                break;
+            case R.id.ib_volume:
+                showVolumeManagerBar();
                 break;
         }
     }

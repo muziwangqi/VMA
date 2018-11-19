@@ -59,6 +59,11 @@ public interface PlayerContract {
 
         void likeToggle(Music music);
 
+        int getMaxVolume();
+
+        int getVolume();
+
+        void setVolume(int progress);
     }
 
 }

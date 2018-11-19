@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -18,11 +19,24 @@ import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SearchMusicPresenter implements SearchMusicContract.Presenter {
 
     private static final String TAG = "SearchMusicPresenter";
+
+    private static final String PREFERENCE_FILE = "data";
+
+    private static final String PREFERENCE_SEARCH_RECORD = "search_history";
+    private static final int MAX_RECORD = 10;
 
     private SearchMusicContract.View view;
 
@@ -30,8 +44,11 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
     private List<Music> localResult = new ArrayList<>();
     private List<Music> networkResult = new ArrayList<>();
 
+    private List<String> searchHistory = new LinkedList<>();
+
     public SearchMusicPresenter(SearchMusicContract.View view) {
         this.view = view;
+        searchHistory.addAll(readFromSharedPreferences());
     }
 
     private ServiceConnection connection = new ServiceConnection() {
@@ -103,7 +120,8 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
 
     }
 
-    private List<Music> searchLocal(String s) {
+    @Override
+    public List<Music> searchLocal(String s) {
         List<Music> result = new ArrayList<>();
         List<Music> localMusics = App.getInstance().getLocalMusics().getMusics();
         if (localMusics == null || localMusics.size() == 0) return null;
@@ -134,4 +152,45 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
         return result;
     }
 
+    @Override
+    public List<String> getSearchHistory() {
+        return searchHistory;
+    }
+
+    @Override
+    public void saveSearchRecord(String s) {
+        if (searchHistory.size() >= MAX_RECORD) {
+            searchHistory.remove(searchHistory.size() - 1);
+        }
+        searchHistory.remove(s);
+        searchHistory.add(0, s);
+
+        saveToSharedPreferences();
+
+        Log.d(TAG, "saveSearchRecord: " + new LinkedHashSet<>(searchHistory).toString());
+    }
+
+    @Override
+    public void saveToSharedPreferences() {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < searchHistory.size(); i++) {
+            set.add(Integer.toString(i) + "_" + searchHistory.get(i));
+        }
+        SharedPreferences.Editor edit = App.getInstance().getSharedPreferences(PREFERENCE_FILE, MODE_PRIVATE).edit();
+        edit.putStringSet(PREFERENCE_SEARCH_RECORD, set);
+        edit.apply();
+    }
+
+    private List<String> readFromSharedPreferences() {
+        List<String> result = new LinkedList<>();
+        SharedPreferences pref = App.getInstance().getSharedPreferences(PREFERENCE_FILE, MODE_PRIVATE);
+        result.addAll(Objects.requireNonNull(pref.getStringSet(PREFERENCE_SEARCH_RECORD, new HashSet<String>())));
+        Collections.sort(result);
+        for (int i = 0; i < result.size(); i++) {
+            result.set(i, result.get(i).split("_")[1]);
+        }
+        return result;
+    }
+
 }
+

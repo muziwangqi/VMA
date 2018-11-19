@@ -30,6 +30,13 @@ public interface SearchMusicContract {
 
         void playNetworK(int position);
 
+        List<Music> searchLocal(String s);
+
+        List<String> getSearchHistory();
+
+        void saveSearchRecord(String s);
+
+        void saveToSharedPreferences();
     }
 
 }
