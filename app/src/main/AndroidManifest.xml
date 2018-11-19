@@ -39,9 +39,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.AboutActivity" />
-        <activity android:name=".view.activity.HelpActivity" />
 
         <activity android:name="com.soling.view.activity.MainActivity"></activity>
         <activity android:name="com.soling.view.activity.AboutActivity"></activity>
