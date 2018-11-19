@@ -2,6 +2,7 @@ package com.soling.view.adapter;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 
 import com.soling.R;
+import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
 import com.soling.view.fragment.PhoneFragment;
 
@@ -40,6 +42,8 @@ public class ListAdapter extends BaseAdapter implements SectionIndexer {
         sections = new String[sectionList.size()];
         sectionList.toArray(sections);
     }
+
+
     @Override
     public int getCount() {
         return list.size();

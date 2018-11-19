@@ -47,18 +47,19 @@
        android:text="好友列表"
        android:layout_marginTop="5dp"/>
    <RelativeLayout
+       android:id="@+id/my_list"
        android:layout_width="match_parent"
-       android:layout_height="400dp">
+       android:layout_height="wrap_content">
       <ListView android:id="@+id/person_list"
-          android:layout_height="match_parent"
-          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
           android:paddingTop="2dp"/>
       <com.soling.model.WordsNavigation
           android:id="@+id/words"
           android:layout_width="20dp"
           android:layout_height="match_parent"
           android:layout_alignParentRight="true"
-          android:layout_marginRight="0dp"/>
+          android:layout_marginRight="20dp"/>
       <TextView android:id="@+id/tv"
           android:layout_width="80dp"
           android:layout_height="80dp"
@@ -71,7 +72,7 @@
           android:textSize="40sp"
           />
    </RelativeLayout>
-   <RelativeLayout
+  <!-- <RelativeLayout
        android:layout_width="wrap_content"
        android:layout_height="50dp"
        android:background="#EEE5DE"
@@ -98,4 +99,5 @@
           android:layout_toRightOf="@+id/phone_list"
           android:layout_marginLeft="50dp"/>
    </RelativeLayout>
+   -->
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.soling.view.activity;
 
-import android.content.SharedPreferences;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,22 +28,13 @@ import com.soling.view.adapter.MusicAdapter;
 import com.soling.view.adapter.SearchHistoryAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 
 public class SearchMusicActivity extends AppCompatActivity implements SearchMusicContract.View {
 
     private static final String TAG = "SearchMusicActivity";
-    private static final String PREFERENCE_FILE = "data";
 
-    private static final String PREFERENCE_SEARCH_RECORD = "search_history";
-    private static final int MAX_RECORD = 10;
 
     private SearchMusicContract.Presenter presenter;
     private LinearLayout llHotSearch;
@@ -59,8 +49,6 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
     private LinearLayout llSearchHelp;
     private LinearLayout llSearchResult;
     private ImageButton ibBack;
-
-    private List<String> searchHistory = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +91,6 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         searchView.setFocusable(true);
         searchView.requestFocusFromTouch();
 
-        searchHistory.addAll(readFromSharedPreferences());
-
         netAdapter = new MusicAdapter(new ArrayList<Music>());
         netAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
             @Override
@@ -127,19 +113,19 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         rvLocalResult.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvLocalResult.setAdapter(localAdapter);
 
-        historyAdapter = new SearchHistoryAdapter(searchHistory);
+        historyAdapter = new SearchHistoryAdapter(presenter.getSearchHistory());
         historyAdapter.setOnItemClickListener(new SearchHistoryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View item, int position) {
-                searchView.setQuery(searchHistory.get(position), true);
+                searchView.setQuery(presenter.getSearchHistory().get(position), true);
             }
         });
         historyAdapter.setOnDeleteClickListener(new SearchHistoryAdapter.OnDeleteClickListener() {
             @Override
             public void onDeleteClick(int position) {
-                searchHistory.remove(position);
+                presenter.getSearchHistory().remove(position);
                 historyAdapter.notifyDataSetChanged();
-                saveToSharedPreferences();
+                presenter.saveToSharedPreferences();
             }
         });
         rvSearchHistory.setLayoutManager(new LinearLayoutManager(this));
@@ -152,7 +138,7 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
             @Override
             public boolean onQueryTextSubmit(String s) {
                 if (!TextUtils.isEmpty(s)) {
-                    saveSearchRecord(s);
+                    presenter.saveSearchRecord(s);
                     presenter.search(s);
                     llSearchResult.setVisibility(View.VISIBLE);
                 }
@@ -193,7 +179,6 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void showHots(final List<String> hots) {
         final TagFlowLayout tflHotSearch = new TagFlowLayout(this);
@@ -229,45 +214,6 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
                 }
             }
         });
-    }
-
-    public void showLocalResult(List<Music> music) {
-        Log.d(TAG, "showLocalResult: " + music);
-        localAdapter.setMusics(music);
-        localAdapter.notifyDataSetChanged();
-    }
-
-    private void saveSearchRecord(String s) {
-        if (searchHistory.size() >= MAX_RECORD) {
-            searchHistory.remove(searchHistory.size() - 1);
-        }
-        searchHistory.remove(s);
-        searchHistory.add(0, s);
-
-        saveToSharedPreferences();
-
-        Log.d(TAG, "saveSearchRecord: " + new LinkedHashSet<>(searchHistory).toString());
-    }
-
-    private void saveToSharedPreferences() {
-        Set<String> set = new HashSet<>();
-        for (int i = 0; i < searchHistory.size(); i++) {
-            set.add(Integer.toString(i) + "_" + searchHistory.get(i));
-        }
-        SharedPreferences.Editor edit = getSharedPreferences(PREFERENCE_FILE, MODE_PRIVATE).edit();
-        edit.putStringSet(PREFERENCE_SEARCH_RECORD, set);
-        edit.apply();
-    }
-
-    private List<String> readFromSharedPreferences() {
-        List<String> result = new LinkedList<>();
-        SharedPreferences pref = getSharedPreferences(PREFERENCE_FILE, MODE_PRIVATE);
-        result.addAll(Objects.requireNonNull(pref.getStringSet(PREFERENCE_SEARCH_RECORD, new HashSet<String>())));
-        Collections.sort(result);
-        for (int i = 0; i < result.size(); i++) {
-            result.set(i, result.get(i).split("_")[1]);
-        }
-        return result;
     }
 
 }
