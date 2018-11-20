@@ -6,6 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 public class PlayerService extends Service {
 
@@ -40,8 +41,9 @@ public class PlayerService extends Service {
                 player.playNext();
             }
             else if (TextUtils.equals(action, ACTION_PLAY_TOGGLE)) {
+                Log.d(TAG, "onStartCommand: " + "ACTION_PLAY_TOGGLE");
                 if (player.isPlaying()) player.pause();
-                else player.play();
+                else player.resume();
             }
             else if (TextUtils.equals(action, ACTION_PLAY_NEXT)) {
                 player.playNext();

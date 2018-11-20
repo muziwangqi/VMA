@@ -127,7 +127,7 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
 
     @Override
     public void onPlayToggle() {
-        view.refreshView();
+        view.refreshPlayState();
     }
 
     @Override

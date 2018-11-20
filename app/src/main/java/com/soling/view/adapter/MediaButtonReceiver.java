@@ -5,74 +5,57 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import com.soling.App;
+import com.soling.service.player.PlayerService;
+
 public class MediaButtonReceiver extends BroadcastReceiver {
 
-	private long firstClickTime=0;
-	private long secondCliclTime=0;
-	private static Context context;
-	private static final int mes_click_time=2;
-	private static int clickNumber=0;
-	private static long saveFirstTime=0;
-	
-	private static Handler handler=new Handler(){
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case mes_click_time:
-				if (clickNumber==0) {
-					//������ͣ����
-					Toast.makeText(context, "������ͣ", Toast.LENGTH_SHORT).show();
-				}else if(clickNumber==1){
-					//˫����һ��
-					Toast.makeText(context, "˫����һ��", Toast.LENGTH_SHORT).show();
-				}else if(clickNumber==2){
-					//������һ��
-					Toast.makeText(context, "������һ��", Toast.LENGTH_SHORT).show();
-				}
-				break;
-			}
-		};
-	};
-	
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		this.context=context;
-		//���ն�
-		String intentAction=intent.getAction();
-		//��ζ���
-		if (AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(intentAction)) {
-			//zantingbifang
-			Toast.makeText(context, "��ζ�����ͣ����", Toast.LENGTH_SHORT).show();
-		}else if(Intent.ACTION_CALL_BUTTON.equals(intentAction)){
-			KeyEvent keyEvent=intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
-			int action=keyEvent.getAction();
-			if (action==KeyEvent.ACTION_DOWN) {
-				click();
-			}
-		}
-	}
+    private static final String TAG = "MediaButtonReceiver";
 
-	private void click() {
-		secondCliclTime=saveFirstTime;
-		firstClickTime=System.currentTimeMillis();
-		saveFirstTime=firstClickTime;
-		long time=firstClickTime-secondCliclTime;
-		int number=clickNumber;
-		if (time>0&&time<700) {
-			handler.removeMessages(mes_click_time);
-			if (clickNumber==0) {
-				clickNumber=1;
-			}else if (number==1) {
-				clickNumber=2;
-			}else if (number==2) {
-				clickNumber=0;
-			}
-		}else {
-			clickNumber=0;
-		}
-		handler.sendEmptyMessageDelayed(mes_click_time, 900L);
-	}
+    private Handler handler = new Handler();
+    private static int headSetHookNum = 0;
+
+    private static Runnable taskPlayToggle = new Runnable() {
+        @Override
+        public void run() {
+            Context context = App.getInstance();
+            if (headSetHookNum == 1) {
+                Intent intent = new Intent(context, PlayerService.class);
+                intent.setAction(PlayerService.ACTION_PLAY_TOGGLE);
+                context.startService(intent);
+            }
+            else {
+                Intent intent = new Intent(context, PlayerService.class);
+                intent.setAction(PlayerService.ACTION_PLAY_NEXT);
+                context.startService(intent);
+            }
+            headSetHookNum = 0;
+        }
+    };
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String intentAction = intent.getAction();
+        if (Intent.ACTION_HEADSET_PLUG.equals(intentAction)) {
+            Log.d(TAG, "onReceive: " + "ACTION_AUDIO_BECOMING_NOISY");
+        }
+        else if (Intent.ACTION_MEDIA_BUTTON.equals(intentAction)) {
+            KeyEvent keyEvent = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
+            int keyCode = keyEvent.getKeyCode();
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_HEADSETHOOK:
+                    if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) return;
+                    if (headSetHookNum == 0) {
+                        handler.postDelayed(taskPlayToggle, 1000);
+                    }
+                    headSetHookNum++;
+                    break;
+            }
+        }
+    }
 
 }

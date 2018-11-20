@@ -1,7 +1,9 @@
 package com.soling.api;
 
 import java.util.List;
+import java.util.Map;
 
+import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.User;
 
@@ -9,10 +11,14 @@ import com.soling.model.User;
 
 public interface MusicAPI {
 
-    // 获取音乐文件在api中对应的id，albumId,专辑封面路径coverPath
-    void getInfo(Music music);
-    void getLyric(Music music);
+    List<LyricLine> getLyric(Integer aId);
+    List<String> searchHot();
+    List<Music> search(String...args);
+
+
     User getuser(String userNumber,String password);
+    String getCoverPath(int albumId);
     User getUserInformation(String userId);
     List<User> getMyAttention(String userId);
+
 }

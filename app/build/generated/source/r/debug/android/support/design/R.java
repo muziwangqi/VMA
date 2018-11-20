@@ -979,8 +979,8 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f070097;
         public static final int notification_tile_bg = 0x7f070098;
         public static final int notify_panel_notification_icon_bg = 0x7f070099;
-        public static final int tooltip_frame_dark = 0x7f0700b4;
-        public static final int tooltip_frame_light = 0x7f0700b5;
+        public static final int tooltip_frame_dark = 0x7f0700b5;
+        public static final int tooltip_frame_light = 0x7f0700b6;
     }
     public static final class id {
         public static final int action_bar = 0x7f080007;
@@ -1036,8 +1036,8 @@ public final class R {
         public static final int ghost_view = 0x7f08005c;
         public static final int group_divider = 0x7f08005f;
         public static final int home = 0x7f080061;
-        public static final int icon = 0x7f080073;
-        public static final int icon_group = 0x7f080074;
+        public static final int icon = 0x7f080075;
+        public static final int icon_group = 0x7f080076;
         public static final int image = 0x7f0800a6;
         public static final int info = 0x7f0800a7;
         public static final int italic = 0x7f0800ab;

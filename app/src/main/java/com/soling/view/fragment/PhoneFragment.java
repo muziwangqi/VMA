@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.soling.model.FloatDragView;
+import com.soling.model.Music;
 import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
 import com.soling.model.PhoneInformation;
@@ -11,6 +12,7 @@ import com.soling.model.User;
 import com.soling.presenter.MainActivityInterface;
 import com.soling.utils.FloatButtonUtil;
 import com.soling.utils.PhoneUtil;
+import com.soling.utils.SMSUtil;
 import com.soling.view.activity.InformationActivity;
 import com.soling.view.activity.MainActivity;
 import com.soling.view.adapter.ListAdapter;
@@ -52,6 +54,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
     private List<PhoneDto> phoneDtos;
     private List<PhoneCallLog> phoneCallLogs;
     private List<PhoneInformation> phoneInformations;
+    private Music sharedMusic;
 
     //	private ImageView myHead;
 //	private TextView myName;
@@ -80,12 +83,17 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         personListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-                PhoneDto phoneDto = phoneDtos.get(arg2);
-                Intent intent = new Intent(getActivity(),InformationActivity.class);
-                intent.putExtra("name", phoneDto.getName());
-                intent.putExtra("phoneNumber", phoneDto.getTelPhone());
-                intent.putExtra("id", phoneDto.getId());
-                startActivity(intent);
+                if (sharedMusic != null) {
+                    SMSUtil.sendSMS(phoneDtos.get(arg2).getTelPhone(), sharedMusic.getArtist() + "的" + sharedMusic.getName() + "很好听 @_@");
+                    sharedMusic = null;
+                } else {
+                    PhoneDto phoneDto = phoneDtos.get(arg2);
+                    Intent intent = new Intent(getActivity(), InformationActivity.class);
+                    intent.putExtra("name", phoneDto.getName());
+                    intent.putExtra("phoneNumber", phoneDto.getTelPhone());
+                    intent.putExtra("id", phoneDto.getId());
+                    startActivity(intent);
+                }
             }
         });
         return view;
@@ -162,5 +170,9 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
 
 
 //	}
+
+    public void shareMusic(Music music) {
+        this.sharedMusic = music;
+    }
 
 }

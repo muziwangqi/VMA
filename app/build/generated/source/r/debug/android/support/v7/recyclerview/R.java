@@ -101,8 +101,8 @@ public final class R {
         public static final int chronometer = 0x7f080034;
         public static final int end = 0x7f080048;
         public static final int forever = 0x7f080058;
-        public static final int icon = 0x7f080073;
-        public static final int icon_group = 0x7f080074;
+        public static final int icon = 0x7f080075;
+        public static final int icon_group = 0x7f080076;
         public static final int info = 0x7f0800a7;
         public static final int italic = 0x7f0800ab;
         public static final int item_touch_helper_previous_elevation = 0x7f0800ac;

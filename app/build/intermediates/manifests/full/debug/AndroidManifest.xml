@@ -51,7 +51,7 @@
         <receiver android:name="com.soling.view.adapter.MediaButtonReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" /> <!-- 耳机点击事件 -->
-                <action android:name="android.media.AUDIO_BECOMING_NOISY" /> <!-- 插拔耳机事件 -->
+                <action android:name="android.intent.action.HEADSET_PLUG" /> <!-- 插拔耳机事件 -->
             </intent-filter>
         </receiver>
 

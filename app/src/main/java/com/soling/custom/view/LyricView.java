@@ -63,12 +63,12 @@ public class LyricView extends View {
                 y += staticLayouts.get(i).getHeight() + marginBottom;
             }
             canvas.save();
-//            if (i == curLine) {
+            if (i == curLine) {
                 textPaint.setColor(Color.BLACK);
-//            }
-//            else {
-//                textPaint.setColor(Color.GRAY);
-//            }
+            }
+            else {
+                textPaint.setColor(Color.GRAY);
+            }
             drawText(canvas, staticLayouts.get(i), y);
             canvas.restore();
         }
@@ -114,6 +114,7 @@ public class LyricView extends View {
         staticLayouts.clear();
         staticLayouts.add(new StaticLayout("暂无歌词", textPaint, getWidth(), Layout.Alignment.ALIGN_CENTER, 1f, 0f, false));
         curLine = 0;
+        this.invalidate();
     }
 
     private int findLine(long progress) {

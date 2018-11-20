@@ -10,7 +10,7 @@ import com.soling.utils.HttpUtil;
 
 public class NeteaseAPI {
 
-    public static final String HOST = "http://192.168.11.241:3000";
+    public static final String HOST = "http://192.168.43.14:3000";
     public static final String PATH_SEARCH = "/search?keywords=";
     public static final String PATH_ALBUM_DETAIL = "/album?id=";
     public static final String PATH_LYRIC = "/lyric?id=";
@@ -25,25 +25,21 @@ public class NeteaseAPI {
     }
 
     public static JSONObject search(String...args) {
-        JSONObject result;
         String url = HOST + PATH_SEARCH;
         for (String s : args) {
             url = url + s + " ";
         }
-        result = HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
-        return result;
+        return HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
     }
 
-    public static JSONObject getAlbumDetail(String albumId) {
+    public static JSONObject getAlbumDetail(Integer albumId) {
         String url = HOST + PATH_ALBUM_DETAIL + albumId;
-        JSONObject result = HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
-        return result;
+        return HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
     }
 
     public static JSONObject searchHot() {
         String url = HOST + PATH_SEARCH_HOT;
-        JSONObject result = HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
-        return result;
+        return HttpUtil.requestJSON(url, HttpUtil.METHOD_GET);
     }
     public static JSONObject login(String userNumber,String password){
     	String url = HOST+PATH_LOGIN+"phone="+userNumber+"&password="+password;
