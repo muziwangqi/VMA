@@ -8,6 +8,7 @@ import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
 import com.soling.model.PhoneInformation;
 import com.soling.model.User;
+import com.soling.model.WordsNavigation;
 import com.soling.presenter.MainActivityInterface;
 import com.soling.utils.FloatButtonUtil;
 import com.soling.utils.PhoneUtil;
@@ -22,8 +23,11 @@ import com.soling.R;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -52,7 +56,8 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
     private List<PhoneDto> phoneDtos;
     private List<PhoneCallLog> phoneCallLogs;
     private List<PhoneInformation> phoneInformations;
-
+    private TextView tv;
+    private ListView listView;
     //	private ImageView myHead;
 //	private TextView myName;
     @Override
@@ -67,6 +72,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,6 +83,23 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         refreshPhoneList1();
         personListView.setAdapter(listAdapter);
         addFloatButton(relativeLayout);
+        tv = view.findViewById(R.id.tv);
+        final WordsNavigation word = view.findViewById(R.id.words);
+        listView =view.findViewById(R.id.person_list);
+//        listView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                word.touchIndex(phoneDtos.get(scrollX).getFirstLetter());
+//            }
+//        });
+        word.setOnWordsChangeListener(new WordsNavigation.onWordsChangeListener() {
+            @Override
+            public void wordsChange(String words) {
+                    updateWord(words);
+                listAdapter.updateListView(words,listView);
+            }
+        });
+
         personListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
@@ -91,6 +114,24 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         return view;
     }
 
+
+    /*
+    更新点击字母导航栏时中间提示信息
+     */
+    private void updateWord(String words) {
+        Handler handler = new Handler();
+        tv.setText(words);
+        tv.setVisibility(View.VISIBLE);
+        //清空之前的所有消息
+        handler.removeCallbacksAndMessages(null);
+        //500ms后让tv隐藏
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tv.setVisibility(View.GONE);
+            }
+        },500);
+    }
     public void refreshPhoneList(User user, List<User> users) {
         // TODO Auto-generated method stub
 //		user = UserList.buildUser("h", new Date(16660812), 1, 1, 40000);
@@ -109,11 +150,12 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         //userAdapter = new UserAdapter(getActivity(),R.layout.person_list,users);
     }
 
-    public void refreshPhoneList1() {
+    public List<PhoneDto> refreshPhoneList1() {
         PhoneDto phoneDto = new PhoneDto();
         PhoneUtil phoneUtil = new PhoneUtil(view.getContext());
         phoneDtos = phoneUtil.getPhoneList();
         listAdapter = new ListAdapter(getActivity(), phoneDtos);
+        return phoneDtos;
         //phoneAdapter = new PhoneAdapter(getActivity(),R.layout.person_list,phoneDtos);
     }
 

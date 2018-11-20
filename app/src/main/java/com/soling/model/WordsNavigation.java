@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.soling.view.fragment.PhoneFragment;
+
 public class WordsNavigation extends View {
 	/*
 	 * 绘制的列表导航字幕
@@ -24,22 +26,22 @@ public class WordsNavigation extends View {
 	private int w;
 	private int h;
 	private float eventY;//滑动的高度
-	private ISideBarSelectCallBack callBack;
 	private Canvas canvas;
 	private float scaleWidth;//缩放离原始的宽度
 	private int itemH;
+	private onWordsChangeListener listener;
 	/*
 	 * 初始化画笔
 	 */
 	private void init() {
 		// TODO Auto-generated method stub
-		wordPaint = new Paint();
+		wordPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		wordPaint.setAntiAlias(true);
-		wordPaint.setColor(Color.parseColor("#FFE1FF"));
+		//wordPaint.setColor(Color.parseColor("#FFE1FF"));
 		wordPaint.setTextSize(30);
 		wordPaint.setTypeface(Typeface.DEFAULT_BOLD);
-		bgPaint = new Paint();
-		bgPaint.setColor(Color.parseColor("#FFE1FF"));
+		bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		//bgPaint.setColor(Color.parseColor("#FFE1FF"));
 		bgPaint.setAntiAlias(true);
 	}
 
@@ -72,7 +74,7 @@ public class WordsNavigation extends View {
 		super.onDraw(canvas);
 		for(int i=0;i<words.length;i++){
 			if(touchIndex == i){
-				canvas.drawCircle(itemWidth/2, itemHeight/2, i*itemHeight, bgPaint);
+				//canvas.drawCircle(itemWidth/2, itemHeight*i+itemHeight/2, 23, bgPaint);
 				wordPaint.setColor(Color.WHITE);
 			}else{
 				wordPaint.setColor(Color.BLUE);
@@ -83,12 +85,12 @@ public class WordsNavigation extends View {
 			float wordX = itemWidth/2+wordwidth/2;
 			float wordY = itemHeight*i+itemWidth/2;
 			canvas.drawText(words[i], wordX, wordY, wordPaint);
-		}
+	}
 	}
 	/*
 	 * (non-Javadoc)
 	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
-	 * 当手指触摸按下的时候改变字幕背景颜色
+	 * 当手指触摸按下的时候改变字母背景颜色
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -96,29 +98,22 @@ public class WordsNavigation extends View {
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_MOVE:
-				if (event.getX() > (w - getPaddingRight() - itemHeight - 10)) {
-					eventY = event.getY();
-					invalidate();
-					return true;
-				} else {
-					eventY = 0;
-					invalidate();
-					break;
+				//获取当前触摸到的字母索引
+				int index = (int)(event.getY()/itemHeight);
+				if(index!=touchIndex){
+					touchIndex = index;
 				}
-		case MotionEvent.ACTION_CANCEL:
-				eventY = 0;
+				if(listener != null && touchIndex>=0 && touchIndex<=words.length-1){
+					listener.wordsChange(words[touchIndex]);
+				}
 				invalidate();
-				return true;
+				break;
 		case MotionEvent.ACTION_UP:
-			if(event.getX() > (w - getPaddingRight() - itemHeight - 10)){
-				eventY = 0;
-				invalidate();
-				return true;
-			}else
 					break;
 		}
 		return super.onTouchEvent(event);
 	}
+
 
 	/*
 	 * 设置当前按下的是哪个字母
@@ -133,11 +128,19 @@ public class WordsNavigation extends View {
 		}
 	}
 
+
+
 	/*
-	 * 自定义内部接口
+	 * 手指按下了哪个字母的回掉接口
 	 */
-	public interface ISideBarSelectCallBack {
-		void onSelectStr(int index, String selectStr);
+	public interface onWordsChangeListener {
+		void wordsChange(String words);
+	}
+	/*
+	 * 手指按下改变监听
+	 */
+	public void setOnWordsChangeListener(onWordsChangeListener listener) {
+		this.listener = listener;
 	}
 }
 

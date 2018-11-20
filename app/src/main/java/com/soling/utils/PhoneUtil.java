@@ -1,12 +1,15 @@
 package com.soling.utils;
 
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
+import android.widget.Toast;
 
 import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
@@ -15,7 +18,10 @@ import com.soling.view.fragment.PhoneFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-public class PhoneUtil {
+
+import static android.app.Activity.RESULT_OK;
+
+public class PhoneUtil  {
     public final static String NUM = ContactsContract.CommonDataKinds.Phone.NUMBER;
     public final static String NAME = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
     public static final String SORT_KEY_PARMARY = "sort_key";
@@ -160,5 +166,9 @@ public class PhoneUtil {
       }
         return null;
     }
+    /*
+    调用设备拨号页面
+     */
+
 
 }

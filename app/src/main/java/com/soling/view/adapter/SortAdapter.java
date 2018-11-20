@@ -1,6 +1,7 @@
 package com.soling.view.adapter;
 
 import android.content.Context;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -49,6 +50,7 @@ public class SortAdapter extends BaseAdapter {
         TextView callTime;
         TextView callNumber;
         ImageView callType;
+        ImageView headPhoto;
     }
     //获取catalog第一次出现的位置
     public int getPositionForSerction(String catalog){
