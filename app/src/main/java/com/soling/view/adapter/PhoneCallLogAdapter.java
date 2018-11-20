@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 
 import com.soling.R;
 import com.soling.model.PhoneCallLog;
-import com.soling.model.PhoneInformation;
 
 import java.util.List;
 

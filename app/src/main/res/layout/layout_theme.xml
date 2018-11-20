@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <ImageButton
+                android:id="@+id/ibtn_theme_day"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:src="@drawable/theme_day"/>
+        </TableRow>
+        <TextView
+            android:text="粉"
+            android:gravity="center"/>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp">
+        <TableRow>
+            <ImageButton
+                android:id="@+id/ibtn_theme_night"
+                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:src="@drawable/theme_night"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="蓝"
+                android:gravity="center"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

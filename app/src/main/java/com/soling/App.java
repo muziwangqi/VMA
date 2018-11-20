@@ -1,17 +1,22 @@
 package com.soling;
 
+
 import android.app.Application;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import com.soling.model.Music;
+
+import com.soling.utils.MusicFileManager;
+import com.soling.utils.SharedPreferenceUtil;
 import com.soling.model.PlayList;
 import com.soling.utils.db.DBHelper;
 
 public class App extends Application {
 
     private static final String TAG = "App";
+    private static boolean THEMEC=true;//fen
 
     private PlayList localMusics;
     private PlayList likeMusics;
@@ -19,11 +24,20 @@ public class App extends Application {
     private DBHelper dbHelper;
 
     private static App INSTANCE = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        MusicFileManager musicFileManager = MusicFileManager.getInstance(this);
+        //isThemec();
     }
+   /* public static boolean isThemec(){
+        if (SharedPreferenceUtil.get(App.getInstance(), "theme", "dayTheme").equals(THEMEC)) {
+            App.getInstance().setTHEMEC(true);
+        }
+        return THEMEC;
+    }*/
 
     public PlayList getLocalMusics() {
         return localMusics;
@@ -43,7 +57,7 @@ public class App extends Application {
         return INSTANCE;
     }
 
-    public DBHelper getDbHelper() {
+    public  DBHelper getDbHelper() {
         return dbHelper;
     }
 
@@ -53,6 +67,14 @@ public class App extends Application {
 
     public PlayList getLikeMusics() {
         return likeMusics;
+    }
+
+    public void setTHEMEC(boolean THEMEC) {
+        this.THEMEC = THEMEC;
+    }
+
+    public boolean isTHEMEC() {
+        return THEMEC;
     }
 
 }

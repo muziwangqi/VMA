@@ -1,8 +1,6 @@
 package com.soling.view.fragment;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,20 +17,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.soling.R;
-import com.soling.presenter.SetLight;
 import com.soling.view.activity.LightActivity;
+import com.soling.view.activity.ThemeActivity;
 import com.soling.view.activity.WirelessActivity;
 
 import java.util.Calendar;
 
 public class SettingModuleFragment extends Fragment {
 
-    private Button btnLight,btnWireless,btnLess,btnMore;
+    private Button btnLight,btnWireless;
     private ImageButton ibtnLight,ibtnWireless;
     private Context context;
     private EditText etTime;
     private DatePickerDialog datePickerDialog;
-    private ContentResolver contentResolver;
 
     @Nullable
     @Override
@@ -40,13 +37,11 @@ public class SettingModuleFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_settingmodule,container,false);
         context=getActivity();
 
-        etTime=(EditText) view.findViewById(R.id.et_time);
-        btnWireless=(Button)view.findViewById(R.id.btn_wireless);
-        ibtnWireless=(ImageButton)view.findViewById(R.id.ibtn_wireless);
-        btnLight=(Button)view.findViewById(R.id.btn_light);
-        ibtnLight=(ImageButton)view.findViewById(R.id.ibtn_light);
-//        btnLess=(Button)view.findViewById(R.id.btn_less);
-//        btnMore=(Button)view.findViewById(R.id.btn_more);
+        etTime=view.findViewById(R.id.et_time);
+        btnWireless=view.findViewById(R.id.btn_wireless);
+        ibtnWireless=view.findViewById(R.id.ibtn_wireless);
+        btnLight=view.findViewById(R.id.btn_light);
+        ibtnLight=view.findViewById(R.id.ibtn_light);
 
         etTime.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -94,6 +89,20 @@ public class SettingModuleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),LightActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.btn_theme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),ThemeActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.ibtn_theme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),ThemeActivity.class);
                 startActivity(intent);
             }
         });

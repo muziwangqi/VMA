@@ -7,6 +7,16 @@ public class PhoneDto {
     private String telPhone;
     private String namePinYin;
     private String firstLetter;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFirstLetter() {
         return firstLetter;
     }
@@ -16,11 +26,12 @@ public class PhoneDto {
     public String getName() {
         return name;
     }
-
+public void setFirstLetter(String firstLetter){
+    this.firstLetter = firstLetter;}
     public void setName(String name) {
         this.name = name;
-        namePinYin=Cha2Spell.getPinYin(name);
-        firstLetter = namePinYin.substring(0,1).toUpperCase();
+        this.namePinYin=Cha2Spell.getPinYin(name);
+        this.firstLetter = namePinYin.substring(0,1).toUpperCase();
         if(!firstLetter.matches("[A-Z]")){
             firstLetter = "#";
         }
@@ -51,4 +62,6 @@ public class PhoneDto {
            return namePinYin.compareToIgnoreCase(phoneDto.getNamePinYin());
        }
    }
+
+
 }
