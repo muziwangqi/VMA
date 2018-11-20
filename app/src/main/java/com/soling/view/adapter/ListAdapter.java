@@ -1,18 +1,21 @@
 package com.soling.view.adapter;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.SectionIndexer;
 
 import com.soling.R;
-import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
-import com.soling.view.fragment.PhoneFragment;
+import com.soling.utils.BitmapUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +29,7 @@ public class ListAdapter extends BaseAdapter implements SectionIndexer {
     private List<PhoneDto> list;
     private HashMap<String,Integer> alphaIndexer;//保存每个索引在list位置
     private String[] sections;//每个分组的索引表
+    private RoundedBitmapDrawable rbd;
     public ListAdapter(Context context, List<PhoneDto> list){
         this.inflater=LayoutInflater.from(context);
         this.list = list;
@@ -43,7 +47,15 @@ public class ListAdapter extends BaseAdapter implements SectionIndexer {
         sectionList.toArray(sections);
     }
 
-
+    public void updateListView(String words , ListView listView){
+        for(int i=0;i<list.size();i++){
+            String headWord = list.get(i).getFirstLetter();
+            if(words.equals(headWord)){
+                listView.setSelection(i);
+                return ;
+            }
+        }
+    }
     @Override
     public int getCount() {
         return list.size();
@@ -68,15 +80,21 @@ public class ListAdapter extends BaseAdapter implements SectionIndexer {
            holder.word = convertView.findViewById(R.id.tv_word);
            holder.phone = convertView.findViewById(R.id.tv_name);
            holder.name = convertView.findViewById(R.id.tv_phone);
+           holder.headPhoto = convertView.findViewById(R.id.tv_heading);
+           Resources r = convertView.getContext().getResources();
+           Drawable drawable = r.getDrawable(R.drawable.headphoto);
+           Bitmap bmp =  BitmapFactory.decodeResource(r,R.drawable.headphoto);
+           rbd = BitmapUtil.roundedBitmapDrawable(bmp);
            convertView.setTag(holder);
        }else{
            holder = (SortAdapter.ViewHolder)convertView.getTag();
        }
         PhoneDto cv = list.get(position);
-       String name = cv.getName();
-       String number = cv.getTelPhone();
-       holder.name.setText(name);
-       holder.phone.setText(number);
+        String name = cv.getName();
+        String number = cv.getTelPhone();
+        holder.name.setText(name);
+        holder.phone.setText(number);
+        holder.headPhoto.setImageDrawable(rbd);
        //当前联系人的sortkey
         String currentStr = getAlpha(list.get(position).getFirstLetter());
         //上一个联系人的sortkey

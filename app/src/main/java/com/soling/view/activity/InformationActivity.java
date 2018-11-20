@@ -9,6 +9,7 @@ import java.io.IOException;
 import com.soling.model.PhoneDto;
 import com.soling.model.User;
 import com.soling.R;
+import com.soling.utils.PhotoHandleUtil;
 
 
 import android.app.Activity;
@@ -45,7 +46,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class InformationActivity extends Activity implements OnClickListener {
+public class InformationActivity extends BaseActivity implements OnClickListener {
     private ImageView image;
     private View view;
     private TextView pic;
@@ -62,8 +63,9 @@ public class InformationActivity extends Activity implements OnClickListener {
     private static String path = "/sdcard/demohead/";
     private int SELECT_PICTURE = 0x00;
     private int SELECT_CAMER = 0x01;
-    private PhoneDto phoneDto;
+    private PhoneDto phoneDto = new PhoneDto();
     Bitmap bitmap;
+    PhotoHandleUtil photoHandleUtil = new PhotoHandleUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,8 @@ public class InformationActivity extends Activity implements OnClickListener {
         int iid = (int) getIntent().getExtras().get("id");
         String iphone = (String) getIntent().getExtras().get("phoneNumber");
        // refreshInformation( phoneDto);
+       phoneDto.setTelPhone(iphone);
+       phoneDto.setName(name);
         refreshInformation(name,iid,iphone);
         image = findViewById(R.id.head_phone);
         goPhone = findViewById(R.id.go_phone);
@@ -86,6 +90,7 @@ public class InformationActivity extends Activity implements OnClickListener {
         goInformation.setOnClickListener(this);
         card.setOnClickListener(this);
         image.setOnClickListener(this);
+        phone.setOnClickListener(this);
     }
 
     public void initView() {
@@ -97,7 +102,7 @@ public class InformationActivity extends Activity implements OnClickListener {
             Drawable drawable = new BitmapDrawable(bitmap);
             image.setImageDrawable(drawable);
         } else {
-            image.setImageBitmap(circleImage());
+            image.setImageBitmap(photoHandleUtil.circleImage(getResources()));
         }
     }
 
@@ -120,13 +125,7 @@ public class InformationActivity extends Activity implements OnClickListener {
         dialog.show();
     }
 
-//    public void actionStart(Context context, PhoneDto phoneDto) {
-//        phoneDto = new PhoneDto();
-//        this.phoneDto = phoneDto;
-//        Intent intent = new Intent(context, InformationActivity.class);
-//        refreshInformation(phoneDto);
-//        context.startActivity(intent);
-//    }
+
     public void refreshInformation( String name , int iid , String number){
         TextView phoneNumber = findViewById(R.id.friend_phone);
         TextView id = findViewById(R.id.friend_id);
@@ -137,50 +136,10 @@ public class InformationActivity extends Activity implements OnClickListener {
     }
 
 
-//    public void refreshInformation( PhoneDto phoneDto){
-//        TextView phoneNumber = findViewById(R.id.friend_phone);
-//        TextView id = findViewById(R.id.friend_id);
-//        TextView nickname = findViewById(R.id.nickname);
-//        phoneNumber.setText(phoneDto.getTelPhone());
-//        id.setText(phoneDto.getId());
-//        nickname.setText(phoneDto.getName());
-//    }
-
-    /*
-     * 将图片换成指定大小
-     */
-    public Bitmap resizeBitmap(float newHeight, float newWidth, Bitmap bitmap) {
-        Matrix matrix = new Matrix();
-        matrix.postScale(newWidth / bitmap.getWidth(), newHeight / bitmap.getHeight());
-        Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        return newBitmap;
-    }
-
-    /*
-     * 将图片制成圆形图片
-     */
-    public Bitmap circleImage() {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.l);
-        bitmap = resizeBitmap(400, 400, bitmap);
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        //构造新图纸
-        Bitmap output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(0xff424242);
-        canvas.drawCircle(width / 2, height / 2, width / 2, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        Rect src = new Rect(0, 0, width, width);
-        Rect dst = new Rect(0, 0, width, height);
-        canvas.drawBitmap(bitmap, src, dst, paint);
-        return output;
-    }
-
     public void onClick(View view) {
         // TODO Auto-generated method stub
+        Bundle bundle = new Bundle();
+        String[] phoneF = {phoneDto.getTelPhone(),phoneDto.getName()};
         switch (view.getId()) {
             case R.id.camera:
                 try {
@@ -206,41 +165,66 @@ public class InformationActivity extends Activity implements OnClickListener {
                 break;
             case R.id.send:
                 break;
-            case R.id.friend_phone | R.id.go_phone:
-                Intent intent1 = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+phoneDto.getTelPhone()));
-                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent1);
+            case R.id.friend_phone:
+                String phoneNumber = phone.getText().toString();
+                call(phoneNumber);
+                break;
+            case R.id.go_phone:
+                call(phoneDto.getTelPhone());
                 break;
             case R.id.go_information:
+                bundle.putStringArray("phoneF",phoneF);
+                intentJump(InformationActivity.this,SendMessageActivity.class,bundle);
                 break;
             case R.id.friend_card:
+                bundle.putString("phoneNumber",phoneDto.getTelPhone());
+                intentJump(InformationActivity.this,TwoDimensionCode.class,bundle);
                 break;
                 }
 
         }
 
+    @Override
+    public void intentJump(Context context, Class<?> cls) {
+        super.intentJump(context, cls);
+    }
+
+    @Override
+    public void intentJump(Context context, Class<?> cls, Bundle bundle) {
+        super.intentJump(context, cls, bundle);
+    }
+
+    /**
+     * 调用拨号界面
+     * @param phone 电话号码
+     */
+    private void call(String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
-
         switch (resultCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    cropPhoto(data.getData());
+                    photoHandleUtil.cropPhoto(data.getData());
                 }
                 break;
             case 2:
                 if (resultCode == RESULT_OK) {
                     File temp = new File(Environment.getExternalStorageDirectory() + "/head.jpg");
-                    cropPhoto(Uri.fromFile(temp));
+                    photoHandleUtil.cropPhoto(Uri.fromFile(temp));
                 }
             case 3:
                 if (data != null) {
                     Bundle extras = data.getExtras();
                     head = extras.getParcelable("data");
                     if (head != null) {
-                        setPicToView(head);
+                        photoHandleUtil.setPicToView(head);
                         image.setImageBitmap(head);
                     }
                 }
@@ -248,49 +232,6 @@ public class InformationActivity extends Activity implements OnClickListener {
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void setPicToView(Bitmap mBitmap) {
-        // TODO Auto-generated method stub
-        String sdStatus = Environment.getExternalStorageState();
-        if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
-            return;
-        }
-        FileOutputStream b = null;
-        File file = new File(path);
-        file.mkdirs();// 创建文件夹
-        String fileName = path + "head.jpg";//图片名字
-        try {
-            b = new FileOutputStream(fileName);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                //关闭流
-                b.flush();
-                b.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-        }
-    }
-
-    private void cropPhoto(Uri uri) {
-        // TODO Auto-generated method stub
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 150);
-        intent.putExtra("outputY", 150);
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, 3);
     }
 
 }

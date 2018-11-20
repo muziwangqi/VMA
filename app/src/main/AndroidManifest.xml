@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <!-- screenbright-->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"></uses-permission>
     <uses-permission android:name="android.permission.WRITESETTINGS"></uses-permission>
@@ -31,6 +32,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission-->
+
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions"></uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
 
     <application
         android:name=".App"
@@ -54,13 +61,13 @@
         <activity android:name="com.soling.view.activity.WirelessActivity"></activity>
         <activity android:name="com.soling.view.activity.LightActivity"></activity>
         <activity android:name=".view.activity.ThemeActivity"></activity>
-
+        <activity android:name=".view.activity.SendMessageActivity"></activity>
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name=".view.adapter.MediaButtonReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" /> <!-- 耳机点击事件 -->
-                <action android:name="android.media.AUDIO_BECOMING_NOISY" /> <!-- 插拔耳机事件 -->
+                <action android:name="android.intent.action.HEADSET_PLUG" /> <!-- 插拔耳机事件 -->
             </intent-filter>
         </receiver>
 

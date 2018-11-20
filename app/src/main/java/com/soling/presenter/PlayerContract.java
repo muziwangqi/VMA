@@ -17,6 +17,8 @@ public interface PlayerContract {
 
         void refreshView();
 
+        void refreshPlayState();
+
         void refreshLike(boolean like);
 
         void loadCover(Bitmap cover);

@@ -8,12 +8,8 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.soling.App;
-import com.soling.api.NeteaseAPI;
+import com.soling.api.MusicAPIFactory;
 import com.soling.model.Music;
 import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
@@ -69,21 +65,8 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    List<String> hots = new ArrayList<>();
-                    JSONObject json = NeteaseAPI.searchHot();
-                    Log.d(TAG, "run: " + json);
-                    if (json == null) return;
-                    json = json.getJSONObject("result");
-                    JSONArray jsonArray = json.getJSONArray("hots");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        json = jsonArray.getJSONObject(i);
-                        hots.add(json.get("first").toString());
-                    }
-                    view.showHots(hots);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                List<String> hots = MusicAPIFactory.getMusicAPI().searchHot();
+                view.showHots(hots);
             }
         }).start();
     }
@@ -135,21 +118,8 @@ public class SearchMusicPresenter implements SearchMusicContract.Presenter {
     }
 
     private List<Music> searchNetWork(String s) {
-        List<Music> result = new ArrayList<>();
-//        try {
-//            JSONObject json = NeteaseAPI.searchHot();
-//            Log.d(TAG, "run: " + json);
-//            if (json == null) return null;
-//            json = json.getJSONObject("result");
-//            JSONArray jsonArray = json.getJSONArray("hots");
-//            for (int i = 0; i < jsonArray.length(); i++) {
-//                json = jsonArray.getJSONObject(i);
-//                result.add(json.get("first").toString());
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        return result;
+//        return MusicAPIFactory.getMusicAPI().search(s);
+        return null;
     }
 
     @Override

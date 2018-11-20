@@ -11,11 +11,11 @@ import android.provider.Telephony;
 import com.soling.model.PhoneCallLog;
 import com.soling.model.PhoneDto;
 import com.soling.model.PhoneInformation;
-import com.soling.view.fragment.PhoneFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-public class PhoneUtil {
+
+public class PhoneUtil  {
     public final static String NUM = ContactsContract.CommonDataKinds.Phone.NUMBER;
     public final static String NAME = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
     public static final String SORT_KEY_PARMARY = "sort_key";
@@ -160,5 +160,9 @@ public class PhoneUtil {
       }
         return null;
     }
+    /*
+    调用设备拨号页面
+     */
+
 
 }

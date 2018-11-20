@@ -7,7 +7,9 @@ import java.util.Random;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.provider.Telephony.Sms.Conversations;
 import android.widget.ImageView;
 
@@ -17,6 +19,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.soling.R;
 import com.soling.model.User;
 import com.soling.view.activity.TwoDimensionCode;
 
@@ -25,14 +28,16 @@ public class CodePresenter {
 	private TwoDimensionCode twoDimensionCode=new TwoDimensionCode();
 	private ImageView myTwoDimensionCode;
 	private Bitmap myDimensionCode;
-	public static Bitmap myCode(User user){
-		String userId = user.getUserId();
-		Bitmap bitmap = user.getAvatarUrl();
-		Bitmap myCode = CodePresenter.makeQRImage(bitmap, userId, 400, 400);
+	public static Bitmap myCode(String phone,Bitmap head,Bitmap bitmapBackground){
+//		String userId = user.getUserId();
+//		Bitmap bitmap = user.getAvatarUrl();
+//		Drawable drawable = r.getDrawable(R.drawable.headphoto);
+//		Bitmap bmp =  BitmapFactory.decodeResource(r,R.drawable.headphoto);
+		Bitmap myCode = CodePresenter.makeQRImage(head, phone, 400, 400,bitmapBackground);
 		//myCode = CodePresenter.addBackGround(myCode, background)
 		return myCode;
 	}
-	public static Bitmap makeQRImage(Bitmap headBitmap,String content,int QR_WIDTH,int QR_HEIGHT){
+	public static Bitmap makeQRImage(Bitmap headBitmap,String content,int QR_WIDTH,int QR_HEIGHT,Bitmap bitmapBackground){
 		Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
@@ -42,17 +47,10 @@ public class CodePresenter {
 			for(int y=0;y<QR_HEIGHT;y++){
 				for(int x=0;x<QR_WIDTH;x++){
 					if(bitMatrix.get(x, y)){
-						if(x<QR_WIDTH/2&&y<QR_HEIGHT/2){
-							pixels[y*QR_WIDTH+x] = 0xFF0094FF;
-							Integer.toHexString(new Random().nextInt());
-						}else if(x>QR_WIDTH/2&&y<QR_HEIGHT/2){
-							pixels[y*QR_WIDTH+x] = 0xFFFF0000;						
-						}else if(x>QR_WIDTH/2&&y>QR_HEIGHT/2){
-							pixels[y*QR_WIDTH+x] = 0xFF5ACF00;						
-						}else if(x>QR_WIDTH/2&&y>QR_HEIGHT/2){
-							pixels[y*QR_WIDTH+x] = 0xFF000000;						
-						}else{
-							pixels[y*QR_WIDTH+x] = 0xffffffff;						
+						if (bitMatrix.get(x, y)) {
+							pixels[y * QR_WIDTH + x] = 0xff000000;//黑点
+						} else {
+							pixels[y * QR_WIDTH + x] = 0x00ffffff;//透明点,白点为0xffffffff
 						}
 					}
 				}
@@ -73,12 +71,15 @@ public class CodePresenter {
 			canvas.drawBitmap(bm, 0, 0,null);
 			canvas.scale(scaleFactor, scaleFactor,QR_WIDTH/2,QR_HEIGHT/2);
 			canvas.drawBitmap(headBitmap, (QR_WIDTH-headWidth)/2,(QR_HEIGHT-headHeight)/2,null);
-			canvas.restore();
-			return bm;				
+			//给二维码图片添加背景，放回一个新的二维码
+			Bitmap newBitmap = addBackGround(bm,bitmapBackground);
+            canvas.save();
+            canvas.restore();
+			return newBitmap;
+
 		} catch (WriterException e) {
 			// TODO Auto-generated catch block			
 			e.printStackTrace();
-			
 		}		
 		return null;
 	}	
@@ -93,9 +94,8 @@ public class CodePresenter {
 		canvas.drawBitmap(background,0, 0, null);
 		canvas.drawBitmap(foreground, (bgWidth-fgWidth)/2, (bgHeight-fgHeight)*3/5+70,null);
 //		canvas.save(Canvas.ALL_SAVE_FLAG);
+		canvas.save();
 		canvas.restore();
 		return newBitmap;
-		
-		
 	}
 }

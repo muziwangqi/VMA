@@ -1,19 +1,21 @@
 package com.soling.view.fragment;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CircularBorderDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatSeekBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +39,10 @@ import com.soling.presenter.PlayerContract;
 import com.soling.presenter.PlayerPresenter;
 import com.soling.service.player.IPlayer;
 import com.soling.utils.BitmapUtil;
-import com.soling.utils.BlurUtil;
 import com.soling.utils.MusicFileManager;
 import com.soling.utils.StringUtil;
+import com.soling.view.activity.SearchMusicActivity;
+import com.soling.view.adapter.MediaButtonReceiver;
 import com.soling.view.adapter.MusicAdapter;
 
 public class PlayerFragment extends BaseFragment implements PlayerContract.View, View.OnClickListener {
@@ -61,6 +64,8 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private ImageButton ibLike;
     private ImageButton ibList;
     private ImageButton ibVolume;
+    private ImageButton ibShare;
+    private ImageButton ibSearch;
     private TextView tvName;
     private TextView tvArtist;
     private TextView tvCurrentPosition;
@@ -80,6 +85,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     private Runnable taskRefreshSBMusic;
 
     private PlayerPresenter presenter;
+    private OnShareMusicListener shareMusicListener;
+    private AudioManager audioManager;
+    private ComponentName componentName;
 
     @Nullable
     @Override
@@ -95,6 +103,12 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         initEvent();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        audioManager.unregisterMediaButtonEventReceiver(componentName);
+    }
+
     private void initView() {
         ibPlay = (ImageButton) findViewById(R.id.ib_play);
         ibPlayLast = (ImageButton) findViewById(R.id.ib_play_last);
@@ -103,6 +117,8 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ibList = (ImageButton) findViewById(R.id.ib_list);
         ibLike = (ImageButton) findViewById(R.id.ib_like);
         ibVolume = (ImageButton) findViewById(R.id.ib_volume);
+        ibShare = (ImageButton) findViewById(R.id.ib_share);
+        ibSearch = (ImageButton) findViewById(R.id.ib_search);
         tvName = (TextView) findViewById(R.id.tv_name);
         tvArtist = (TextView) findViewById(R.id.tv_artist);
         tvCurrentPosition = (TextView) findViewById(R.id.tv_current_position);
@@ -116,8 +132,6 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     private void initData() {
-//        Bitmap bitmap = BlurUtil.doBlur(BitmapFactory.decodeResource(getResources(), R.drawable.jay), 3, 100);
-//        rlPlay.setBackground(new BitmapDrawable(getResources(), bitmap));
         presenter.bindPlayService();
 
         handler = new Handler();
@@ -143,18 +157,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
                 handler.postDelayed(this, PERIOD_REFRESH_LYRIC);
             }
         };
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ivAlbumCover.setImageDrawable(drawable);
-                    }
-                });
-            }
-        }).start();
+        audioManager = (AudioManager) App.getInstance().getSystemService(Context.AUDIO_SERVICE);
+        componentName = new ComponentName(App.getInstance().getPackageName(), MediaButtonReceiver.class.getName());
+        audioManager.registerMediaButtonEventReceiver(componentName);
     }
 
     private void initEvent() {
@@ -214,6 +219,8 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ibList.setOnClickListener(this);
         ibLike.setOnClickListener(this);
         ibVolume.setOnClickListener(this);
+        ibShare.setOnClickListener(this);
+        ibSearch.setOnClickListener(this);
     }
 
     private void initPlayer() {
@@ -223,6 +230,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(playList);
         presenter.play(App.getInstance().getLocalMusics(), 0);
         presenter.pause();
+        refreshView();
         initMusicListFragments();
         startRefreshLyric();
     }
@@ -296,6 +304,24 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         }
         refreshLike(music.isLike());
         startRefreshSeekBar();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ivAlbumCover.setImageDrawable(drawable);
+                    }
+                });
+            }
+        }).start();
+        lyricView.reset();
+    }
+
+    @Override
+    public void refreshPlayState() {
+        ibPlay.setImageResource(presenter.isPlaying() ? R.drawable.player_pause : R.drawable.player_play);
     }
 
     @Override
@@ -409,6 +435,17 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             case R.id.ib_volume:
                 showVolumeManagerBar();
                 break;
+            case R.id.ib_share:
+                Log.d(TAG, "onClick: " + "ib_share");
+                if (shareMusicListener != null) {
+                    Log.d(TAG, "onClick: " + " shareMusicListener");
+                    shareMusicListener.shareMusic(presenter.getPlayingMusic());
+                }
+                break;
+            case R.id.ib_search:
+                Intent intent = new Intent(App.getInstance(), SearchMusicActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -421,6 +458,14 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     @Override
     public void onPlayServiceBound() {
         initPlayer();
+    }
+
+    public void setShareMusicListener(OnShareMusicListener shareMusicListener) {
+        this.shareMusicListener = shareMusicListener;
+    }
+
+    public interface OnShareMusicListener {
+        void shareMusic(Music music);
     }
 
 }

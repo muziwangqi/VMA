@@ -9,58 +9,53 @@
     <LinearLayout
         android:id="@+id/id_ll_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp" >
+        android:layout_height="50dp">
 
         <!-- add -->
 
-        <ImageButton
+<!--        <ImageButton
             android:id="@+id/id_ib_add"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/add" />
+            android:src="@drawable/add" />-->
 
         <!-- phone -->
 
         <TextView
             android:id="@+id/id_tv_phone"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="phone"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:gravity="center"/>
 
         <!-- music -->
 
         <TextView
             android:id="@+id/id_tv_music"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="music"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:gravity="center"/>
 
         <!-- setting -->
 
         <TextView
             android:id="@+id/id_tv_setting"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="setting"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:gravity="center"/>
 
-        <!-- search -->
-
-        <ImageButton
-            android:id="@+id/id_ib_search"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/search" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

@@ -1,6 +1,5 @@
 package com.soling.view.activity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,20 +8,20 @@ import android.graphics.Color;
 import android.os.Build;
 
 import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
+
+
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.PopupMenu.OnMenuItemClickListener;
 
 import android.widget.RelativeLayout;
 
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.soling.App;
 import com.soling.R;
+import com.soling.model.Music;
 import com.soling.view.adapter.ScollAdapter;
 import com.soling.view.fragment.PhoneFragment;
 import com.soling.view.fragment.PlayerFragment;
@@ -43,7 +42,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private SettingFragment settingFragment;
     private SettingModuleFragment settingModuleFragment;
     private android.app.FragmentManager fragmentManager;
-    private ImageButton ibSearch;
 
     private SharedPreferences sharedPreferences;
     private RelativeLayout rlMain;
@@ -78,6 +76,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
         //System.out.println("setAdapter");
 
+
+        // 隐藏系统状态栏和actionbar
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -89,15 +89,25 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
         tvMusic = (TextView) findViewById(R.id.id_tv_music);
         tvSetting = (TextView) findViewById(R.id.id_tv_setting);
-        ibSearch = findViewById(R.id.id_ib_search);
         tvPhone.setOnClickListener(this);
         tvMusic.setOnClickListener(this);
         tvSetting.setOnClickListener(this);
-        fragments.add(new PhoneFragment());
-        fragments.add(new PlayerFragment());
+
+        final PhoneFragment phoneFragment = new PhoneFragment();
+        PlayerFragment playerFragment = new PlayerFragment();
+        // 分享音乐的回调 hyw
+        playerFragment.setShareMusicListener(new PlayerFragment.OnShareMusicListener() {
+            @Override
+            public void shareMusic(Music music) {
+                Log.d(TAG, "shareMusic: ");
+                viewPager.setCurrentItem(0);
+                phoneFragment.shareMusic(music);
+            }
+        });
+        fragments.add(phoneFragment);
+        fragments.add(playerFragment);
         fragments.add(new SettingModuleFragment());
 
-        ibSearch.setOnClickListener(this);
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -111,51 +121,56 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                     rlMain.setBackground(getResources().getDrawable(R.drawable.main_music_bg));
                 } else {
                     rlMain.setBackground(null);
+                    switch (i) {
+                        case 0:
+                            rlMain.setBackground(null);
+                            break;
+                        case 1:
+                            rlMain.setBackground(getResources().getDrawable(R.drawable.main_music_bg));
+                            break;
+                        case 2:
+                            rlMain.setBackground(null);
+                            break;
+                    }
                 }
+
             }
 
             @Override
             public void onPageScrollStateChanged(int i) {
 
-            }
-        });
-        //System.out.println("setAdapter");
+            }});
 
-        // addMenu
-        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
-        addMenu.setOnClickListener(new OnClickListener() {
-            public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
-                        popupMenu.getMenu());
-                popupMenu
-                        .setOnMenuItemClickListener(new OnMenuItemClickListener() {
-                            public boolean onMenuItemClick(MenuItem menuItem) {
-                                Toast.makeText(MainActivity.this, "item", Toast.LENGTH_SHORT).show();
-                                return true;
-                            }
-                        });
-                popupMenu.show();
-            }
-        });
-    }
-
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.id_tv_phone:
-                viewPager.setCurrentItem(0);
-                break;
-            case R.id.id_tv_music:
-                viewPager.setCurrentItem(1);
-                break;
-            case R.id.id_tv_setting:
-                viewPager.setCurrentItem(2);
-                break;
-            case R.id.id_ib_search:
-                Intent intent = new Intent(this, SearchMusicActivity.class);
-                startActivity(intent);
-                break;
+//        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
+//        addMenu.setOnClickListener(new OnClickListener() {
+//            public void onClick(View view) {
+//                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+//                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
+//                        popupMenu.getMenu());
+//                popupMenu
+//                        .setOnMenuItemClickListener(new OnMenuItemClickListener() {
+//                            public boolean onMenuItemClick(MenuItem menuItem) {
+//                                Toast.makeText(MainActivity.this, "item", Toast.LENGTH_SHORT).show();
+//                                return true;
+//                            }
+//                        });
+//                popupMenu.show();
+//            }
+//        });
         }
-    }
 
-}
+        public void onClick (View view){
+            switch (view.getId()) {
+                case R.id.id_tv_phone:
+                    viewPager.setCurrentItem(0);
+                    break;
+                case R.id.id_tv_music:
+                    viewPager.setCurrentItem(1);
+                    break;
+                case R.id.id_tv_setting:
+                    viewPager.setCurrentItem(2);
+                    break;
+            }
+        }
+
+    }

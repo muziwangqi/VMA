@@ -3,18 +3,15 @@ package com.soling.model;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
-import android.support.annotation.MainThread;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.soling.R;
-import com.soling.presenter.PlayerContract;
 import com.soling.utils.FloatButtonUtil;
 import com.soling.view.fragment.PhoneFragment;
 

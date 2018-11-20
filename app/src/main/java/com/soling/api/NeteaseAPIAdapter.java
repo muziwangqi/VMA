@@ -29,44 +29,59 @@ public class NeteaseAPIAdapter implements MusicAPI {
         return INSTANCE;
     }
 
-    public void getInfo(Music music) {
+    @Override
+    public List<Music> search(String...args) {
+        List<Music> musics = new ArrayList<>();
         try {
             // 获取专辑ID和音乐ID
-            JSONObject json = NeteaseAPI.search(music.getName(), music.getArtist(), music.getAlbum());
-            if (json == null) return;
-            json = json.getJSONObject("result");
-            JSONArray jsonArray = json.getJSONArray("songs");
-            json = jsonArray.getJSONObject(0);
-            int musicId = json.getInt("id");
-            json = json.getJSONObject("album");
-            int albumId = json.getInt("id");
+            JSONObject root = NeteaseAPI.search(args);
+            if (root == null) return null;
+            JSONObject result = root.getJSONObject("result");
+            JSONArray songs = result.getJSONArray("songs");
+            for (int i = 0; i < songs.length(); i++) {
+                Music music = new Music();
+                JSONObject song = songs.getJSONObject(i);
+                int musicId = song.getInt("id");
+                String musicName = song.getString("name");
 
-            // 获取专辑封面路径
-            json = NeteaseAPI.getAlbumDetail(Integer.toString(albumId));
-            jsonArray = json.getJSONArray("songs");
-            json = jsonArray.getJSONObject(0);
-            json = json.getJSONObject("al");
-            String coverPath = json.getString("picUrl");
+                JSONArray artists = song.getJSONArray("artists");
+                JSONObject artist = artists.getJSONObject(0);
+                String artistName = artist.getString("name");
 
-            music.setAId(musicId);
-            music.setAlbumId(albumId);
-            music.setCoverPath(coverPath);
+                JSONObject album = song.getJSONObject("album");
+                int albumId = album.getInt("id");
 
+                music.setAId(musicId);
+                music.setAlbumId(albumId);
+                music.setName(musicName);
+                music.setArtist(artistName);
+                musics.add(music);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return musics;
     }
 
-    public void getLyric(Music music) {
+    @Override
+    public String getCoverPath(int albumId) {
         try {
-            if (music.getAId() == null) {
-                getInfo(music);
-                if (music.getAId() == null) {
-                    return;
-                }
-            }
-            List<LyricLine> lyric = null;
-            JSONObject json = NeteaseAPI.getLyric(music.getAId());
+            JSONObject cRoot = NeteaseAPI.getAlbumDetail(albumId);
+            JSONArray cSongs = cRoot.getJSONArray("songs");
+            JSONObject cSong = cSongs.getJSONObject(0);
+            JSONObject al = cSong.getJSONObject("al");
+            return al.getString("picUrl");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<LyricLine> getLyric(Integer aId) {
+        List<LyricLine> lyric = null;
+        try {
+            JSONObject json = NeteaseAPI.getLyric(aId);
             if (json != null) {
                 json = json.getJSONObject("lrc");
                 lyric = new ArrayList<>();
@@ -80,17 +95,23 @@ public class NeteaseAPIAdapter implements MusicAPI {
                     lyric.add(new LyricLine(time, mapStr.length > 1 ? mapStr[1] : ""));
                 }
             }
-            music.setLyric(lyric);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return lyric;
     }
 
     private static long resolveTime(String time) {
-        String[] mapStr = time.split(":");
-        int min = Integer.parseInt(mapStr[0]);
-        double sec = Double.parseDouble(mapStr[1]);
-        return (long) ((min * 60 + sec) * 1000);
+        try {
+            String[] mapStr = time.split(":");
+            int min = Integer.parseInt(mapStr[0]);
+            double sec = Double.parseDouble(mapStr[1]);
+            return (long) ((min * 60 + sec) * 1000);
+        }
+        catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 	public User getuser(String userNumber, String password) {
@@ -161,5 +182,23 @@ public class NeteaseAPIAdapter implements MusicAPI {
 		}
 		return users;
 	}
+
+    @Override
+    public List<String> searchHot() {
+        List<String> hots = new ArrayList<>();
+        try {
+            JSONObject json = NeteaseAPI.searchHot();
+            if (json == null) return hots;
+            json = json.getJSONObject("result");
+            JSONArray jsonArray = json.getJSONArray("hots");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                json = jsonArray.getJSONObject(i);
+                hots.add(json.get("first").toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return hots;
+    }
 
 }

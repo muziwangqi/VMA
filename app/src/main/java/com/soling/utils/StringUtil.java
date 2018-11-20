@@ -1,5 +1,7 @@
 package com.soling.utils;
 
+import java.util.List;
+
 public class StringUtil {
 
     public static String msToString(int millisecond) {
@@ -9,6 +11,10 @@ public class StringUtil {
         return String.valueOf(min) +
                 (second < 10 ? ":0" : ":") +
                 second;
+    }
+
+    public static List<String> sortByHeadChar() {
+        return null;
     }
 
 }

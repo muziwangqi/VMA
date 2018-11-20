@@ -2,20 +2,15 @@ package com.soling.presenter;
 
 import java.util.List;
 
-import org.json.JSONObject;
-
 import com.soling.api.NeteaseAPIAdapter;
 import com.soling.model.Music;
 import com.soling.model.User;
 import com.soling.view.activity.LoginActivity;
-import com.soling.view.activity.MainActivity;
 import com.soling.view.fragment.PhoneFragment;
 
 import android.content.Context;
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class LoginPresenter {
