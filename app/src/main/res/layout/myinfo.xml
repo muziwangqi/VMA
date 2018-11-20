@@ -16,7 +16,7 @@
         <ImageView android:id="@+id/head_phone"           
             	android:layout_width="100dp"
                android:layout_height="100dp"
-               android:src="@drawable/l"           
+               android:src="@drawable/headphotos"
                android:layout_marginTop="150dp"
                android:layout_marginLeft="50dp"/>
         <TextView android:id="@+id/nickname"

@@ -1,5 +1,7 @@
 package com.soling.model;
 
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+
 import com.soling.utils.Cha2Spell;
 
 public class PhoneDto {
@@ -8,15 +10,22 @@ public class PhoneDto {
     private String namePinYin;
     private String firstLetter;
     private int id;
+    private RoundedBitmapDrawable headPhotoPhone;
+
+    public RoundedBitmapDrawable getHeadPhotoPhone() {
+        return headPhotoPhone;
+    }
+
+    public void setHeadPhotoPhone(RoundedBitmapDrawable headPhotoPhone) {
+        this.headPhotoPhone = headPhotoPhone;
+    }
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getFirstLetter() {
         return firstLetter;
     }

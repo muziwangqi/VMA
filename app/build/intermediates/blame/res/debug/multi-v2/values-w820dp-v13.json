@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "F:\\projects\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
                     "source": "F:\\projects\\VMA\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+=======
+            "outputFile": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "map": [
+                {
+                    "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+>>>>>>> eacdb31522d552c3630d024f715e36145164aad9
                     "from": {
                         "startLines": "7",
                         "startColumns": "4",

@@ -15,8 +15,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 public class TwoDimensionCode extends Activity {
-	String uid = "1660095144";
+	//String uid = "1660095144";
 	Bitmap bmp ;
+	Bitmap bitmapBackground;
 	private ImageView myTwoDimensionCode;	
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,13 @@ protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.code);
 	myTwoDimensionCode = findViewById(R.id.code);
+	Bundle myBundle = this.getIntent().getExtras();
+	String myText  = myBundle.getString("phoneNumber");
 	bmp = BitmapFactory.decodeResource(getResources(),
-		    R.drawable.ic_launcher);
-	bmp = CodePresenter.makeQRImage(bmp, uid, 400, 400);
+		    R.drawable.headphoto);
+	bitmapBackground = BitmapFactory.decodeResource(getResources(),
+			R.drawable.code);
+	bmp = CodePresenter.makeQRImage(bmp, myText, 400, 400,bitmapBackground);
 	myTwoDimensionCode.setImageBitmap(bmp);
 }
 }

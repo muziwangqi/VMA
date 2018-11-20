@@ -35,7 +35,7 @@ public class PhotoHandleUtil {
      * 将图片制成圆形图片
      */
     public 	Bitmap circleImage(Resources resources){
-        Bitmap bitmap = BitmapFactory.decodeResource(resources, R.drawable.l);
+        Bitmap bitmap = BitmapFactory.decodeResource(resources, R.drawable.headphotos);
         bitmap = resizeBitmap(400,400,bitmap);
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
@@ -53,6 +53,7 @@ public class PhotoHandleUtil {
         canvas.drawBitmap(bitmap, src, dst,paint);
         return output;
     }
+
     public void setPicToView(Bitmap mBitmap) {
         // TODO Auto-generated method stub
         String sdStatus = Environment.getExternalStorageState();
@@ -80,6 +81,7 @@ public class PhotoHandleUtil {
             }
         }
     }
+
     public void cropPhoto(Uri uri) {
         // TODO Auto-generated method stub
         Intent intent = new Intent("com.android.camera.action.CROP");

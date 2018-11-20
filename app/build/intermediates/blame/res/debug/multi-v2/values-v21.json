@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "F:\\projects\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
                     "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\43cb7f0534ba1ae83640fb22ecb8eefb\\res\\values-v21\\values-v21.xml",
+=======
+            "outputFile": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\32b7812f1ad952230708b4f19f1369ef\\res\\values-v21\\values-v21.xml",
+>>>>>>> eacdb31522d552c3630d024f715e36145164aad9
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +30,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\2991fb73d7a7b581554aebdf527e033d\\res\\values-v21\\values-v21.xml",
+=======
+                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0bc850d43709136a84a5f3af2561125d\\res\\values-v21\\values-v21.xml",
+>>>>>>> eacdb31522d552c3630d024f715e36145164aad9
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -42,7 +53,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c04109e520cba7dcb94919814136b44a\\res\\values-v21\\values-v21.xml",
+=======
+                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d5bac7ca5a23f47ae8903c6fd28b464a\\res\\values-v21\\values-v21.xml",
+>>>>>>> eacdb31522d552c3630d024f715e36145164aad9
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,107,110,154,157,160,162,164,166,169,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,221,222,223,233,234,235,247",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -61,7 +76,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "D:\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\11106c8c90221c8ab3135178d316d651\\res\\values-v21\\values-v21.xml",
+=======
+                    "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\eef2973a36ef5f597e67c9f50892b25c\\res\\values-v21\\values-v21.xml",
+>>>>>>> eacdb31522d552c3630d024f715e36145164aad9
                     "from": {
                         "startLines": "2,10,18,26",
                         "startColumns": "4,4,4,4",
