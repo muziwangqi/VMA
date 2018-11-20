@@ -16,7 +16,7 @@ import com.soling.utils.db.DBHelper;
 public class App extends Application {
 
     private static final String TAG = "App";
-    private static boolean THEMEC=true;//fen
+    private static boolean THEMEC = true;//fen
 
     private PlayList localMusics;
     private PlayList likeMusics;
@@ -30,14 +30,15 @@ public class App extends Application {
         super.onCreate();
         INSTANCE = this;
         MusicFileManager musicFileManager = MusicFileManager.getInstance(this);
-        //isThemec();
+        isThemec();
     }
-   /* public static boolean isThemec(){
-        if (SharedPreferenceUtil.get(App.getInstance(), "theme", "dayTheme").equals(THEMEC)) {
-            App.getInstance().setTHEMEC(true);
+
+    public static boolean isThemec() {
+        if (SharedPreferenceUtil.get(App.getInstance(), "theme", "dayTheme").equals("dayTheme")) {
+            App.getInstance().setTHEMEC(THEMEC);
         }
         return THEMEC;
-    }*/
+    }
 
     public PlayList getLocalMusics() {
         return localMusics;
@@ -57,7 +58,7 @@ public class App extends Application {
         return INSTANCE;
     }
 
-    public  DBHelper getDbHelper() {
+    public DBHelper getDbHelper() {
         return dbHelper;
     }
 

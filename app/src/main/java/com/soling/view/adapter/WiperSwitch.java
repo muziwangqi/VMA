@@ -79,7 +79,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 		}else if (x>bitmapOn.getWidth()-slipbtn.getWidth()) {
 			x=bitmapOn.getWidth()-slipbtn.getWidth();
 		}
-		//����
+
 		canvas.drawBitmap(slipbtn, x, 0,paint);
 	}
 	
@@ -130,7 +130,7 @@ public class WiperSwitch extends View implements View.OnTouchListener {
 	public void setOnChangedListener(IOnChangedListener onChangedListener) {
 		this.onChangedListener = onChangedListener;
 	}
-	//���ÿ��صĳ�ʼ״̬
+
 	public void setChecked(boolean checked) {
 		if (checked) {
 			currentX=bitmapOff.getWidth();

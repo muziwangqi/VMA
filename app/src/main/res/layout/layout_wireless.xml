@@ -8,14 +8,17 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="移动网络" />
+            android:text="移动网络"
+            android:textSize="16sp"/>
+
         <com.soling.view.adapter.WiperSwitch
-            android:id="@+id/ws_yidong"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:id="@+id/ws_mobilenet"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 
@@ -23,14 +26,17 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wifi网络" />
+            android:text="Wifi网络"
+            android:textSize="16sp"/>
+
         <com.soling.view.adapter.WiperSwitch
-            android:id="@+id/ws_wifi"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:id="@+id/ws_wifinet"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 
@@ -38,14 +44,17 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="蓝牙" />
+            android:text="蓝牙"
+            android:textSize="16sp"/>
+
         <com.soling.view.adapter.WiperSwitch
-            android:id="@+id/ws_lanya"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:id="@+id/ws_bluetooth"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 

@@ -4540,9 +4540,9 @@ public final class R {
     public static final int withText=0x7f08015c;
     public static final int words=0x7f08015d;
     public static final int wrap_content=0x7f08015e;
-    public static final int ws_lanya=0x7f08015f;
-    public static final int ws_wifi=0x7f080160;
-    public static final int ws_yidong=0x7f080161;
+    public static final int ws_bluetooth=0x7f08015f;
+    public static final int ws_mobilenet=0x7f080160;
+    public static final int ws_wifinet=0x7f080161;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f090000;

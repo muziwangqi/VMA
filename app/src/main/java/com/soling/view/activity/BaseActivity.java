@@ -18,8 +18,6 @@ import com.soling.utils.db.DBHelper;
 import com.soling.utils.MusicFileManager;
 import com.soling.utils.db.DBHelper;
 
-
-
 public abstract class BaseActivity extends AppCompatActivity {
 
     private boolean isShowTitle = true;
@@ -27,7 +25,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (App.getInstance().isTHEMEC()) {
+            App.getInstance().setTHEMEC(true);
+            setTheme(R.style.dayTheme);
+        } else {
+            App.getInstance().setTHEMEC(false);
+            setTheme(R.style.nightTheme);
+        }
+
         super.onCreate(savedInstanceState);
+
         if (!isShowTitle) {
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
@@ -37,40 +45,41 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // 添加dbHelper hyw
         App app = (App) getApplication();
-
         if (app.getDbHelper() == null) {
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
         }
-
-    }
-    public void initViews(){}
-    public void initDatas(){}
-
-    public void setListeners(){}
-
-
-
-    public void setTitle(boolean isShow){
-        isShowTitle=isShow;
     }
 
-    public void longToast(String str){
-        Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
+    public void initViews() {
     }
 
-    public void shortToast(String str){
-        Toast.makeText(this,str,Toast.LENGTH_LONG).show();
+    public void initDatas() {
+    }
+
+    public void setListeners() {
+    }
+
+    public void setTitle(boolean isShow) {
+        isShowTitle = isShow;
+    }
+
+    public void longToast(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+    public void shortToast(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
     }
 
     //wucan
-    public void intentJump(Context context, Class<?> cls){
-        Intent intent=new Intent(context,cls);
+    public void intentJump(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
         startActivity(intent);
     }
 
     //有参
-    public void intentJump(Context context,Class<?> cls,Bundle bundle){
-        Intent intent=new Intent(context,cls);
+    public void intentJump(Context context, Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(context, cls);
         intent.putExtras(bundle);
         startActivity(intent);
     }

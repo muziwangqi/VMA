@@ -1,21 +1,14 @@
 package com.soling.view.activity;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
-import android.support.v4.app.FragmentPagerAdapter;
 
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,7 +23,6 @@ import android.widget.Toast;
 
 import com.soling.App;
 import com.soling.R;
-import com.soling.utils.SharedPreferenceUtil;
 import com.soling.view.adapter.ScollAdapter;
 import com.soling.view.fragment.PhoneFragment;
 import com.soling.view.fragment.PlayerFragment;
@@ -39,16 +31,6 @@ import com.soling.view.fragment.SettingModuleFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentActivity;
-//import android.support.v4.app.FragmentManager;
-//import android.support.v4.view.ViewPager;
-//import android.support.v7.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends BaseActivity implements OnClickListener {
     private static final String TAG = "MainActivity";
@@ -68,25 +50,19 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         //changeTheme();
-        Log.d(TAG, "onCreate: " + App.getInstance().isTHEMEC());
-        if (App.getInstance().isTHEMEC()){
-            Log.d(TAG, "onCreate: ");
+        //Log.d(TAG, "onCreate: " + App.getInstance().isTHEMEC());
+        if (App.getInstance().isTHEMEC()) {
+            //Log.d(TAG, "onCreate: ");
+            App.getInstance().setTHEMEC(true);
             setTheme(R.style.dayTheme);
-        }else{
+        } else {
+            App.getInstance().setTHEMEC(false);
             setTheme(R.style.nightTheme);
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
-        //mainPresenter.showPhoneList();
-		/*LayoutInflater layoutInflater = getLayoutInflater();
-		View layoutSetting = layoutInflater.inflate(R.layout.fragent_setting,
-				null);
-		View layoutPhone = layoutInflater
-				.inflate(R.layout.fragment_phone, null);
-		View layoutMusic = layoutInflater
-				.inflate(R.layout.fragment_music, null);*/
 
         viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
         tvPhone = (TextView) findViewById(R.id.id_tv_phone);
@@ -102,24 +78,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
         //System.out.println("setAdapter");
 
-
-//		viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
-//		tvPhone = (TextView) findViewById(R.id.id_tv_phone);
-//		tvMusic = (TextView) findViewById(R.id.id_tv_music);
-//		tvSetting = (TextView) findViewById(R.id.id_tv_setting);
-//		tvPhone.setOnClickListener(this);
-//		tvMusic.setOnClickListener(this);
-//		tvSetting.setOnClickListener(this);
-//		fragments.add(new PhoneFragment());
-//		fragments.add(new PlayerFragment());
-//		fragments.add(new SettingFragment());
-//
-//		viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(),fragments));
-//		//System.out.println("setAdapter");
-
-
-		View decorView = getWindow().getDecorView();
-		decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
@@ -149,8 +109,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             public void onPageSelected(int i) {
                 if (1 == i) {
                     rlMain.setBackground(getResources().getDrawable(R.drawable.main_music_bg));
-                }
-                else {
+                } else {
                     rlMain.setBackground(null);
                 }
             }
@@ -180,7 +139,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             }
         });
     }
-
 
     public void onClick(View view) {
         switch (view.getId()) {

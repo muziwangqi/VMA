@@ -1385,9 +1385,9 @@ int id vp_music_list 0x7f08015b
 int id withText 0x7f08015c
 int id words 0x7f08015d
 int id wrap_content 0x7f08015e
-int id ws_lanya 0x7f08015f
-int id ws_wifi 0x7f080160
-int id ws_yidong 0x7f080161
+int id ws_bluetooth 0x7f08015f
+int id ws_mobilenet 0x7f080160
+int id ws_wifinet 0x7f080161
 int integer abc_config_activityDefaultDur 0x7f090000
 int integer abc_config_activityShortDur 0x7f090001
 int integer app_bar_elevation_anim_duration 0x7f090002

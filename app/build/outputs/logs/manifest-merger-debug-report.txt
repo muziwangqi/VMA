@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\9ad70902993443bff032010c24992948\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\422eed16115dc4fca0df9291ea5a4f83\AndroidManifest.xml:17:1-22:12
@@ -36,9 +36,9 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\xuewang\.gradle\c
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\141e529bf050ee120e2dbb3b80170742\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\af1522d0227342a16e5884c5df1d1628\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\a93fde427c37f0953dfa410895aceaff\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-88:12
 	package
 		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:4:5-25
 		INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml
@@ -134,61 +134,61 @@ INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.READ_SMS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:11:5-67
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:12:5-67
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:11:22-64
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:12:22-64
 uses-permission#android.permission.WRITE_SMS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:12:5-68
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:12:22-65
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:13:22-65
 uses-permission#android.permission.READ_CALL_LOG
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:13:5-72
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:14:5-72
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:13:22-69
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:14:22-69
 uses-permission#android.permission.WRITE_CALL_LOG
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:14:5-73
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:15:5-73
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:14:22-70
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:15:22-70
 uses-permission#android.permission.READ_CONTACTS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:15:5-72
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:16:5-72
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:15:22-69
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:16:22-69
 uses-permission#android.permission.CALL_PHONE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:16:5-69
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:17:5-69
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:16:22-66
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:17:22-66
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:17:5-81
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:18:5-81
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:17:22-78
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:18:22-78
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:18:5-67
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:19:5-67
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:18:22-64
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:19:22-64
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:20:5-22:47
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:21:5-23:47
 	tools:ignore
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:22:9-44
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:23:9-44
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:21:9-68
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:22:9-68
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:23:5-75
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:24:5-75
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:23:22-72
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:24:22-72
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:24:5-80
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:25:5-80
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:24:22-77
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:25:22-77
 uses-permission#android.permission.CHANGE_CONFIGURATION
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:26:5-95
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:28:5-95
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:26:22-76
-uses-permission#android.permission.WRITE_SETTINGS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:27:5-89
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:28:22-76
+uses-permission#android.permission.WRITESETTINGS
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:29:5-88
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:27:22-70
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:29:22-69
 application
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:29:5-80:19
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:35:5-86:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:22:5-94
@@ -198,110 +198,110 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\xuewang\.g
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:22:18-91
 	android:label
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:33:9-41
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:9-41
 	android:icon
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:32:9-45
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:38:9-45
 	android:allowBackup
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:31:9-35
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:37:9-35
 	android:theme
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:34:9-40
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:40:9-40
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:30:9-28
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:36:9-28
 activity#com.soling.view.activity.Banner2Activity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:35:9-43:20
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:41:9-49:20
 	android:label
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:37:13-45
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:43:13-45
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:36:13-58
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:42:13-58
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:38:13-42:29
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:44:13-48:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:17-69
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:17-69
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:25-66
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:41:17-77
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:47:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:41:27-74
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:47:27-74
 activity#com.soling.view.activity.MainActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:9-64
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:51:9-64
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:19-61
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:51:19-61
 activity#com.soling.view.activity.AboutActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:46:9-65
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:52:9-65
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:46:19-62
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:52:19-62
 activity#com.soling.view.activity.HelpActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:47:9-64
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:53:9-64
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:47:19-61
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:53:19-61
 activity#com.soling.view.activity.WirelessActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:48:9-87
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:54:9-87
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:48:19-75
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:54:19-75
 activity#com.soling.view.activity.LightActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:49:9-84
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:55:9-84
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:49:19-72
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:55:19-72
 activity#com.soling.view.activity.ThemeActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:50:9-74
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:56:9-74
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:50:19-62
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:56:19-62
 receiver#com.soling.view.adapter.MediaButtonReceiver
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:54:9-59:20
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:60:9-65:20
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:54:19-67
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:60:19-67
 intent-filter#action:name:android.intent.action.MEDIA_BUTTON+action:name:android.media.AUDIO_BECOMING_NOISY
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:55:13-58:29
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:61:13-64:29
 action#android.intent.action.MEDIA_BUTTON
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:56:17-77
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:62:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:56:25-74
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:62:25-74
 action#android.media.AUDIO_BECOMING_NOISY
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:57:17-77
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:57:25-74
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:25-74
 activity#com.soling.view.activity.LoginActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:61:9-65
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:67:9-65
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:61:19-62
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:67:19-62
 activity#com.soling.view.activity.InformationActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:62:9-71
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:68:9-71
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:62:19-68
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:68:19-68
 activity#com.soling.view.activity.TwoDimensionCode
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:9-68
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:69:9-68
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:19-65
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:69:19-65
 activity#com.soling.view.activity.UpdateInformation
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:64:9-69
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:70:9-69
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:64:19-66
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:70:19-66
 activity#com.soling.view.activity.SearchMusicActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:65:9-69:20
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:9-75:20
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:65:19-68
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:19-68
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:66:13-68:73
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:72:13-74:73
 	android:value
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:68:17-70
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:74:17-70
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:67:17-63
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:73:17-63
 service#com.soling.service.player.PlayerService
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:9-77:19
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:77:9-83:19
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:18-62
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:77:18-62
 intent-filter#action:name:cn.hyw.www.imusic.action.PLAY_LAST+action:name:cn.hyw.www.imusic.action.PLAY_NEXT+action:name:cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:72:13-76:29
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:78:13-82:29
 action#cn.hyw.www.imusic.action.PLAY_NEXT
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:73:17-77
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:79:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:73:25-74
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:79:25-74
 action#cn.hyw.www.imusic.action.PLAY_LAST
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:74:17-77
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:80:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:74:25-74
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:80:25-74
 action#cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:75:17-79
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:81:17-79
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:75:25-76
+		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:81:25-76
