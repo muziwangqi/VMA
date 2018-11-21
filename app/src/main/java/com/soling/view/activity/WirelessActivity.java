@@ -1,20 +1,18 @@
 package com.soling.view.activity;
 
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Telephony;
+import android.widget.EditText;
 
+import com.soling.App;
 import com.soling.R;
 import com.soling.utils.APNUtil;
 import com.soling.utils.MatchAPNUtil;
+import com.soling.utils.WifiUtil;
 import com.soling.view.adapter.WiperSwitch;
 
 import java.util.ArrayList;
@@ -22,9 +20,12 @@ import java.util.List;
 
 public class WirelessActivity extends BaseActivity {
 
-    private WiperSwitch wsMobileNet;
+    private WiperSwitch wsMobileNet,wsWifiNet;
     private Context context;
     private String id, type, apn, curr;
+    private WifiUtil wifiManager;
+    private String wifiSsid,wifiPassword;
+    private EditText editText=new EditText(App.getInstance());
 
     Uri uri = Uri.parse("content://telephony/carriers");
 
@@ -34,12 +35,28 @@ public class WirelessActivity extends BaseActivity {
         setContentView(R.layout.layout_wireless);
         context = this;
         initViews();
-        getMobileNet();
+        //getMobileNet();
+        getWifiNet();
     }
 
     @Override
     public void initViews() {
-        wsMobileNet = (WiperSwitch) findViewById(R.id.ws_mobilenet);
+        wsMobileNet = findViewById(R.id.ws_mobilenet);
+        wsWifiNet=findViewById(R.id.ws_wifinet);
+    }
+
+    private void getWifiNet() {
+        wsWifiNet.setChecked(false);
+        wsWifiNet.setOnChangedListener(new WiperSwitch.IOnChangedListener() {
+            @Override
+            public void onChange(WiperSwitch wiperSwitch, boolean checkStat) {
+                if (checkStat){
+                    intentJump(App.getInstance(),WifiActivity.class);
+                }else{
+
+                }
+            }
+        });
     }
 
     private void getMobileNet() {
@@ -90,7 +107,7 @@ public class WirelessActivity extends BaseActivity {
 
     public ArrayList<APNUtil> getAPNList() {
         String[] projection = {id, type, apn, curr};
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);//can't
         ArrayList<APNUtil> list = new ArrayList<APNUtil>();
         while (cursor != null && cursor.moveToNext()) {
             if (cursor.getString(cursor.getColumnIndex("apn")).equals("")) {

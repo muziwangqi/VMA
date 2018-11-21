@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/et_time"
             android:ems="8"
-            android:layout_marginLeft="20dp"/>
+            android:background="@null"
+            android:layout_marginLeft="50dp"/>
     </LinearLayout>
 
     <RelativeLayout

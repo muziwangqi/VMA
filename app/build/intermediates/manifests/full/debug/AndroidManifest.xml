@@ -24,13 +24,9 @@
     <!-- screenbright -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WRITESETTINGS" />
-    <!--
-    mobilenet
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission
-    -->
-
+    <!-- wifinet -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -59,6 +55,7 @@
         <activity android:name="com.soling.view.activity.LightActivity" />
         <activity android:name="com.soling.view.activity.ThemeActivity" />
         <activity android:name="com.soling.view.activity.SendMessageActivity" />
+        <activity android:name="com.soling.view.activity.WifiActivity" />
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name="com.soling.view.adapter.MediaButtonReceiver" >

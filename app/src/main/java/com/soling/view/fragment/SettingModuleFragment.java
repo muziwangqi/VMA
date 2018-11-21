@@ -32,8 +32,6 @@ public class SettingModuleFragment extends BaseFragment {
     private EditText etTime;
     private DatePickerDialog datePickerDialog;
 
-    Calendar calendar=Calendar.getInstance();
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
