@@ -1,5 +1,6 @@
 package com.soling.view.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +11,9 @@ import android.os.Build;
 import android.support.v4.view.ViewPager;
 
 
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -141,22 +144,30 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
             }});
 
-//        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
-//        addMenu.setOnClickListener(new OnClickListener() {
-//            public void onClick(View view) {
-//                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
-//                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
-//                        popupMenu.getMenu());
-//                popupMenu
-//                        .setOnMenuItemClickListener(new OnMenuItemClickListener() {
-//                            public boolean onMenuItemClick(MenuItem menuItem) {
-//                                Toast.makeText(MainActivity.this, "item", Toast.LENGTH_SHORT).show();
-//                                return true;
-//                            }
-//                        });
-//                popupMenu.show();
-//            }
-//        });
+        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
+        addMenu.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
+                        popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()) {
+                                    case R.id.id_item_scan:
+//                                        Intent openCameraIntent = new Intent(MainActivity.this,CaptureActivity.class);
+//                                        startActivityForResult(openCameraIntent, 0);
+                                        break;
+                                    case R.id.id_item_addcontacts:
+                                        intentJump(getBaseContext(), UpdateInformation.class);
+                                        break;
+                                }
+                                return true;
+                            }
+                        });
+                popupMenu.show();
+            }
+        });
         }
 
         public void onClick (View view){

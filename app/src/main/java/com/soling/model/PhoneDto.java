@@ -9,7 +9,7 @@ public class PhoneDto {
     private String telPhone;
     private String namePinYin;
     private String firstLetter;
-    private int id;
+    private long id;
     private RoundedBitmapDrawable headPhotoPhone;
 
     public RoundedBitmapDrawable getHeadPhotoPhone() {
@@ -20,10 +20,10 @@ public class PhoneDto {
         this.headPhotoPhone = headPhotoPhone;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public String getFirstLetter() {

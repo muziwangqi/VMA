@@ -52,7 +52,9 @@ public final class PermissionUtil {
                     Manifest.permission.READ_CALL_LOG,
                     Manifest.permission.WRITE_CALL_LOG,
                     Manifest.permission.USE_SIP,
-                    Manifest.permission.PROCESS_OUTGOING_CALLS};
+                    Manifest.permission.PROCESS_OUTGOING_CALLS,
+                    Manifest.permission.ADD_VOICEMAIL
+            };
 
             SENSORS = new String[]{
                     Manifest.permission.BODY_SENSORS};

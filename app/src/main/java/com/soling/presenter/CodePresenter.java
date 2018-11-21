@@ -33,7 +33,7 @@ public class CodePresenter {
 //		Bitmap bitmap = user.getAvatarUrl();
 //		Drawable drawable = r.getDrawable(R.drawable.headphoto);
 //		Bitmap bmp =  BitmapFactory.decodeResource(r,R.drawable.headphoto);
-		Bitmap myCode = CodePresenter.makeQRImage(head, phone, 400, 400,bitmapBackground);
+		Bitmap myCode = CodePresenter.makeQRImage(head, phone, 552, 508,bitmapBackground);
 		//myCode = CodePresenter.addBackGround(myCode, background)
 		return myCode;
 	}

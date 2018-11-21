@@ -40,7 +40,6 @@ public class SendMessageActivity extends BaseActivity {
             phoneNumberEditText.setText(myText[0]);
         }
         final String phoneNumber = myText[0];
-
         findViewById(R.id.message_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.soling.utils.PermissionUtil;
 import com.soling.view.fragment.SettingFragment;
 import com.soling.R;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +26,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +35,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Banner2Activity extends Activity implements OnClickListener {
-
+public class Banner2Activity extends BaseActivity implements OnClickListener {
     private static final String TAG = "Banner2Activity";
 
 
@@ -141,7 +142,7 @@ public class Banner2Activity extends Activity implements OnClickListener {
             }
         }
         if (hasUnpermission) {
-            AlertDialog dialog = new AlertDialog.Builder(this)
+            android.support.v7.app.AlertDialog dialog = new android.support.v7.app.AlertDialog.Builder(this)
                     .setMessage("请授予所需权限")
                     .setPositiveButton("设置", new DialogInterface.OnClickListener() {
                         @Override
@@ -240,5 +241,84 @@ public class Banner2Activity extends Activity implements OnClickListener {
             return list.get(index);
         }
     }
+
+	private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
+	private static final int READ_CONTACTS_REQUEST_CODE = 2;
+
+
+	// 请求权限 hyw
+	private void requestPermission(String[] strings, PermissionListener 已授权) {
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+		}
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_REQUEST_CODE);
+		}
+	}
+
+//	// hyw
+//	@Override
+//	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//		switch (requestCode) {
+//			case WRITE_EXTERNAL_STORAGE_REQUEST_CODE:
+//			case READ_CONTACTS_REQUEST_CODE:
+//				if (!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+//					requestPermission(new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA}, new PermissionListener() {
+//						@Override
+//						public void onGranted() {
+//							Toast.makeText(Banner2Activity.this, "已授权", Toast.LENGTH_SHORT).show();
+//						}
+//
+//						@Override
+//						public void onDenied(List<String> deniedPermission) {
+//							for (String permission : deniedPermission) {
+//								Toast.makeText(Banner2Activity.this, "被拒绝的权限：" + permission, Toast.LENGTH_SHORT).show();
+//							}
+//						}
+//					});
+//				}
+//		}
+//	}
+
+
+
+	private void permission(){
+		String[] deniedPermissions = PermissionUtil.PHONE;
+		requestPermission(deniedPermissions, new BaseActivity.PermissionListener() {
+			@Override
+			public void onGranted() {
+				Toast.makeText(Banner2Activity.this, "已授权", Toast.LENGTH_SHORT).show();
+			}
+			@Override
+			public void onDenied(List<String> deniedPermission) {
+				for(String permission : deniedPermission){
+					Toast.makeText(Banner2Activity.this, "被拒绝的权限：" + permission, Toast.LENGTH_SHORT).show();
+					openAppDetails();
+				}
+			}
+		});
+	}
+	/**
+	 * 打开 APP 的详情设置
+	 */
+	private void openAppDetails() {
+		android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+		builder.setMessage("备份通讯录需要访问 “通讯录” 和 “外部存储器”，请到 “应用信息 -> 权限” 中授予！");
+		builder.setPositiveButton("去手动授权", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent();
+				intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+				intent.addCategory(Intent.CATEGORY_DEFAULT);
+				intent.setData(Uri.parse("package:" + getPackageName()));
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+				startActivity(intent);
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		builder.show();
+	}
 
 }
