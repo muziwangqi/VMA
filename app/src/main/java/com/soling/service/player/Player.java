@@ -210,18 +210,30 @@ public class Player implements IPlayer {
                             music.setAlbumId(musics.get(0).getAlbumId());
                         }
                     }
-                    albumPath = api.getCoverPath(music.getAlbumId());
-                    music.setCoverPath(albumPath);
+                    if (music.getAlbumId() != null) {
+                        albumPath = api.getCoverPath(music.getAlbumId());
+                        music.setCoverPath(albumPath);
+                    }
                 }
                 if (music.getCoverPath() != null) {
                     Bitmap cover = HttpUtil.requestBitmap(music.getCoverPath(), HttpUtil.METHOD_GET);
                     notifyCoverLoaded(cover);
                 }
                 if (music.getLyric() == null) {
+                    if (music.getAId() == null) {
+                        List<Music> musics = api.search(music.getName(), music.getArtist(), music.getAlbum());
+                        if (musics != null && musics.size() > 0) {
+                            music.setAId(musics.get(0).getAId());
+                            music.setAlbumId(musics.get(0).getAlbumId());
+                        }
+                    }
+                    if (music.getAId() == null) return;
                     List<LyricLine> lyric = api.getLyric(music.getAId());
                     music.setLyric(lyric);
                 }
-                notifyLyricLoaded(music.getLyric());
+                if (music.getLyric() != null) {
+                    notifyLyricLoaded(music.getLyric());
+                }
             }
         }).start();
     }
