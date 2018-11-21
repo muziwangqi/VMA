@@ -1,7 +1,6 @@
 package com.soling.model;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.List;
 
@@ -21,6 +20,8 @@ public class Music {
     private long size;          // 文件大小
     private int duration;       // 时长
     private boolean like;
+    private String localCoverPath;
+    private String localLyricPath;
 
 
     private static final String[] QQ_SUFFIXS = {"[mqms2]", "[mqms]"};
@@ -152,6 +153,26 @@ public class Music {
         return id;
     }
 
+    public String getLocalCoverPath() {
+        return localCoverPath;
+    }
+
+    public void setLocalCoverPath(String localCoverPath) {
+        this.localCoverPath = localCoverPath;
+    }
+
+    public String getLocalLyricPath() {
+        return localLyricPath;
+    }
+
+    public void setLocalLyricPath(String localLyricPath) {
+        this.localLyricPath = localLyricPath;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Music{" +
@@ -166,6 +187,9 @@ public class Music {
                 ", artist='" + artist + '\'' +
                 ", size=" + size +
                 ", duration=" + duration +
+                ", like=" + like +
+                ", localCoverPath='" + localCoverPath + '\'' +
+                ", localLyricPath='" + localLyricPath + '\'' +
                 '}';
     }
 

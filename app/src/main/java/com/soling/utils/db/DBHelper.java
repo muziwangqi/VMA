@@ -10,9 +10,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "data.db";
     public static final int VERSION = 1;
 
-    private static final String CREATE_MUSIC_LIKE = "create table " + Table.MusicLike.TABLE_NAME + " (" +
-            Table.MusicLike.COLUMN_ID + " integer primary key autoincrement, " +
-            Table.MusicLike.COLUMN_MUSIC_ID + " integer" +
+    private static final String CREATE_MUSIC_LIKE = "create table " + Table.Music.TABLE_NAME + " (" +
+            Table.Music.COLUMN_ID + " integer primary key autoincrement, " +
+            Table.Music.COLUMN_MUSIC_ID + " integer, " +
+            Table.Music.COLUMN_COVER_PATH + " text, " +
+            Table.Music.COLUMN_LYRIC_PATH + " text, " +
+            Table.Music.COLUMN_IS_LIKE + " integer" +
             ")";
     
     private Context context;
@@ -29,15 +32,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-
-    public static class Table {
-        public static class MusicLike {
-            public static final String TABLE_NAME = "music_like";
-            public static final String COLUMN_ID = "id";
-            public static final String COLUMN_MUSIC_ID = "music_id";
-        }
     }
     
 }

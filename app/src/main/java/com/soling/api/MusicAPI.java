@@ -11,7 +11,7 @@ import com.soling.model.User;
 
 public interface MusicAPI {
 
-    List<LyricLine> getLyric(Integer aId);
+    String getLyric(Integer aId);
     List<String> searchHot();
     List<Music> search(String...args);
 

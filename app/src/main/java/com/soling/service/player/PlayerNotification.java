@@ -89,22 +89,14 @@ public class PlayerNotification implements IPlayer.Observer {
                 .setOngoing(true);
     }
 
-
     @Override
-    public void onPlayNext() {
-        refreshText();
-        refreshButton();
-    }
-
-    @Override
-    public void onPlayLast() {
+    public void onPlayChange() {
         refreshText();
         refreshButton();
     }
 
     @Override
     public void onPlayToggle() {
-        refreshText();
         refreshButton();
     }
 
