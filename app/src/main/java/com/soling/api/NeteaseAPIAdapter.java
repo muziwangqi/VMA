@@ -78,22 +78,13 @@ public class NeteaseAPIAdapter implements MusicAPI {
     }
 
     @Override
-    public List<LyricLine> getLyric(Integer aId) {
-        List<LyricLine> lyric = null;
+    public String getLyric(Integer aId) {
+        String lyric = null;
         try {
             JSONObject json = NeteaseAPI.getLyric(aId);
             if (json != null) {
                 json = json.getJSONObject("lrc");
-                lyric = new ArrayList<>();
-                String lyricStr = json.getString("lyric");
-                String[] lyricLines = lyricStr.split("\\n");
-                for (String line : lyricLines) {
-                    String[] mapStr = line.split("]");
-                    if (!mapStr[0].startsWith("["))  continue;
-                    mapStr[0] = mapStr[0].substring(1);
-                    long time = resolveTime(mapStr[0]);
-                    lyric.add(new LyricLine(time, mapStr.length > 1 ? mapStr[1] : ""));
-                }
+                lyric = json.getString("lyric");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -101,18 +92,7 @@ public class NeteaseAPIAdapter implements MusicAPI {
         return lyric;
     }
 
-    private static long resolveTime(String time) {
-        try {
-            String[] mapStr = time.split(":");
-            int min = Integer.parseInt(mapStr[0]);
-            double sec = Double.parseDouble(mapStr[1]);
-            return (long) ((min * 60 + sec) * 1000);
-        }
-        catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+
 
 	public User getuser(String userNumber, String password) {
 		User user = new User();			

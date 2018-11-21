@@ -1,5 +1,10 @@
 package com.soling.model;
 
+import com.soling.utils.TimeUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LyricLine {
 
     private long timestamp;
@@ -33,4 +38,7 @@ public class LyricLine {
                 ", text='" + text + '\'' +
                 '}';
     }
+
+
+
 }

@@ -320,6 +320,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_words3.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\words3.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_subheader.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout\\design_navigation_item_subheader.xml"
     },
@@ -558,10 +562,6 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_edittext.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\color\\abc_tint_edittext.xml"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_words2.jpg.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\words2.jpg"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_layout.xml.flat",
@@ -846,10 +846,6 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_mtrl_chip_checked_circle.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\drawable\\ic_mtrl_chip_checked_circle.xml"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_words3.jpg.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\words3.jpg"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -1188,6 +1184,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\color-v23\\abc_btn_colored_text_material.xml"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_codescan.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\codescan.xml"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_icon.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\layout\\abc_list_menu_item_icon.xml"
     },
@@ -1260,12 +1260,12 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_arrow_back.xml"
     },
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_lines_media.xml.flat",
-        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\2e1ead0e19206ffd22adc6c6e26771b0\\res\\layout\\notification_template_lines_media.xml"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_disable_only_material_light.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_lines_media.xml.flat",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\2e1ead0e19206ffd22adc6c6e26771b0\\res\\layout\\notification_template_lines_media.xml"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1824,6 +1824,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\anim\\abc_popup_exit.xml"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_words2.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\words2.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view_list_item.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
@@ -2222,6 +2226,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_contact_bg_code.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\contact_bg_code.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_show_password.xml.flat",

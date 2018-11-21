@@ -11,16 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <!-- add -->
 
-<!--        <ImageButton
+
+        <ImageButton
             android:id="@+id/id_ib_add"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/add" />-->
-
-        <!-- phone -->
+            android:src="@drawable/add" />
 
         <TextView
             android:id="@+id/id_tv_phone"

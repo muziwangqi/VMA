@@ -16,8 +16,6 @@ public interface IPlayer {
 
     void play(Music music);
 
-    void play(PlayList playList);
-
     void play(PlayList playList, int startIndex);
 
     void pause();
@@ -48,11 +46,9 @@ public interface IPlayer {
 
     interface Observer {
 
-        void onPlayNext();
+        void onPlayChange();    // 切歌
 
-        void onPlayLast();
-
-        void onPlayToggle();
+        void onPlayToggle();    // 播放状态改变
 
         void onCoverLoad(Bitmap cover);
 

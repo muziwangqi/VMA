@@ -73,18 +73,19 @@ public class InformationActivity extends BaseActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         initView();
         String name = (String) getIntent().getExtras().get("name");
-        int iid = (int) getIntent().getExtras().get("id");
+        long iid = (long) getIntent().getExtras().get("id");
         String iphone = (String) getIntent().getExtras().get("phoneNumber");
        // refreshInformation( phoneDto);
        phoneDto.setTelPhone(iphone);
        phoneDto.setName(name);
+       phoneDto.setId(iid);
         refreshInformation(name,iid,iphone);
         image = findViewById(R.id.head_phone);
         goPhone = findViewById(R.id.go_phone);
         goInformation = findViewById(R.id.go_information);
         card = findViewById(R.id.friend_card);
         phone = findViewById(R.id.friend_phone);
-        send = findViewById(R.id.send);
+        send = findViewById(R.id.information_update);
         send.setOnClickListener(this);
         goPhone.setOnClickListener(this);
         goInformation.setOnClickListener(this);
@@ -126,7 +127,7 @@ public class InformationActivity extends BaseActivity implements OnClickListener
     }
 
 
-    public void refreshInformation( String name , int iid , String number){
+    public void refreshInformation( String name , long iid , String number){
         TextView phoneNumber = findViewById(R.id.friend_phone);
         TextView id = findViewById(R.id.friend_id);
         TextView nickname = findViewById(R.id.nickname);
@@ -140,6 +141,7 @@ public class InformationActivity extends BaseActivity implements OnClickListener
         // TODO Auto-generated method stub
         Bundle bundle = new Bundle();
         String[] phoneF = {phoneDto.getTelPhone(),phoneDto.getName()};
+        long phoneF1 =  phoneDto.getId();
         switch (view.getId()) {
             case R.id.camera:
                 try {
@@ -163,7 +165,10 @@ public class InformationActivity extends BaseActivity implements OnClickListener
                 Toast.makeText(this, "取消", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 break;
-            case R.id.send:
+            case R.id.information_update:
+                bundle.putLong("phoneF1",phoneF1);
+                bundle.putStringArray("phoneF",phoneF);
+                intentJump(InformationActivity.this,UpdateInformation.class,bundle);
                 break;
             case R.id.friend_phone:
                 String phoneNumber = phone.getText().toString();

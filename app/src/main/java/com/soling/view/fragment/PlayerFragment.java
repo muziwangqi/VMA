@@ -225,14 +225,24 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
 
     private void initPlayer() {
         musicFileManager = MusicFileManager.getInstance(getContext());
-        List<Music> musics = musicFileManager.getLocalMusics();
-        PlayList playList = new PlayList(musics);
-        ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(playList);
-        presenter.play(App.getInstance().getLocalMusics(), 0);
-        presenter.pause();
-        refreshView();
-        initMusicListFragments();
-        startRefreshLyric();
+        musicFileManager.getLocalMusics(new MusicFileManager.Callback() {
+            @Override
+            public void onFinish(final List<Music> musics) {
+                ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(new PlayList(musics));
+                PlayerFragment.this.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (musics.size() > 0) {
+                            presenter.play(App.getInstance().getLocalMusics(), 0);
+                            presenter.pause();
+                        }
+                        refreshView();
+                        initMusicListFragments();
+                        startRefreshLyric();
+                    }
+                });
+            }
+        });
     }
 
     private void initMusicListFragments() {
@@ -291,19 +301,19 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     @Override
     public void refreshView() {
         final Music music = presenter.getPlayingMusic();
-        if (music == null) return;
-        tvName.setText(music.getName());
-        tvArtist.setText("- " + music.getArtist() + " -");
-        tvDuration.setText(StringUtil.msToString(music.getDuration()));
-        sbMusic.setMax(music.getDuration());
-        if (presenter.isPlaying()) {
-            ibPlay.setImageResource(R.drawable.player_pause);
+        if (music != null) {
+            tvName.setText(music.getName());
+            tvArtist.setText("- " + music.getArtist() + " -");
+            tvDuration.setText(StringUtil.msToString(music.getDuration()));
+            sbMusic.setMax(music.getDuration());
+            if (presenter.isPlaying()) {
+                ibPlay.setImageResource(R.drawable.player_pause);
+            } else {
+                ibPlay.setImageResource(R.drawable.player_play);
+            }
+            refreshLike(music.isLike());
+            startRefreshSeekBar();
         }
-        else {
-            ibPlay.setImageResource(R.drawable.player_play);
-        }
-        refreshLike(music.isLike());
-        startRefreshSeekBar();
         new Thread(new Runnable() {
             @Override
             public void run() {

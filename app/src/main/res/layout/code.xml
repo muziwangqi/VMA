@@ -2,13 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <TextView 
+    android:orientation="vertical">
+    <TextView
         android:layout_width="match_parent"
-    	android:layout_height="50dp"
-    	android:text="我的二维码"/>
-	<ImageView android:id="@+id/code"
-	     android:layout_width="400dp"
-    		android:layout_height="400dp"
-    		android:layout_gravity="center"/>
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="我的二维码"
+        android:textSize="45dp" />
+    <ImageView
+        android:id="@+id/code"
+        android:layout_width="552px"
+        android:layout_height="508px"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"/>
 </LinearLayout>

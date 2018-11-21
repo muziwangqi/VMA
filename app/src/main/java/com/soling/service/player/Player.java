@@ -14,7 +14,11 @@ import com.soling.api.MusicAPIFactory;
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
 import com.soling.model.PlayList;
+import com.soling.utils.BitmapUtil;
+import com.soling.utils.FileUtil;
 import com.soling.utils.HttpUtil;
+import com.soling.utils.LyricUtil;
+import com.soling.utils.db.MusicHelper;
 
 public class Player implements IPlayer {
 
@@ -67,19 +71,13 @@ public class Player implements IPlayer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        notifyPlayToggle();
-        loadNetworkResource();
+        notifyPlayChange();
+        loadResource();
     }
 
     @Override
     public void play(int index) {
         playList.setPlayingIndex(index);
-        play();
-    }
-
-    @Override
-    public void play(PlayList playList) {
-        this.playList = playList;
         play();
     }
 
@@ -117,7 +115,7 @@ public class Player implements IPlayer {
                 playList.skipRandom();
         }
         play();
-        notifyPlayNext();
+        notifyPlayChange();
     }
 
     @Override
@@ -133,7 +131,7 @@ public class Player implements IPlayer {
                 playList.skipRandom();
         }
         play();
-        notifyPlayLast();
+        notifyPlayChange();
     }
 
     @Override
@@ -194,46 +192,97 @@ public class Player implements IPlayer {
         observers.remove(observer);
     }
 
-    private void loadNetworkResource() {
+    private Bitmap loadCoverFromApi(Music music) {
+        String albumPath = music.getCoverPath();
+        Bitmap cover = null;
+        MusicAPI api = MusicAPIFactory.getMusicAPI();
+        if (albumPath == null) {
+            if (music.getAlbumId() == null) {
+                List<Music> musics = api.search(music.getName(), music.getArtist(), music.getAlbum());
+                if (musics != null && musics.size() > 0) {
+                    music.setAId(musics.get(0).getAId());
+                    music.setAlbumId(musics.get(0).getAlbumId());
+                }
+            }
+            if (music.getAlbumId() != null) {
+                albumPath = api.getCoverPath(music.getAlbumId());
+                music.setCoverPath(albumPath);
+            }
+        }
+        if (music.getCoverPath() != null) {
+            cover = HttpUtil.requestBitmap(music.getCoverPath(), HttpUtil.METHOD_GET);
+        }
+        return cover;
+    }
+
+    private Bitmap loadCoverFromLocal(Music music) {
+        Bitmap cover = null;
+        String localAlbumPath = music.getLocalCoverPath();
+        if (localAlbumPath != null) {
+            cover = BitmapUtil.read(localAlbumPath);
+        }
+        return cover;
+    }
+
+    private String loadLyricFromApi(Music music) {
+        MusicAPI api = MusicAPIFactory.getMusicAPI();
+        if (music.getAId() == null) {
+            List<Music> musics = api.search(music.getName(), music.getArtist(), music.getAlbum());
+            if (musics != null && musics.size() > 0) {
+                music.setAId(musics.get(0).getAId());
+                music.setAlbumId(musics.get(0).getAlbumId());
+            }
+        }
+        if (music.getAId() == null) return null;
+        return api.getLyric(music.getAId());
+
+    }
+
+    private String loadLyricFromLocal(Music music) {
+        return music.getLocalLyricPath() == null ? null : LyricUtil.read(music.getLocalLyricPath());
+    }
+
+    private void loadCover(Music music) {
+        if (music == null) return;
+        Bitmap cover = loadCoverFromLocal(music);
+        if (cover == null) {
+            cover = loadCoverFromApi(music);
+        }
+        if (cover != null) {
+            notifyCoverLoaded(cover);
+            if (music.getLocalCoverPath() == null || !FileUtil.isExist(music.getLocalCoverPath())) {
+                music.setLocalCoverPath(BitmapUtil.save(cover));
+                MusicHelper.update(music);
+            }
+        }
+    }
+
+
+    private void loadLyric(Music music) {
+        String lyricStr = loadLyricFromLocal(music);
+        if (lyricStr == null) {
+            lyricStr = loadLyricFromApi(music);
+        }
+        if (lyricStr != null) {
+            List<LyricLine> lyric = LyricUtil.resolve(lyricStr);
+            music.setLyric(lyric);
+            notifyLyricLoaded(music.getLyric());
+            if (music.getLocalLyricPath() == null || !FileUtil.isExist(music.getLocalLyricPath())) {
+                String lyricLocalPath = LyricUtil.save(lyricStr);
+                music.setLocalLyricPath(lyricLocalPath);
+                MusicHelper.update(music);
+            }
+        }
+    }
+
+
+    private void loadResource() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Music music = getPlayingMusic();
-                if (music == null) return;
-                String albumPath = music.getCoverPath();
-                MusicAPI api = MusicAPIFactory.getMusicAPI();
-                if (albumPath == null) {
-                    if (music.getAlbumId() == null) {
-                        List<Music> musics = api.search(music.getName(), music.getArtist(), music.getAlbum());
-                        if (musics != null && musics.size() > 0) {
-                            music.setAId(musics.get(0).getAId());
-                            music.setAlbumId(musics.get(0).getAlbumId());
-                        }
-                    }
-                    if (music.getAlbumId() != null) {
-                        albumPath = api.getCoverPath(music.getAlbumId());
-                        music.setCoverPath(albumPath);
-                    }
-                }
-                if (music.getCoverPath() != null) {
-                    Bitmap cover = HttpUtil.requestBitmap(music.getCoverPath(), HttpUtil.METHOD_GET);
-                    notifyCoverLoaded(cover);
-                }
-                if (music.getLyric() == null) {
-                    if (music.getAId() == null) {
-                        List<Music> musics = api.search(music.getName(), music.getArtist(), music.getAlbum());
-                        if (musics != null && musics.size() > 0) {
-                            music.setAId(musics.get(0).getAId());
-                            music.setAlbumId(musics.get(0).getAlbumId());
-                        }
-                    }
-                    if (music.getAId() == null) return;
-                    List<LyricLine> lyric = api.getLyric(music.getAId());
-                    music.setLyric(lyric);
-                }
-                if (music.getLyric() != null) {
-                    notifyLyricLoaded(music.getLyric());
-                }
+                loadCover(music);
+                loadLyric(music);
             }
         }).start();
     }
@@ -250,17 +299,13 @@ public class Player implements IPlayer {
             c.onLyricLoad(lyric);
         }
     }
-    public void notifyPlayNext() {
+
+    public void notifyPlayChange() {
         for (Observer c : observers) {
-            c.onPlayNext();
+            c.onPlayChange();
         }
     }
 
-    public void notifyPlayLast() {
-        for (Observer c : observers) {
-            c.onPlayLast();
-        }
-    }
 
     public void notifyPlayToggle() {
         for (Observer c : observers) {

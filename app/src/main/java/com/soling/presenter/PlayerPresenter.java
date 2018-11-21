@@ -19,7 +19,7 @@ import com.soling.service.player.IPlayer;
 import com.soling.service.player.PlayerService;
 import com.soling.utils.FileUtil;
 import com.soling.utils.VolumeUtil;
-import com.soling.utils.db.MusicLikeHelper;
+import com.soling.utils.db.MusicHelper;
 
 public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observer {
 
@@ -116,12 +116,7 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
     }
 
     @Override
-    public void onPlayNext() {
-        view.refreshView();
-    }
-
-    @Override
-    public void onPlayLast() {
+    public void onPlayChange() {
         view.refreshView();
     }
 
@@ -149,7 +144,8 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
         if (FileUtil.remove(music.getPath())) {
             musicList.remove(position);
             if (music.isLike()) {
-                MusicLikeHelper.deleteLike(music);
+                music.setLike(!music.isLike());
+                MusicHelper.update(music);
             }
         }
     }
@@ -157,12 +153,13 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
     @Override
     public void likeToggle(Music music) {
         if (music.isLike()) {
-            MusicLikeHelper.deleteLike(music);
+            App.getInstance().getLikeMusics().getMusics().remove(music);
         }
         else {
-            MusicLikeHelper.insertLike(music);
+            App.getInstance().getLikeMusics().getMusics().add(music);
         }
         music.setLike(!music.isLike());
+        MusicHelper.update(music);
         view.refreshLike(music.isLike());
     }
 
@@ -180,6 +177,5 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
     public void setVolume(int progress) {
         VolumeUtil.setVolume(progress);
     }
-
 
 }

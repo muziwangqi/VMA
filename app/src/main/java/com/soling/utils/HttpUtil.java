@@ -60,8 +60,7 @@ public class HttpUtil {
             conn.setConnectTimeout(8000);
             conn.setReadTimeout(10000);
             conn.setDoInput(true);
-            InputStream in = conn.getInputStream();
-            result = BitmapFactory.decodeStream(in);
+            result = BitmapFactory.decodeStream(conn.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

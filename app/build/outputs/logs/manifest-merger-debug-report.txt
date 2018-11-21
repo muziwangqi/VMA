@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\9ad70902993443bff032010c24992948\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\422eed16115dc4fca0df9291ea5a4f83\AndroidManifest.xml:17:1-22:12
@@ -36,9 +36,9 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\xuewang\.gradle\c
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\141e529bf050ee120e2dbb3b80170742\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\af1522d0227342a16e5884c5df1d1628\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\a93fde427c37f0953dfa410895aceaff\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-95:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
 	package
 		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:4:5-25
 		INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml
@@ -208,7 +208,7 @@ ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39
 	android:name
 		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:22-64
 application
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:41:5-93:19
+ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:41:5-92:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:22:5-94

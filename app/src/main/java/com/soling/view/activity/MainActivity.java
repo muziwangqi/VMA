@@ -2,15 +2,14 @@ package com.soling.view.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import android.graphics.Color;
 import android.os.Build;
 
 import android.support.v4.view.ViewPager;
 
-
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -34,7 +33,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements OnClickListener {
     private static final String TAG = "MainActivity";
     private ViewPager viewPager;
-    private List<Fragment> fragments = new ArrayList<Fragment>();
+    private List<android.support.v4.app.Fragment> fragments = new ArrayList<android.support.v4.app.Fragment>();
     private TextView tvPhone, tvMusic, tvSetting;
     private ImageButton addMenu;
     private PhoneFragment phoneFragment;
@@ -85,10 +84,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
 
         rlMain = findViewById(R.id.rl_main);
-        viewPager = (ViewPager) findViewById(R.id.id_vp_scoll);
-        tvPhone = (TextView) findViewById(R.id.id_tv_phone);
-        tvMusic = (TextView) findViewById(R.id.id_tv_music);
-        tvSetting = (TextView) findViewById(R.id.id_tv_setting);
+
         tvPhone.setOnClickListener(this);
         tvMusic.setOnClickListener(this);
         tvSetting.setOnClickListener(this);
@@ -104,11 +100,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 phoneFragment.shareMusic(music);
             }
         });
-        fragments.add(phoneFragment);
-        fragments.add(playerFragment);
-        fragments.add(new SettingModuleFragment());
 
-        viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -141,22 +133,30 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
             }});
 
-//        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
-//        addMenu.setOnClickListener(new OnClickListener() {
-//            public void onClick(View view) {
-//                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
-//                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
-//                        popupMenu.getMenu());
-//                popupMenu
-//                        .setOnMenuItemClickListener(new OnMenuItemClickListener() {
-//                            public boolean onMenuItemClick(MenuItem menuItem) {
-//                                Toast.makeText(MainActivity.this, "item", Toast.LENGTH_SHORT).show();
-//                                return true;
-//                            }
-//                        });
-//                popupMenu.show();
-//            }
-//        });
+        addMenu = (ImageButton) findViewById(R.id.id_ib_add);
+        addMenu.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                android.support.v7.widget.PopupMenu popupMenu = new android.support.v7.widget.PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_add,
+                        popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new android.support.v7.widget.PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()) {
+                                    case R.id.id_item_scan:
+//                                        Intent openCameraIntent = new Intent(MainActivity.this,CaptureActivity.class);
+//                                        startActivityForResult(openCameraIntent, 0);
+                                        break;
+                                    case R.id.id_item_addcontacts:
+                                        intentJump(getBaseContext(), UpdateInformation.class);
+                                        break;
+                                }
+                                return true;
+                            }
+                        });
+                popupMenu.show();
+            }
+        });
         }
 
         public void onClick (View view){
