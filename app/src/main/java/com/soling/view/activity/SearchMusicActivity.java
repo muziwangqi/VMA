@@ -89,6 +89,7 @@ public class SearchMusicActivity extends AppCompatActivity implements SearchMusi
         searchView.setIconifiedByDefault(true);
         searchView.setIconified(false);
         searchView.setFocusable(true);
+        searchView.onActionViewExpanded();
         searchView.requestFocusFromTouch();
 
         netAdapter = new MusicAdapter(new ArrayList<Music>());

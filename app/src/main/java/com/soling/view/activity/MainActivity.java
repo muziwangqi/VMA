@@ -1,5 +1,6 @@
 package com.soling.view.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.support.v4.view.ViewPager;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -73,6 +75,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         fragments.add(new SettingModuleFragment());
 
         viewPager.setAdapter(new ScollAdapter(getSupportFragmentManager(), fragments));
+        viewPager.setCurrentItem(1);
         //System.out.println("setAdapter");
 
 
@@ -131,7 +134,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onPageScrollStateChanged(int i) {
 
-            }});
+            }
+        });
 
         addMenu = (ImageButton) findViewById(R.id.id_ib_add);
         addMenu.setOnClickListener(new OnClickListener() {
@@ -140,37 +144,48 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 popupMenu.getMenuInflater().inflate(R.menu.menu_add,
                         popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new android.support.v7.widget.PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem menuItem) {
-                                switch (menuItem.getItemId()) {
-                                    case R.id.id_item_scan:
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.id_item_scan:
 //                                        Intent openCameraIntent = new Intent(MainActivity.this,CaptureActivity.class);
 //                                        startActivityForResult(openCameraIntent, 0);
-                                        break;
-                                    case R.id.id_item_addcontacts:
-                                        intentJump(getBaseContext(), UpdateInformation.class);
-                                        break;
-                                }
-                                return true;
-                            }
-                        });
+                                break;
+                            case R.id.id_item_addcontacts:
+                                intentJump(getBaseContext(), UpdateInformation.class);
+                                break;
+                        }
+                        return true;
+                    }
+                });
                 popupMenu.show();
             }
         });
-        }
-
-        public void onClick (View view){
-            switch (view.getId()) {
-                case R.id.id_tv_phone:
-                    viewPager.setCurrentItem(0);
-                    break;
-                case R.id.id_tv_music:
-                    viewPager.setCurrentItem(1);
-                    break;
-                case R.id.id_tv_setting:
-                    viewPager.setCurrentItem(2);
-                    break;
-            }
-        }
-
     }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.id_tv_phone:
+                viewPager.setCurrentItem(0);
+                break;
+            case R.id.id_tv_music:
+                viewPager.setCurrentItem(1);
+                break;
+            case R.id.id_tv_setting:
+                viewPager.setCurrentItem(2);
+                break;
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent();
+            intent.setAction("android.intent.action.MAIN");
+            intent.addCategory("android.intent.category.HOME");
+            startActivity(intent);
+        }
+        return super.onKeyDown(event.getKeyCode(), event);
+    }
+
+}

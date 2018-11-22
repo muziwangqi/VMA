@@ -66,6 +66,10 @@ public interface PlayerContract {
         int getVolume();
 
         void setVolume(int progress);
+
+        void loadLyric();
+
+        void loadCover();
     }
 
 }

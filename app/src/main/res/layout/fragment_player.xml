@@ -15,18 +15,16 @@
         android:layout_above="@+id/tv_name"
         android:background="#00000000"
         android:layout_marginBottom="100dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="47dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="105dp"
         >
 
         <ImageView
             android:id="@+id/iv_album_cover"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             android:background="#00000000"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center"
             >
         </ImageView>
 

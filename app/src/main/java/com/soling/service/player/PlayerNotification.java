@@ -15,6 +15,7 @@ import com.soling.App;
 import com.soling.R;
 import com.soling.model.LyricLine;
 import com.soling.model.Music;
+import com.soling.view.activity.MainActivity;
 
 public class PlayerNotification implements IPlayer.Observer {
 
@@ -43,15 +44,18 @@ public class PlayerNotification implements IPlayer.Observer {
     public void refreshButton() {
         if (player.isPlaying()) {
             remoteViews.setImageViewResource(R.id.ib_play_toggle, R.drawable.ic_notification_pause);
-        }
-        else {
+        } else {
             remoteViews.setImageViewResource(R.id.ib_play_toggle, R.drawable.ic_notification_play_arrow);
         }
         show();
     }
 
     public void refreshCover(Bitmap cover) {
-        remoteViews.setImageViewBitmap(R.id.iv_album_cover, cover);
+        if (cover == null) {
+            remoteViews.setImageViewResource(R.id.iv_album_cover, R.drawable.player_cover_default);
+        } else {
+            remoteViews.setImageViewBitmap(R.id.iv_album_cover, cover);
+        }
         show();
     }
 
@@ -75,22 +79,28 @@ public class PlayerNotification implements IPlayer.Observer {
                 new Intent(context, PlayerService.class).setAction(PlayerService.ACTION_PLAY_TOGGLE), 0);
         PendingIntent playNextIntent = PendingIntent.getService(context, 0,
                 new Intent(context, PlayerService.class).setAction(PlayerService.ACTION_PLAY_NEXT), 0);
+
+        PendingIntent intent = PendingIntent.getActivity(context, 0
+                , new Intent(context, MainActivity.class), 0);
+
         remoteViews = new RemoteViews(context.getPackageName(), R.layout.remote_play_notifaction);
 
         remoteViews.setOnClickPendingIntent(R.id.ib_play_last, playLastIntent);
         remoteViews.setOnClickPendingIntent(R.id.ib_play_toggle, playToggleIntent);
         remoteViews.setOnClickPendingIntent(R.id.ib_play_next, playNextIntent);
-        remoteViews.setImageViewResource(R.id.iv_album_cover, R.drawable.record);
+        remoteViews.setImageViewResource(R.id.iv_album_cover, R.drawable.player_cover_default);
 
         builder = new NotificationCompat.Builder(context, CHANEL_ID);
         builder.setSmallIcon(R.drawable.ic_music_note)
                 .setSound(null)
                 .setContent(remoteViews)
-                .setOngoing(true);
+                .setOngoing(true)
+                .setContentIntent(intent);
     }
 
     @Override
     public void onPlayChange() {
+        refreshCover(null);
         refreshText();
         refreshButton();
     }

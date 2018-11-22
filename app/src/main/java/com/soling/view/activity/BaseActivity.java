@@ -18,6 +18,7 @@ import com.soling.App;
 import com.soling.R;
 
 
+import com.soling.service.player.PlayerService;
 import com.soling.utils.db.DBHelper;
 
 import com.soling.utils.MusicFileManager;
@@ -57,6 +58,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         App app = (App) getApplication();
         if (app.getDbHelper() == null) {
             app.setDbHelper(new DBHelper(this, DBHelper.DATABASE_NAME, null, DBHelper.VERSION));
+        }
+        if (app.getPlayerService() == null) {
+            Intent intent = new Intent(this, PlayerService.class);
+            startService(intent);
+            app.setPlayerService(intent);
         }
     }
 

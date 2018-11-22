@@ -44,6 +44,10 @@ public interface IPlayer {
 
     void registerObserver(Observer observer);
 
+    void loadLyric(Observer observer);
+
+    void loadCover(Observer observer);
+
     interface Observer {
 
         void onPlayChange();    // 切歌

@@ -38,7 +38,7 @@ public class PlayerService extends Service {
         if (intent != null) {
             String action = intent.getAction();
             if (TextUtils.equals(action, ACTION_PLAY_LAST)) {
-                player.playNext();
+                player.playLast();
             }
             else if (TextUtils.equals(action, ACTION_PLAY_TOGGLE)) {
                 Log.d(TAG, "onStartCommand: " + "ACTION_PLAY_TOGGLE");
@@ -61,7 +61,6 @@ public class PlayerService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        player.release();
     }
 
     public IPlayer getPlayer() {

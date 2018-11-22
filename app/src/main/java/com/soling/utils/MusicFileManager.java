@@ -74,7 +74,7 @@ public class MusicFileManager {
                 for (Music mData : musicsData) {
                     Music music = Music.findMusicById(localMusics, mData.getId());
                     if (music == null) {
-                        MusicHelper.delete(music);
+                        MusicHelper.delete(mData);
                         continue;
                     }
                     music.setLocalCoverPath(mData.getLocalCoverPath());
