@@ -24,9 +24,15 @@
     <!-- screenbright -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WRITESETTINGS" />
-    <!-- wifinet -->
+    <!-- wifi -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- bluetooth -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 6.0 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -56,6 +62,7 @@
         <activity android:name="com.soling.view.activity.ThemeActivity" />
         <activity android:name="com.soling.view.activity.SendMessageActivity" />
         <activity android:name="com.soling.view.activity.WifiActivity" />
+        <activity android:name="com.soling.view.activity.BluetoothActivity" />
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name="com.soling.view.adapter.MediaButtonReceiver" >

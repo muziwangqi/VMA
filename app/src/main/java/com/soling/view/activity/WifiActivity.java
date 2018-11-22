@@ -30,6 +30,8 @@ import com.soling.R;
 import com.soling.utils.WifiUtil;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WifiActivity extends BaseActivity implements View.OnClickListener {
 
@@ -41,6 +43,7 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
     private String[] str;
     private int wifiIndex;
     private ProgressDialog progressDialog;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,6 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void setViews() {
-        View v=LayoutInflater.from(App.getInstance()).inflate(R.layout.layout_wifi,null);
         scan_button = findViewById(R.id.scan_button);
         wifi_result_textview = findViewById(R.id.wifi_result_textview);
         //System.out.println("scan_button====="+scan_button);
@@ -96,7 +98,7 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    break;
                 }
             }
         }
@@ -105,6 +107,17 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
     public void startScan() {
         wifiManager.startScan();
         wifiList = wifiManager.getScanResults();
+//        if (wifiList == null) {
+//            if (wifiManager.getWifiState() == 3) {
+//                shortToast("当前区域没有可用WiFi网络");
+//            }
+//        }
+        //id为空
+        for (ScanResult result : wifiList) {
+            if (result.SSID == null || result.SSID.length() == 0) {
+                continue;
+            }
+        }
         str = new String[wifiList.size()];
         String temStr = null;
         for (int i = 0; i < wifiList.size(); i++) {
@@ -119,25 +132,39 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
     //查看扫描结果
     private void lookupScan() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("可用WiFi");
-        dialog.setItems(str, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                wifiIndex = which;
-                handler.sendEmptyMessage(3);
-            }
-        });
-        dialog.show();
+        wifiList = wifiManager.getScanResults();
+        if (wifiList == null) {
+            shortToast("当前区域没有可用WiFi网络");
+        } else {
+            dialog.setTitle("可用WiFi网络");
+            dialog.setItems(str, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    wifiIndex = which;
+                    handler.sendEmptyMessage(3);
+                }
+            });
+            dialog.show();
+        }
     }
 
     class RefreshSsidThread extends Thread {
         @Override
         public void run() {
             boolean flag = true;
+/*            timer=new Timer();
+            TimerTask task=(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.sendEmptyMessage(1);
+                }
+            };
+            timer.schedule(task,60000);*/
             while (flag) {
                 currWifiInfo = wifiManager.getConnectionInfo();
                 if (currWifiInfo.getSSID() != null && currWifiInfo.getIpAddress() != 0) {
-                    flag = false;
+                    flag=false;
+//                    break;
                 }
             }
             handler.sendEmptyMessage(4);
@@ -147,7 +174,7 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
 
     public void connectionConfig(int index, String password) {
         progressDialog = ProgressDialog.show(this, "正在连接...", "请稍后...");
-        new ConnectWifiThread().execute(index+"",password);
+        new ConnectWifiThread().execute(index + "", password);
     }
 
     class ConnectWifiThread extends AsyncTask<String, Integer, String> {
@@ -197,31 +224,35 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
                     final AlertDialog.Builder alert = new AlertDialog.Builder(WifiActivity.this);//不能用App.getInstance()
                     final EditText etPassword = (EditText) view.findViewById(R.id.et_password);
 
-                    CheckBox cbPassword=view.findViewById(R.id.cb_password);
+                    CheckBox cbPassword = view.findViewById(R.id.cb_password);
                     etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());//设置密码不可见
                     cbPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            if (isChecked){
+                            if (isChecked) {
                                 etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            }else{
+                            } else {
                                 etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                             }
                             //光标放在末尾
-                            CharSequence charSequence=etPassword.getText();
-                            if (charSequence instanceof Spannable){
-                                Spannable spannable= (Spannable) charSequence;
-                                Selection.setSelection(spannable,charSequence.length());
+                            CharSequence charSequence = etPassword.getText();
+                            if (charSequence instanceof Spannable) {
+                                Spannable spannable = (Spannable) charSequence;
+                                Selection.setSelection(spannable, charSequence.length());
                             }
                         }
                     });
 
                     alert.setTitle("请输入密码");
                     alert.setView(view);
+                    final String pwd = etPassword.getText().toString();
                     alert.setPositiveButton("连接", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            connectionConfig(wifiIndex, etPassword.getText().toString());
+//                            if (pwd.length() < 8 || pwd == null) {
+//                                shortToast("密码不能少于8位，请重新输入");
+//                            }
+                            connectionConfig(wifiIndex, pwd);
                         }
                     });
                     alert.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -240,4 +271,10 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
             super.handleMessage(msg);
         }
     };
+
+/*    @Override
+    protected void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
+    }*/
 }

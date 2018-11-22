@@ -20,14 +20,14 @@ import java.util.List;
 
 public class WirelessActivity extends BaseActivity {
 
-    private WiperSwitch wsMobileNet,wsWifiNet;
+    private WiperSwitch wsMobileNet,wsWifiNet,wsBluetooth;
     private Context context;
-    private String id, type, apn, curr;
-    private WifiUtil wifiManager;
-    private String wifiSsid,wifiPassword;
-    private EditText editText=new EditText(App.getInstance());
+//    private String id, type, apn, curr;
+//    private WifiUtil wifiManager;
+//    private String wifiSsid,wifiPassword;
+//    private EditText editText=new EditText(App.getInstance());
 
-    Uri uri = Uri.parse("content://telephony/carriers");
+    //Uri uri = Uri.parse("content://telephony/carriers");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,28 @@ public class WirelessActivity extends BaseActivity {
         initViews();
         //getMobileNet();
         getWifiNet();
+        getBluetooth();
     }
 
     @Override
     public void initViews() {
-        wsMobileNet = findViewById(R.id.ws_mobilenet);
+        //wsMobileNet = findViewById(R.id.ws_mobilenet);
         wsWifiNet=findViewById(R.id.ws_wifinet);
+        wsBluetooth=findViewById(R.id.ws_bluetooth);
+    }
+
+    private void getBluetooth() {
+        wsBluetooth.setChecked(false);
+        wsBluetooth.setOnChangedListener(new WiperSwitch.IOnChangedListener() {
+            @Override
+            public void onChange(WiperSwitch wiperSwitch, boolean checkStat) {
+                if (checkStat){
+                    intentJump(App.getInstance(),BluetoothActivity.class);
+                }else{
+
+                }
+            }
+        });
     }
 
     private void getWifiNet() {
@@ -59,7 +75,7 @@ public class WirelessActivity extends BaseActivity {
         });
     }
 
-    private void getMobileNet() {
+    /*private void getMobileNet() {
         //判断是否已连接移动网
 //        boolean flag;
 //        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -124,5 +140,5 @@ public class WirelessActivity extends BaseActivity {
             cursor.close();
         }
         return list;
-    }
+    }*/
 }

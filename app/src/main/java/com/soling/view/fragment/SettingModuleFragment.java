@@ -27,8 +27,8 @@ import java.util.Date;
 
 public class SettingModuleFragment extends BaseFragment {
 
-    private Button btnLight, btnWireless,btnTheme;
-    private ImageButton ibtnLight, ibtnWireless,ibtnTheme;
+    private Button btnLight, btnWireless,btnTheme,btnBluetooth;
+    private ImageButton ibtnLight, ibtnWireless,ibtnTheme,ibtnBluetooth;
     private EditText etTime;
     private DatePickerDialog datePickerDialog;
 
@@ -46,7 +46,7 @@ public class SettingModuleFragment extends BaseFragment {
         stringBuilder.append("yyyy年MM月dd日");
         SimpleDateFormat date=new SimpleDateFormat(stringBuilder.toString());
         etTime.setText(date.format(new Date()));
-        System.out.println("------date--"+date.format(new Date()));
+        //System.out.println("------date--"+date.format(new Date()));
     }
 
     private void initView() {

@@ -28,9 +28,15 @@
     <!-- screenbright-->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"></uses-permission>
     <uses-permission android:name="android.permission.WRITESETTINGS"></uses-permission>
-    <!-- wifinet-->
+    <!-- wifi-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!-- bluetooth -->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+    <!-- 6.0 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
 
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions"></uses-permission>
@@ -62,6 +68,7 @@
         <activity android:name=".view.activity.ThemeActivity"></activity>
         <activity android:name=".view.activity.SendMessageActivity"></activity>
         <activity android:name=".view.activity.WifiActivity"></activity>
+        <activity android:name=".view.activity.BluetoothActivity"></activity>
 
         <!-- 线控切歌注册广播 -->
         <receiver android:name=".view.adapter.MediaButtonReceiver">
@@ -70,6 +77,7 @@
                 <action android:name="android.intent.action.HEADSET_PLUG" /> <!-- 插拔耳机事件 -->
             </intent-filter>
         </receiver>
+
 
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.InformationActivity" />
