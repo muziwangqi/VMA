@@ -1,50 +1,9 @@
 -- Merging decision tree log ---
 manifest
-<<<<<<< HEAD
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\9ad70902993443bff032010c24992948\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-v4:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\422eed16115dc4fca0df9291ea5a4f83\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\819477e28ce77d7dcfa3a4bee7e1e4e9\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\a7a8a25e33e38b8f720e9b572b84d420\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\e4d30ce890b25c7e584c13faa894b81e\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\2e9650025beada475b617e944f8dc3eb\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\8a34fda4e840bc3c93739e62cddfbe72\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\8f81d98fa9f61720e163624e135cd684\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\2e1ead0e19206ffd22adc6c6e26771b0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\54e1d25c6d1191c96f40838cfae77c6f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:loader:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\b3557268dc490c021a4656522751f7ca\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\c3b7b661351084e71bbb896dc26d8151\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\040a67a9250456fd48161679656dae29\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\e323ff447b580de2a95811cbdd4124e5\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\f38348253cbdd71512ba556a9294aae5\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customview:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\7f07be538e324c263fe7b8c551675184\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\254bf8ff325c1857ed3da3c4248e9814\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\72dca0dac59e50a3444ec73465d8ab46\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\d54535d0d13cf71df0284f34904dfcbe\AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\c4025bd1153c234e0343edb4c6edfa01\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\d0fc9800ed5f4d9e95a826d9fe0eaca5\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1897f52c6a531b0c2afe26ab09286b28\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\a9d39a58043bc82602009fb389f08c38\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\f3bb9b29ac490d259a7fff9db41040f4\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:print:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\20868c0a9677db693b8eec004ba0e6fb\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\558cb326c6e8014902047d7fe4244edf\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\bc4c947507763d3ca42a6965da110dab\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\141e529bf050ee120e2dbb3b80170742\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\af1522d0227342a16e5884c5df1d1628\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.1] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\a93fde427c37f0953dfa410895aceaff\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-INJECTED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
-=======
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
 MERGED from [com.android.support:design:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\11106c8c90221c8ab3135178d316d651\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\c04109e520cba7dcb94919814136b44a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\19c506b2651d3c5ea2a29e4438187e9f\AndroidManifest.xml:17:1-22:12
@@ -77,10 +36,9 @@ MERGED from [com.android.support:interpolator:28.0.0] D:\.gradle\caches\transfor
 MERGED from [android.arch.lifecycle:livedata:1.1.1] D:\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\0124ad2ae3cb6232905711099d8a44e9\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] D:\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0ad3822c76ce360343fa88ef669b3359\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] D:\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\95f0c81c733fb72dd751ea31cd096f0e\AndroidManifest.xml:17:1-22:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-94:12
->>>>>>> 修改初始化播放器的逻辑，调整notification，修改加载歌词和专辑封面的逻辑
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml:2:1-102:12
 	package
 		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:4:5-25
 		INJECTED from F:\projects\VMA\app\src\main\AndroidManifest.xml
@@ -224,11 +182,7 @@ ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:25:5-80
 uses-permission#android.permission.CHANGE_CONFIGURATION
 ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:29:5-95
 	tools:ignore
-<<<<<<< HEAD
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:42:9-44
-=======
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:36:9-44
->>>>>>> 修改初始化播放器的逻辑，调整notification，修改加载歌词和专辑封面的逻辑
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:42:9-44
 	android:name
 		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:29:22-76
 uses-permission#android.permission.WRITESETTINGS
@@ -242,300 +196,160 @@ ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:32:5-92
 uses-permission#android.permission.CHANGE_WIFI_STATE
 ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:33:5-92
 	android:name
-<<<<<<< HEAD
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:33:22-73
-uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:35:5-84
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:35:22-65
-uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:36:5-90
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:36:22-71
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:38:5-95
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:38:22-76
-uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:5-97
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:39:22-78
-uses-permission#android.permission.WRITE_SETTINGS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:43:5-44:63
-	tools:ignore
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:44:9-44
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:43:22-70
-uses-permission#android.permission.SEND_SMS
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:5-83
-	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:45:22-64
-application
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:47:5-100:19
-MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\509b23c42965ed757166142c63592a2e\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\ba4a4fcfe7c013bc4c5aa271db61c3c9\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\d54535d0d13cf71df0284f34904dfcbe\AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\xuewang\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\d54535d0d13cf71df0284f34904dfcbe\AndroidManifest.xml:22:5-23:19
-=======
 		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:33:22-73
+uses-permission#android.permission.BLUETOOTH
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:35:5-84
+	android:name
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:35:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:36:5-90
+	android:name
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:36:22-71
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:38:5-95
+	android:name
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:38:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:39:5-97
+	android:name
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:39:22-78
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:37:5-38:63
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:43:5-44:63
 	tools:ignore
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:38:9-44
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:44:9-44
 	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:37:22-70
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:43:22-70
 uses-permission#android.permission.SEND_SMS
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:39:5-83
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:45:5-83
 	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:39:22-64
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:45:22-64
 application
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:41:5-92:19
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:47:5-100:19
 MERGED from [com.android.support:design:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\11106c8c90221c8ab3135178d316d651\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\11106c8c90221c8ab3135178d316d651\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-compat:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\43cb7f0534ba1ae83640fb22ecb8eefb\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\43cb7f0534ba1ae83640fb22ecb8eefb\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5f3f2679bdf8db9170995d11c23abeda\AndroidManifest.xml:22:5-23:19
 MERGED from [com.android.support:versionedparcelable:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5f3f2679bdf8db9170995d11c23abeda\AndroidManifest.xml:22:5-23:19
->>>>>>> 修改初始化播放器的逻辑，调整notification，修改加载歌词和专辑封面的逻辑
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] D:\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\43cb7f0534ba1ae83640fb22ecb8eefb\AndroidManifest.xml:22:18-91
 	android:label
-<<<<<<< HEAD
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:51:9-41
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:51:9-41
 	android:icon
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:50:9-45
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:50:9-45
 	android:allowBackup
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:49:9-35
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:49:9-35
 	android:theme
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:52:9-40
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:52:9-40
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:48:9-28
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:48:9-28
 activity#com.soling.view.activity.Banner2Activity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:53:9-61:20
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:53:9-61:20
 	android:label
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:55:13-45
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:55:13-45
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:54:13-58
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:54:13-58
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:56:13-60:29
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:56:13-60:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:57:17-69
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:57:17-69
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:57:25-66
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:57:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:59:17-77
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:59:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:59:27-74
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:59:27-74
 activity#com.soling.view.activity.MainActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:9-64
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:63:9-64
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:63:19-61
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:63:19-61
 activity#com.soling.view.activity.AboutActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:64:9-65
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:64:9-65
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:64:19-62
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:64:19-62
 activity#com.soling.view.activity.HelpActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:65:9-64
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:65:9-64
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:65:19-61
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:65:19-61
 activity#com.soling.view.activity.WirelessActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:66:9-87
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:66:9-87
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:66:19-75
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:66:19-75
 activity#com.soling.view.activity.LightActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:67:9-84
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:67:9-84
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:67:19-72
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:67:19-72
 activity#com.soling.view.activity.ThemeActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:68:9-74
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:68:9-74
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:68:19-62
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:68:19-62
 activity#com.soling.view.activity.SendMessageActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:69:9-80
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:69:9-80
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:69:19-68
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:69:19-68
 activity#com.soling.view.activity.WifiActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:70:9-73
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:70:9-73
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:70:19-61
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:70:19-61
 activity#com.soling.view.activity.BluetoothActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:9-78
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:71:9-78
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:71:19-66
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:71:19-66
 receiver#com.soling.view.adapter.MediaButtonReceiver
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:74:9-79:20
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:74:9-79:20
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:74:19-67
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:74:19-67
 intent-filter#action:name:android.intent.action.HEADSET_PLUG+action:name:android.intent.action.MEDIA_BUTTON
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:75:13-78:29
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:75:13-78:29
 action#android.intent.action.MEDIA_BUTTON
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:76:17-77
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:76:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:76:25-74
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:76:25-74
 action#android.intent.action.HEADSET_PLUG
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:77:17-77
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:77:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:77:25-74
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:77:25-74
 activity#com.soling.view.activity.LoginActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:82:9-65
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:82:9-65
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:82:19-62
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:82:19-62
 activity#com.soling.view.activity.InformationActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:83:9-71
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:83:9-71
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:83:19-68
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:83:19-68
 activity#com.soling.view.activity.TwoDimensionCode
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:84:9-68
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:84:9-68
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:84:19-65
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:84:19-65
 activity#com.soling.view.activity.UpdateInformation
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:85:9-69
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:85:9-69
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:85:19-66
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:85:19-66
 activity#com.soling.view.activity.SearchMusicActivity
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:86:9-90:20
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:86:9-90:20
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:86:19-68
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:86:19-68
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:87:13-89:73
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:87:13-89:73
 	android:value
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:89:17-70
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:89:17-70
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:88:17-63
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:88:17-63
 service#com.soling.service.player.PlayerService
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:92:9-98:19
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:92:9-98:19
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:92:18-62
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:92:18-62
 intent-filter#action:name:cn.hyw.www.imusic.action.PLAY_LAST+action:name:cn.hyw.www.imusic.action.PLAY_NEXT+action:name:cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:93:13-97:29
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:93:13-97:29
 action#cn.hyw.www.imusic.action.PLAY_NEXT
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:94:17-77
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:94:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:94:25-74
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:94:25-74
 action#cn.hyw.www.imusic.action.PLAY_LAST
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:95:17-77
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:95:17-77
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:95:25-74
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:95:25-74
 action#cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:96:17-79
+ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:96:17-79
 	android:name
-		ADDED from C:\Users\xuewang\Desktop\demo\VMA\app\src\main\AndroidManifest.xml:96:25-76
-=======
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:45:9-41
-	android:icon
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:44:9-45
-	android:allowBackup
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:43:9-35
-	android:theme
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:46:9-40
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:42:9-28
-activity#com.soling.view.activity.Banner2Activity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:47:9-55:20
-	android:label
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:49:13-45
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:48:13-58
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:50:13-54:29
-action#android.intent.action.MAIN
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:51:17-69
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:51:25-66
-category#android.intent.category.LAUNCHER
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:53:17-77
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:53:27-74
-activity#com.soling.view.activity.MainActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:57:9-64
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:57:19-61
-activity#com.soling.view.activity.AboutActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:58:9-65
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:58:19-62
-activity#com.soling.view.activity.HelpActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:59:9-64
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:59:19-61
-activity#com.soling.view.activity.WirelessActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:60:9-87
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:60:19-75
-activity#com.soling.view.activity.LightActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:61:9-84
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:61:19-72
-activity#com.soling.view.activity.ThemeActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:62:9-74
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:62:19-62
-activity#com.soling.view.activity.SendMessageActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:63:9-80
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:63:19-68
-activity#com.soling.view.activity.WifiActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:64:9-73
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:64:19-61
-receiver#com.soling.view.adapter.MediaButtonReceiver
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:67:9-72:20
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:67:19-67
-intent-filter#action:name:android.intent.action.HEADSET_PLUG+action:name:android.intent.action.MEDIA_BUTTON
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:68:13-71:29
-action#android.intent.action.MEDIA_BUTTON
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:69:17-77
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:69:25-74
-action#android.intent.action.HEADSET_PLUG
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:70:17-77
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:70:25-74
-activity#com.soling.view.activity.LoginActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:74:9-65
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:74:19-62
-activity#com.soling.view.activity.InformationActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:75:9-71
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:75:19-68
-activity#com.soling.view.activity.TwoDimensionCode
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:76:9-68
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:76:19-65
-activity#com.soling.view.activity.UpdateInformation
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:77:9-69
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:77:19-66
-activity#com.soling.view.activity.SearchMusicActivity
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:78:9-82:20
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:78:19-68
-meta-data#android.support.PARENT_ACTIVITY
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:79:13-81:73
-	android:value
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:81:17-70
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:80:17-63
-service#com.soling.service.player.PlayerService
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:84:9-90:19
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:84:18-62
-intent-filter#action:name:cn.hyw.www.imusic.action.PLAY_LAST+action:name:cn.hyw.www.imusic.action.PLAY_NEXT+action:name:cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:85:13-89:29
-action#cn.hyw.www.imusic.action.PLAY_NEXT
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:86:17-77
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:86:25-74
-action#cn.hyw.www.imusic.action.PLAY_LAST
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:87:17-77
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:87:25-74
-action#cn.hyw.www.imusic.action.PLAY_TOGGLE
-ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:88:17-79
-	android:name
-		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:88:25-76
->>>>>>> 修改初始化播放器的逻辑，调整notification，修改加载歌词和专辑封面的逻辑
+		ADDED from F:\projects\VMA\app\src\main\AndroidManifest.xml:96:25-76
