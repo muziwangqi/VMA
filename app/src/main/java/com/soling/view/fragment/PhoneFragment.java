@@ -61,6 +61,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
     private Music sharedMusic;
     private TextView tv;
     private ListView listView;
+    WordsNavigation word;
     //	private ImageView myHead;
 //	private TextView myName;
     @Override
@@ -87,7 +88,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         personListView.setAdapter(listAdapter);
         addFloatButton(relativeLayout);
         tv = view.findViewById(R.id.tv);
-        final WordsNavigation word = view.findViewById(R.id.words);
+        word = view.findViewById(R.id.words);
         listView =view.findViewById(R.id.person_list);
 //        listView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
 //            @Override
@@ -106,6 +107,7 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
         personListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
+
                 if (sharedMusic != null) {
                     SMSUtil.sendSMS(phoneDtos.get(arg2).getTelPhone(), sharedMusic.getArtist() + "的" + sharedMusic.getName() + "很好听 @_@");
                     sharedMusic = null;
@@ -175,18 +177,21 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
                 switch (text2.getText().toString()) {
                     case "好友列表":
                         text2.setText("通话记录");
+                        word.setVisibility(View.GONE);
                         refreshPhoneCallLog();
                         personListView.setAdapter(phoneCallLogAdapter);
                         addFloatButton(relativeLayout);
                         break;
                     case "通话记录":
                         text2.setText("信息记录");
+                        word.setVisibility(View.GONE);
                         refreshPhoneInformation();
                         personListView.setAdapter(phoneInformationAdapter);
                         addFloatButton(relativeLayout);
                         break;
                     case "信息记录":
                         text2.setText("好友列表");
+                        word.setVisibility(View.VISIBLE);
                         refreshPhoneList1();
                         personListView.setAdapter(listAdapter);
                         addFloatButton(relativeLayout);
@@ -199,14 +204,14 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
     public void refreshPhoneCallLog() {
         PhoneCallLog phoneCallLog = new PhoneCallLog();
         PhoneUtil phoneUtil = new PhoneUtil(view.getContext());
-        phoneCallLogs = phoneUtil.getPhoneCallLog();
+        phoneCallLogs = phoneUtil.handleListPhoneCallLog();
         phoneCallLogAdapter = new PhoneCallLogAdapter(getActivity(), phoneCallLogs);
     }
 
     public void refreshPhoneInformation() {
         PhoneInformation phoneInformation = new PhoneInformation();
         PhoneUtil phoneUtil = new PhoneUtil(view.getContext());
-        phoneInformations = phoneUtil.getInformationList();
+        phoneInformations = phoneUtil.handleListInformation();
         phoneInformationAdapter = new PhoneInformationAdapter(getActivity(), phoneInformations);
     }
 
@@ -215,6 +220,13 @@ public class PhoneFragment extends Fragment implements MainActivityInterface {
 
     public void shareMusic(Music music) {
         this.sharedMusic = music;
+    }
+
+    public void jumpActivity(){
+        TextView text2 = view.findViewById(R.id.tv_text2);
+        switch (text2.getText().toString()){
+
+        }
     }
 
 }

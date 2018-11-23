@@ -19,9 +19,14 @@ public class BitmapUtil {
     private static final String DIR_COVER = "cover";
 
     public static RoundedBitmapDrawable roundedBitmapDrawable(Bitmap bitmap) {
+        return roundedBitmapDrawable(bitmap, Math.min(bitmap.getWidth(), bitmap.getHeight()));
+    }
+
+
+    public static RoundedBitmapDrawable roundedBitmapDrawable(Bitmap bitmap, int radius) {
         RoundedBitmapDrawable result = RoundedBitmapDrawableFactory.create(App.getInstance().getResources(), bitmap);
         result.setAntiAlias(true);
-        result.setCornerRadius(Math.min(bitmap.getWidth(), bitmap.getHeight()));
+        result.setCornerRadius(radius);
         return result;
     }
 

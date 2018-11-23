@@ -6,13 +6,11 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:id="@+id/info_number"
-        android:text="16666666666"
         android:textSize="16sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:id="@+id/info_time"
-        android:text="2018-11-16"
         android:textSize="14sp"
         android:layout_alignParentRight="true"/>
     <TextView
@@ -22,6 +20,5 @@
         android:maxLines="1"
         android:ellipsize="end"
         android:textSize="14sp"
-        android:text="sdbhfbzsdfzfgiuzngirnginemrgjinmergjienmgemnhtrhmrethmerhikmrihmrimshtrmhsrihsrthksrmthir"
         android:layout_below="@+id/info_number"/>
 </RelativeLayout>

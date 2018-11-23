@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#f0f0f0"
+    android:paddingLeft="80dip"
+    android:paddingRight="8dip"
+    android:paddingBottom="10dip"
+    android:paddingTop="10dip">
+    <ImageView
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_marginLeft="5dip"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/headphoto"
+        android:id="@+id/chatlist_image_me"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatlist_text_me"
+        android:layout_toLeftOf="@+id/chatlist_image_me"
+        android:layout_alignTop="@+id/chatlist_image_me"
+        android:text="东方故事"
+        android:background="#EEE9E9"
+        android:paddingTop="13dip"
+        android:paddingBottom="18dip"/>
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatlist_time_me"
+        android:layout_toLeftOf="@+id/chatlist_image_me"
+        android:layout_below="@+id/chatlist_text_me"
+        android:text="2018-11-12 12:12:12"
+        android:background="#EEE9E9"
+        android:paddingTop="13dip"
+        android:paddingBottom="18dip"
+        android:textSize="5sp"/>-->
+
+</RelativeLayout>

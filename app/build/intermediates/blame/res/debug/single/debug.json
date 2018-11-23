@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_l.jpg.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\l.jpg"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_secondary_text_material_light.xml.flat",
@@ -96,12 +96,12 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_list.png"
     },
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v21_ic_skip_previous_black_24dp.xml.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_skip_previous_black_24dp.xml"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_wireless.xml.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\layout_wireless.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v21_ic_skip_previous_black_24dp.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_skip_previous_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_slide_out_bottom.xml.flat",
@@ -122,6 +122,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v21_ic_music_note.xml.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_music_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_player_slider_p.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\player_slider_p.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_function.png.flat",
@@ -156,12 +160,12 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\2e1ead0e19206ffd22adc6c6e26771b0\\res\\layout\\notification_template_media_custom.xml"
     },
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_player_last.png.flat",
@@ -276,6 +280,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_banner_a.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\banner_a.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\menu\\main.xml"
     },
@@ -366,10 +374,6 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_banner_a.png.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\banner_a.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -484,6 +488,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_player_cover_default_bg.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\player_cover_default_bg.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\animator_design_fab_hide_motion_spec.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\animator\\design_fab_hide_motion_spec.xml"
     },
@@ -500,12 +508,12 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\item_search_history.xml"
     },
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v21_ic_play_last.xml.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_play_last.xml"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_button_bar_material.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v21_ic_play_last.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi-v21\\ic_play_last.xml"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_a.png.flat",
@@ -886,6 +894,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_player_volume.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\player_volume.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\interpolator_mtrl_fast_out_linear_in.xml.flat",
@@ -1324,6 +1336,10 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_player_seekbar_play_progress.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_seekbar_play_progress.xml"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-mdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
@@ -1342,10 +1358,6 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\ba4a4fcfe7c013bc4c5aa271db61c3c9\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_banner_d.png.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\banner_d.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_layout_snackbar.xml.flat",
@@ -1396,6 +1408,10 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_play.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_player_search_p.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\player_search_p.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\ba4a4fcfe7c013bc4c5aa271db61c3c9\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
@@ -1422,6 +1438,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_popup_full.9.png.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\popup_full.9.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_main_volume_bg.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\main_volume_bg.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_search_api_material.xml.flat",
@@ -1514,10 +1534,6 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_design_bottom_navigation_item_background.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\drawable\\design_bottom_navigation_item_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_banner_b.png.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\banner_b.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -1662,6 +1678,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_send.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\chat_send.xml"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_switch_thumb_material.xml.flat",
@@ -1896,6 +1916,10 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\editview_border.xml"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_banner_b.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\banner_b.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_design_ic_visibility_off.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
     },
@@ -1970,6 +1994,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_search_dropdown_item_icons_2line.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_banner_d.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\banner_d.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -2092,6 +2120,10 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\guan.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_get.xml.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\chat_get.xml"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_search_music.xml.flat",
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\layout\\activity_search_music.xml"
     },
@@ -2120,16 +2152,16 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_music_note.png"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_banner_c.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\banner_c.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-ldrtl-hdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_separator.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout\\design_navigation_item_separator.xml"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_player_cover_default.jpg.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_cover_default.jpg"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v24_ic_launcher_foreground.xml.flat",
@@ -2392,6 +2424,10 @@
         "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\none.jpg"
     },
     {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_n.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-hdpi\\ic_add_n.png"
+    },
+    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
@@ -2462,6 +2498,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_player_cover_default.png.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-xxhdpi\\player_cover_default.png"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_layout_snackbar_include.xml.flat",
@@ -2550,9 +2590,5 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\9ad70902993443bff032010c24992948\\res\\drawable-xxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_banner_c.png.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable-ldpi\\banner_c.png"
     }
 ]

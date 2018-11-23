@@ -40,8 +40,8 @@ public class UserAdapter extends ArrayAdapter<User> {
 		}else{
 			view = convertView;
 		}
-		ImageView myHeading = view.findViewById(R.id.tv_heading);
-		TextView myNickname = view.findViewById(R.id.tv_name);
+		ImageView myHeading = view.findViewById(R.id.person_list_heading);
+		TextView myNickname = view.findViewById(R.id.person_list_name);
 		//TextView myStatus = view.findViewById(R.id.tv_status);
 		final int minCircularSize = Math.min(user.getAvatarUrl().getHeight(), user.getAvatarUrl().getWidth());
 		int mCornerRadius = minCircularSize / 2;

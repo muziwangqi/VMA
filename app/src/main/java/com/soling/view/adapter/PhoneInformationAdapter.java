@@ -1,6 +1,7 @@
 package com.soling.view.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class PhoneInformationAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         SortAdapter.ViewHolder holder;
         if(convertView==null){
-            convertView = inflater.inflate(R.layout.person_list,null);
+            convertView = inflater.inflate(R.layout.information_log,null);
             holder = new SortAdapter.ViewHolder();
              holder.informationNumber= convertView.findViewById(R.id.info_number);
             holder.informationTime = convertView.findViewById(R.id.info_time);
@@ -53,7 +54,11 @@ public class PhoneInformationAdapter extends BaseAdapter {
             holder = (SortAdapter.ViewHolder)convertView.getTag();
         }
         PhoneInformation cv = list.get(position);
-        holder.name.setText(cv.getPerson());
+        if(cv.getPerson()==null){
+            holder.informationNumber.setText(cv.getStrAddress());
+        }else{
+            holder.informationNumber.setText(cv.getPerson());
+        }
         holder.informationContext.setText(cv.getStrBody());
         holder.informationTime.setText(cv.getDate());
         return convertView;

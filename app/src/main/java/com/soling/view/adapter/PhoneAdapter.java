@@ -37,9 +37,9 @@ public class PhoneAdapter extends ArrayAdapter<PhoneDto> {
         }else{
             view = convertView;
         }
-        ImageView myHeading = view.findViewById(R.id.tv_heading);
-        TextView myNickname = view.findViewById(R.id.tv_name);
-        TextView myStatus = view.findViewById(R.id.tv_phone);
+        ImageView myHeading = view.findViewById(R.id.person_list_heading);
+        TextView myNickname = view.findViewById(R.id.person_list_name);
+        TextView myStatus = view.findViewById(R.id.person_list_phone);
 //        Bitmap bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.l);
 //        final int minCircularSize = Math.min(bmp.getHeight(), bmp.getWidth());
 //        int mCornerRadius = minCircularSize / 2;
