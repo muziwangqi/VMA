@@ -1,63 +1,116 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rl_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="蓝牙"
+            android:textSize="16sp" />
+
+        <com.soling.view.adapter.WiperSwitch
+            android:id="@+id/ws_bttop"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_four"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/rl_three">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的蓝牙名称"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_bluetooth_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="汪"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_bluetooth_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bluetooth_name"
+            android:text="435355"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <!--LinearLayout
+        android:id="@+id/ll_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ll_first">
+        android:layout_below="@id/rl_four">
+
         <Button
             android:id="@+id/btn_open"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="打开蓝牙" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="关闭蓝牙"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="关闭蓝牙" />
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="搜索"
-            android:layout_marginLeft="5dp"/>
-    </LinearLayout>
+            android:layout_marginLeft="5dp"
+            android:text="搜索" />
+    </LinearLayout-->
 
     <LinearLayout
+        android:id="@+id/ll_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ll_second"
-        android:layout_below="@id/ll_first"
+        android:layout_below="@id/rl_four"
         android:paddingTop="5dp">
-        <Button
+
+        <!--Button
             android:id="@+id/btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的蓝牙" />
+            android:text="我的蓝牙" /-->
+
         <Button
             android:id="@+id/btn_matchfirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="配对第一个"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="配对第一个" />
 
         <Button
             android:id="@+id/btn_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="连接"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="连接" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_devices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_second"/>
+        android:layout_below="@id/ll_second" />
 
 </RelativeLayout>

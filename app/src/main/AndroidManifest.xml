@@ -64,7 +64,6 @@
         <activity android:name=".view.activity.AboutActivity" />
         <activity android:name=".view.activity.HelpActivity" />
         <activity android:name="com.soling.view.activity.WirelessActivity"></activity>
-        <activity android:name="com.soling.view.activity.LightActivity"></activity>
         <activity android:name=".view.activity.ThemeActivity"></activity>
         <activity android:name=".view.activity.SendMessageActivity"></activity>
         <activity android:name=".view.activity.WifiActivity"></activity>
