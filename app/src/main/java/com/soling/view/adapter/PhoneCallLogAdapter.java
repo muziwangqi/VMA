@@ -50,13 +50,12 @@ public class PhoneCallLogAdapter extends BaseAdapter {
         }else{
             holder = (SortAdapter.ViewHolder)convertView.getTag();
         }
-<<<<<<< 8656da03147f88c063f9719e1159244eb76c09f7
-=======
+
         holder = new SortAdapter.ViewHolder();
-        holder.callName= view.findViewById(R.id.call_name);
-        holder.callTime = view.findViewById(R.id.call_time);
-        holder.callNumber = view.findViewById(R.id.call_number);
-        holder.callType = view.findViewById(R.id.call_type);
+        holder.callName= convertView.findViewById(R.id.call_name);
+        holder.callTime = convertView.findViewById(R.id.call_time);
+        holder.callNumber = convertView.findViewById(R.id.call_number);
+        holder.callType = convertView.findViewById(R.id.call_type);
 //        if(convertView==null){
 //            convertView = inflater.inflate(R.layout.person_list,null);
 //            holder = new SortAdapter.ViewHolder();
@@ -68,7 +67,7 @@ public class PhoneCallLogAdapter extends BaseAdapter {
 //        }else{
 //            holder = (SortAdapter.ViewHolder)convertView.getTag();
 //        }
->>>>>>> addinformation
+
         PhoneCallLog cv = list.get(position);
         if(cv.getType().equals("呼入")){
             Log.e(TAG, "getView: " + holder == null ? "null" : "not null");
@@ -82,6 +81,6 @@ public class PhoneCallLogAdapter extends BaseAdapter {
         holder.callNumber.setText(cv.getFormatted_number());
         holder.callTime.setText(cv.getDate());
         holder.callName.setText(cv.getName());
-        return view;
+        return convertView;
     }
 }
