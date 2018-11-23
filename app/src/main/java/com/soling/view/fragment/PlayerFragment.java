@@ -16,6 +16,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         initView();
         initData();
         initEvent();
+        float scale = App.getInstance().getResources().getDisplayMetrics().density;
     }
 
     @Override
@@ -135,7 +137,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         presenter.bindPlayService();
 
         handler = new Handler();
-        taskHideSBVolume = new Runnable(){
+        taskHideSBVolume = new Runnable() {
             @Override
             public void run() {
                 PlayerFragment.this.sbVolume.setVisibility(View.INVISIBLE);
@@ -224,25 +226,31 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     private void initPlayer() {
-        musicFileManager = MusicFileManager.getInstance(getContext());
-        musicFileManager.getLocalMusics(new MusicFileManager.Callback() {
-            @Override
-            public void onFinish(final List<Music> musics) {
-                ((App)Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(new PlayList(musics));
-                PlayerFragment.this.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (musics.size() > 0) {
-                            presenter.play(App.getInstance().getLocalMusics(), 0);
-                            presenter.pause();
+        if (presenter.getPlayingMusic() == null) {
+            musicFileManager = MusicFileManager.getInstance(getContext());
+            musicFileManager.getLocalMusics(new MusicFileManager.Callback() {
+                @Override
+                public void onFinish(final List<Music> musics) {
+                    ((App) Objects.requireNonNull(getActivity()).getApplication()).setLocalMusics(new PlayList(musics));
+                    PlayerFragment.this.getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (musics.size() > 0) {
+                                presenter.play(App.getInstance().getLocalMusics(), 0);
+                                presenter.pause();
+                            }
+                            refreshView();
+                            initMusicListFragments();
+                            startRefreshLyric();
                         }
-                        refreshView();
-                        initMusicListFragments();
-                        startRefreshLyric();
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        } else {
+            refreshView();
+            initMusicListFragments();
+            startRefreshLyric();
+        }
     }
 
     private void initMusicListFragments() {
@@ -301,6 +309,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     @Override
     public void refreshView() {
         final Music music = presenter.getPlayingMusic();
+        lyricView.reset();
+        final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
+        ivAlbumCover.setImageDrawable(drawable);
         if (music != null) {
             tvName.setText(music.getName());
             tvArtist.setText("- " + music.getArtist() + " -");
@@ -313,20 +324,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             }
             refreshLike(music.isLike());
             startRefreshSeekBar();
+            presenter.loadLyric();
+            presenter.loadCover();
         }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ivAlbumCover.setImageDrawable(drawable);
-                    }
-                });
-            }
-        }).start();
-        lyricView.reset();
     }
 
     @Override
@@ -338,8 +338,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     public void refreshLike(boolean like) {
         if (like) {
             ibLike.setImageResource(R.drawable.player_like);
-        }
-        else {
+        } else {
             ibLike.setImageResource(R.drawable.player_unlike);
         }
         if (likeAdapter != null)
@@ -375,12 +374,12 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     }
 
     private void startRefreshSeekBar() {
-        handler.postDelayed(taskRefreshSBMusic, PERIOD_REFRESH_SEEK_BAR);
+        handler.post(taskRefreshSBMusic);
     }
 
 
     private void startRefreshLyric() {
-        handler.postDelayed(taskRefreshLyric, PERIOD_REFRESH_LYRIC);
+        handler.post(taskRefreshLyric);
     }
 
     @Override
@@ -423,8 +422,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             case R.id.ib_play:
                 if (presenter.isPlaying()) {
                     presenter.pause();
-                }
-                else {
+                } else {
                     presenter.resume();
                 }
                 break;
@@ -434,8 +432,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
             case R.id.ib_list:
                 if (vpMusicList.getVisibility() == View.VISIBLE) {
                     vpMusicList.setVisibility(View.INVISIBLE);
-                }
-                else {
+                } else {
                     vpMusicList.setVisibility(View.VISIBLE);
                 }
                 break;

@@ -29,6 +29,8 @@ public class Player implements IPlayer {
     private Music playingMusic;
     private boolean playing;
     private Model model;
+    private Bitmap cover;
+    private List<LyricLine> lyric;
 
     private List<Observer> observers = new ArrayList<>();
 
@@ -114,6 +116,8 @@ public class Player implements IPlayer {
             case SHUFFLE:
                 playList.skipRandom();
         }
+        lyric = null;
+        cover = null;
         play();
         notifyPlayChange();
     }
@@ -130,6 +134,8 @@ public class Player implements IPlayer {
             case SHUFFLE:
                 playList.skipRandom();
         }
+        lyric = null;
+        cover = null;
         play();
         notifyPlayChange();
     }
@@ -254,6 +260,7 @@ public class Player implements IPlayer {
                 music.setLocalCoverPath(BitmapUtil.save(cover));
                 MusicHelper.update(music);
             }
+            this.cover = cover;
         }
     }
 
@@ -272,9 +279,19 @@ public class Player implements IPlayer {
                 music.setLocalLyricPath(lyricLocalPath);
                 MusicHelper.update(music);
             }
+            this.lyric = lyric;
         }
     }
 
+    @Override
+    public void loadLyric(final Observer observer) {
+        observer.onLyricLoad(lyric);
+    }
+
+    @Override
+    public void loadCover(final Observer observer) {
+        observer.onCoverLoad(cover);
+    }
 
     private void loadResource() {
         new Thread(new Runnable() {

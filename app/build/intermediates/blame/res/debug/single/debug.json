@@ -328,10 +328,6 @@
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_player_cover_default.PNG.flat",
-        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_cover_default.PNG"
-    },
-    {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_collapse_spec.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml"
     },
@@ -2126,6 +2122,10 @@
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_separator.xml.flat",
         "source": "C:\\Users\\xuewang\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\509b23c42965ed757166142c63592a2e\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable_player_cover_default.jpg.flat",
+        "source": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\src\\main\\res\\drawable\\player_cover_default.jpg"
     },
     {
         "merged": "C:\\Users\\xuewang\\Desktop\\demo\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v24_ic_launcher_foreground.xml.flat",

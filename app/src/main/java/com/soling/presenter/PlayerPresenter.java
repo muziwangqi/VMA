@@ -178,4 +178,14 @@ public class PlayerPresenter implements PlayerContract.Presenter, IPlayer.Observ
         VolumeUtil.setVolume(progress);
     }
 
+    @Override
+    public void loadLyric() {
+        player.loadLyric(this);
+    }
+
+    @Override
+    public void loadCover() {
+        player.loadCover(this);
+    }
+
 }

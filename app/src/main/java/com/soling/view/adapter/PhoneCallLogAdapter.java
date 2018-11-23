@@ -1,6 +1,7 @@
 package com.soling.view.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import com.soling.model.PhoneCallLog;
 import java.util.List;
 
 public class PhoneCallLogAdapter extends BaseAdapter {
+
+    private static final String TAG = "PhoneCallLogAdapter";
     private LayoutInflater inflater;
     private List<PhoneCallLog> list;
     public PhoneCallLogAdapter(Context context, List<PhoneCallLog> list){
@@ -47,8 +50,28 @@ public class PhoneCallLogAdapter extends BaseAdapter {
         }else{
             holder = (SortAdapter.ViewHolder)convertView.getTag();
         }
+
+        holder = new SortAdapter.ViewHolder();
+        holder.callName= convertView.findViewById(R.id.call_name);
+        holder.callTime = convertView.findViewById(R.id.call_time);
+        holder.callNumber = convertView.findViewById(R.id.call_number);
+        holder.callType = convertView.findViewById(R.id.call_type);
+//        if(convertView==null){
+//            convertView = inflater.inflate(R.layout.person_list,null);
+//            holder = new SortAdapter.ViewHolder();
+//            holder.callName= convertView.findViewById(R.id.call_name);
+//            holder.callTime = convertView.findViewById(R.id.call_time);
+//            holder.callNumber = convertView.findViewById(R.id.call_number);
+//            holder.callType = convertView.findViewById(R.id.call_type);
+//            convertView.setTag(holder);
+//        }else{
+//            holder = (SortAdapter.ViewHolder)convertView.getTag();
+//        }
+
         PhoneCallLog cv = list.get(position);
         if(cv.getType().equals("呼入")){
+            Log.e(TAG, "getView: " + holder == null ? "null" : "not null");
+            Log.e(TAG, "getView: " + holder.callType == null ? "null" : "not null");
             holder.callType.setImageResource(R.drawable.in);
         }else if(cv.getType().equals("呼出")){
             holder.callType.setImageResource(R.drawable.out);

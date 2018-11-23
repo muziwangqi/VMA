@@ -2,6 +2,7 @@ package com.soling;
 
 
 import android.app.Application;
+import android.content.Intent;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class App extends Application {
     private DBHelper dbHelper;
 
     private static App INSTANCE = null;
+
+    private Intent playerService;
 
     @Override
     public void onCreate() {
@@ -78,4 +81,11 @@ public class App extends Application {
         return THEMEC;
     }
 
+    public Intent getPlayerService() {
+        return playerService;
+    }
+
+    public void setPlayerService(Intent playerService) {
+        this.playerService = playerService;
+    }
 }
