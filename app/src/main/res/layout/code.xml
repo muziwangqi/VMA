@@ -14,5 +14,6 @@
         android:layout_width="552px"
         android:layout_height="508px"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:background="@drawable/contact_bg_code"/>
 </LinearLayout>

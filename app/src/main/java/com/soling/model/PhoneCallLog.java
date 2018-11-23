@@ -9,12 +9,18 @@ import java.util.Locale;
 
 public class PhoneCallLog {
     String date;
-    String formatted_number;
-    String matched_number;
     String name;
     String type;
-    String location;
-    long duration;
+    String duration;
+    String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public String getType() {
         return type;
@@ -52,36 +58,12 @@ public class PhoneCallLog {
         this.date = formatDate(date);
     }
 
-    public long getDuration() {
+    public String getDuration() {
         return duration;
     }
 
     public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
-    public String getFormatted_number() {
-        return formatted_number;
-    }
-
-    public void setFormatted_number(String formatted_number) {
-        this.formatted_number = formatted_number;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getMatched_number() {
-        return matched_number;
-    }
-
-    public void setMatched_number(String matched_number) {
-        this.matched_number = matched_number;
+        this.duration = formatDuration(duration);
     }
     /*
     时间格式转化

@@ -9,7 +9,9 @@ import java.io.IOException;
 import com.soling.model.PhoneDto;
 import com.soling.model.User;
 import com.soling.R;
+import com.soling.utils.PhoneUtil;
 import com.soling.utils.PhotoHandleUtil;
+import com.soling.view.adapter.PhoneCallLogAdapter;
 
 
 import android.app.Activity;
@@ -43,6 +45,7 @@ import android.view.WindowManager;
 import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +69,7 @@ public class InformationActivity extends BaseActivity implements OnClickListener
     private PhoneDto phoneDto = new PhoneDto();
     Bitmap bitmap;
     PhotoHandleUtil photoHandleUtil = new PhotoHandleUtil();
+    private ListView personListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +84,14 @@ public class InformationActivity extends BaseActivity implements OnClickListener
        phoneDto.setName(name);
        phoneDto.setId(iid);
         refreshInformation(name,iid,iphone);
+        personListView = findViewById(R.id.music_list_recently);
         image = findViewById(R.id.head_phone);
         goPhone = findViewById(R.id.go_phone);
         goInformation = findViewById(R.id.go_information);
         card = findViewById(R.id.friend_card);
         phone = findViewById(R.id.friend_phone);
         send = findViewById(R.id.information_update);
+        refreshCallLog(iphone);
         send.setOnClickListener(this);
         goPhone.setOnClickListener(this);
         goInformation.setOnClickListener(this);
@@ -237,6 +243,12 @@ public class InformationActivity extends BaseActivity implements OnClickListener
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void refreshCallLog(String phone){
+        PhoneUtil phoneUtil = new PhoneUtil(getBaseContext());
+        PhoneCallLogAdapter phoneCallLogAdapter = new PhoneCallLogAdapter(getBaseContext(), phoneUtil.selectPhoneLog(phone));
+        personListView.setAdapter(phoneCallLogAdapter);
     }
 
 }

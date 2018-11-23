@@ -33,11 +33,11 @@ public class CodePresenter {
 //		Bitmap bitmap = user.getAvatarUrl();
 //		Drawable drawable = r.getDrawable(R.drawable.headphoto);
 //		Bitmap bmp =  BitmapFactory.decodeResource(r,R.drawable.headphoto);
-		Bitmap myCode = CodePresenter.makeQRImage(head, phone, 552, 508,bitmapBackground);
+		Bitmap myCode = CodePresenter.makeQRImage(head, phone, 552, 508);
 		//myCode = CodePresenter.addBackGround(myCode, background)
 		return myCode;
 	}
-	public static Bitmap makeQRImage(Bitmap headBitmap,String content,int QR_WIDTH,int QR_HEIGHT,Bitmap bitmapBackground){
+	public static Bitmap makeQRImage(Bitmap headBitmap,String content,int QR_WIDTH,int QR_HEIGHT){
 		Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
@@ -48,7 +48,7 @@ public class CodePresenter {
 				for(int x=0;x<QR_WIDTH;x++){
 					if(bitMatrix.get(x, y)){
 						if (bitMatrix.get(x, y)) {
-							pixels[y * QR_WIDTH + x] = 0xff000000;//黑点
+							pixels[y * QR_WIDTH + x] = 0xffffffff;//黑点
 						} else {
 							pixels[y * QR_WIDTH + x] = 0x00ffffff;//透明点,白点为0xffffffff
 						}
@@ -71,11 +71,11 @@ public class CodePresenter {
 			canvas.drawBitmap(bm, 0, 0,null);
 			canvas.scale(scaleFactor, scaleFactor,QR_WIDTH/2,QR_HEIGHT/2);
 			canvas.drawBitmap(headBitmap, (QR_WIDTH-headWidth)/2,(QR_HEIGHT-headHeight)/2,null);
-			//给二维码图片添加背景，放回一个新的二维码
-			Bitmap newBitmap = addBackGround(bm,bitmapBackground);
+//			//给二维码图片添加背景，放回一个新的二维码
+//			Bitmap newBitmap = addBackGround(bm,bitmapBackground);
             canvas.save();
             canvas.restore();
-			return newBitmap;
+			return bm;
 
 		} catch (WriterException e) {
 			// TODO Auto-generated catch block			

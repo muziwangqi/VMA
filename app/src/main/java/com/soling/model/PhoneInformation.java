@@ -11,24 +11,6 @@ public class PhoneInformation {
     private String person ;
     private String strBody;
     private String type;
-    private String read;
-    private String status;
-
-    public String getRead() {
-        return read;
-    }
-
-    public void setRead(int anInt) {
-        this.read = getMessageRead(anInt);
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(int anInt) {
-        this.status = getMessageStatus(anInt);
-    }
 
     public String getDate() {
         return date;

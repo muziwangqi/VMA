@@ -60,6 +60,10 @@
         "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0bc850d43709136a84a5f3af2561125d\\res\\drawable-xxxhdpi-v4\\design_ic_visibility.png"
     },
     {
+        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_n.png.flat",
+        "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\drawable-hdpi\\ic_add_n.png"
+    },
+    {
         "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media_custom.xml.flat",
         "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\eef2973a36ef5f597e67c9f50892b25c\\res\\layout\\notification_template_media_custom.xml"
     },
@@ -1214,6 +1218,10 @@
     {
         "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\qiqili\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d5bac7ca5a23f47ae8903c6fd28b464a\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_get.xml.flat",
+        "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\layout\\chat_get.xml"
     },
     {
         "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\anim_design_snackbar_out.xml.flat",
@@ -2390,6 +2398,10 @@
     {
         "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
         "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_send.xml.flat",
+        "source": "D:\\EclipseProject1\\VMA\\app\\src\\main\\res\\layout\\chat_send.xml"
     },
     {
         "merged": "D:\\EclipseProject1\\VMA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",

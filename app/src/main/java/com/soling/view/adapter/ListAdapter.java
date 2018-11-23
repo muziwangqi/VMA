@@ -77,10 +77,10 @@ public class ListAdapter extends BaseAdapter implements SectionIndexer {
        if(convertView==null){
            convertView = inflater.inflate(R.layout.person_list,null);
            holder = new SortAdapter.ViewHolder();
-           holder.word = convertView.findViewById(R.id.tv_word);
-           holder.phone = convertView.findViewById(R.id.tv_name);
-           holder.name = convertView.findViewById(R.id.tv_phone);
-           holder.headPhoto = convertView.findViewById(R.id.tv_heading);
+           holder.word = convertView.findViewById(R.id.person_list_word);
+           holder.phone = convertView.findViewById(R.id.person_list_phone);
+           holder.name = convertView.findViewById(R.id.person_list_name);
+           holder.headPhoto = convertView.findViewById(R.id.person_list_heading);
            Resources r = convertView.getContext().getResources();
            Drawable drawable = r.getDrawable(R.drawable.headphoto);
            Bitmap bmp =  BitmapFactory.decodeResource(r,R.drawable.headphoto);

@@ -40,7 +40,7 @@ public class PhoneCallLogAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         SortAdapter.ViewHolder holder;
         if(convertView==null){
-            convertView = inflater.inflate(R.layout.person_list,null);
+            convertView = inflater.inflate(R.layout.calllog_list,null);
             holder = new SortAdapter.ViewHolder();
             holder.callName= convertView.findViewById(R.id.call_name);
             holder.callTime = convertView.findViewById(R.id.call_time);
@@ -50,37 +50,21 @@ public class PhoneCallLogAdapter extends BaseAdapter {
         }else{
             holder = (SortAdapter.ViewHolder)convertView.getTag();
         }
-
-        holder = new SortAdapter.ViewHolder();
-        holder.callName= convertView.findViewById(R.id.call_name);
-        holder.callTime = convertView.findViewById(R.id.call_time);
-        holder.callNumber = convertView.findViewById(R.id.call_number);
-        holder.callType = convertView.findViewById(R.id.call_type);
-//        if(convertView==null){
-//            convertView = inflater.inflate(R.layout.person_list,null);
-//            holder = new SortAdapter.ViewHolder();
-//            holder.callName= convertView.findViewById(R.id.call_name);
-//            holder.callTime = convertView.findViewById(R.id.call_time);
-//            holder.callNumber = convertView.findViewById(R.id.call_number);
-//            holder.callType = convertView.findViewById(R.id.call_type);
-//            convertView.setTag(holder);
-//        }else{
-//            holder = (SortAdapter.ViewHolder)convertView.getTag();
-//        }
-
         PhoneCallLog cv = list.get(position);
         if(cv.getType().equals("呼入")){
-            Log.e(TAG, "getView: " + holder == null ? "null" : "not null");
-            Log.e(TAG, "getView: " + holder.callType == null ? "null" : "not null");
             holder.callType.setImageResource(R.drawable.in);
         }else if(cv.getType().equals("呼出")){
             holder.callType.setImageResource(R.drawable.out);
         }else if(cv.getType().equals("未接")){
             holder.callType.setImageResource(R.drawable.none);
         }
-        holder.callNumber.setText(cv.getFormatted_number());
+        if(cv.getName()==null){
+            holder.callName.setText(cv.getNumber());
+        }else{
+            holder.callName.setText(cv.getName());
+        }
+        holder.callNumber.setText(cv.getDuration());
         holder.callTime.setText(cv.getDate());
-        holder.callName.setText(cv.getName());
         return convertView;
     }
 }

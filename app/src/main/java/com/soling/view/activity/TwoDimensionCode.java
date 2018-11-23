@@ -31,7 +31,7 @@ protected void onCreate(Bundle savedInstanceState) {
 		    R.drawable.headphoto);
 	bitmapBackground = BitmapFactory.decodeResource(getResources(),
 			R.drawable.code);
-	bmp = CodePresenter.makeQRImage(bmp, myText, 400, 400,bitmapBackground);
+	bmp = CodePresenter.makeQRImage(bmp, myText, 552, 508);
 	myTwoDimensionCode.setImageBitmap(bmp);
 }
 }

@@ -51,6 +51,7 @@ public class SortAdapter extends BaseAdapter {
         TextView callNumber;
         ImageView callType;
         ImageView headPhoto;
+        TextView chatContent;
     }
     //获取catalog第一次出现的位置
     public int getPositionForSerction(String catalog){

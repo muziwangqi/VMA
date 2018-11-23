@@ -15,7 +15,11 @@ import com.soling.model.PhoneDto;
 import com.soling.model.PhoneInformation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class PhoneUtil {
     public final static String NUM = ContactsContract.CommonDataKinds.Phone.NUMBER;
@@ -70,29 +74,19 @@ public class PhoneUtil {
     获取手机短信信息
      */
     public List<PhoneInformation> getInformationList() {
-        final String SMS_URI_ALL = "content://sms/";
+        Uri uri = Uri.parse("content://sms/");
+        String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
+        Cursor cursor = context.getContentResolver().query(uri, projection, null, null, "date desc");
         List<PhoneInformation> phoneInformations = new ArrayList<PhoneInformation>();
-        StringBuilder smsBuilder = new StringBuilder();
-        uri = Uri.parse(SMS_URI_ALL);
-        Cursor cursor = context.getContentResolver().query(Telephony.Sms.CONTENT_URI, new String[]{
-                Telephony.Sms.ADDRESS,
-                Telephony.Sms.BODY,
-                Telephony.Sms.DATE,
-                Telephony.Sms.READ,
-                Telephony.Sms.STATUS,
-                Telephony.Sms.TYPE,
-        }, null, null, "date DESC limit 2");
         if (cursor != null) {
             try {
                 while (cursor.moveToNext()) {
                     PhoneInformation phoneInformation = new PhoneInformation();
-                    phoneInformation.setStrAddress(cursor.getString(0));
-                    phoneInformation.setStrBody(cursor.getString(1));
-                    phoneInformation.setDate(cursor.getLong(2));
-                    phoneInformation.setRead(cursor.getInt(3));
-                    phoneInformation.setStatus(cursor.getInt(4));
-                    phoneInformation.setType(cursor.getInt(5));
-                    phoneInformation.setPerson(getPerson(phoneInformation.getStrAddress()));
+                    phoneInformation.setStrAddress(cursor.getString(cursor.getColumnIndex("address")));
+                    phoneInformation.setStrBody(cursor.getString(cursor.getColumnIndex("body")));
+                    phoneInformation.setDate(cursor.getLong(cursor.getColumnIndex("date")));
+                    phoneInformation.setType(cursor.getInt(cursor.getColumnIndex("type")));
+                    phoneInformation.setPerson(getPerson(cursor.getString(cursor.getColumnIndex("address"))));
                     phoneInformations.add(phoneInformation);
                 }
                 return phoneInformations;
@@ -101,7 +95,6 @@ public class PhoneUtil {
             } finally {
                 cursor.close();
             }
-
         }
         return null;
     }
@@ -129,31 +122,46 @@ public class PhoneUtil {
         return null;
     }
 
+      /*
+    根据电话号码合并通话记录和短信记录
+     */
+
+    public List<PhoneInformation> handleListInformation() {
+        List<PhoneInformation> list = new ArrayList<PhoneInformation>();
+        list = getInformationList();
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = list.size() - 1; j > i; j--) {
+                String number1 = list.get(j).getStrAddress();
+                String number2 = list.get(i).getStrAddress();
+                if (number1.equals(number2)) {
+                    list.remove(j);
+                }
+            }
+        }
+        return list;
+    }
+
+
     /*
     获取设备通话记录
      */
     public List<PhoneCallLog> getPhoneCallLog() {
         List<PhoneCallLog> phoneCallLogs = new ArrayList<PhoneCallLog>();
-        Cursor cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, new String[]{
-                CallLog.Calls.CACHED_FORMATTED_NUMBER,
-                CallLog.Calls.CACHED_MATCHED_NUMBER,
-                CallLog.Calls.CACHED_NAME,
+        Cursor cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI,new String[]{
+                CallLog.Calls.DURATION,
                 CallLog.Calls.TYPE,
                 CallLog.Calls.DATE,
-                CallLog.Calls.DURATION,
-                CallLog.Calls.GEOCODED_LOCATION,
-        }, null, null, "date DESC limit 2");
+                CallLog.Calls.NUMBER,
+        }, null, null, CallLog.Calls.DEFAULT_SORT_ORDER);
         if (cursor != null) {
             try {
                 while (cursor.moveToNext()) {
                     PhoneCallLog phoneCallLog = new PhoneCallLog();
-                    phoneCallLog.setFormatted_number(cursor.getString(0));
-                    phoneCallLog.setMatched_number(cursor.getString(1));
-                    phoneCallLog.setName(cursor.getString(2));
-                    phoneCallLog.setType(cursor.getInt(3));
-                    phoneCallLog.setDate(cursor.getLong(4));
-                    phoneCallLog.setDuration(cursor.getLong(5));
-                    phoneCallLog.setLocation(cursor.getString(6));
+                    phoneCallLog.setType(cursor.getColumnIndex(CallLog.Calls.TYPE));
+                    phoneCallLog.setDate(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE)));
+                    phoneCallLog.setDuration(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DURATION)));
+                    phoneCallLog.setNumber(cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
+                    phoneCallLog.setName(getPerson(cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER))));
                     phoneCallLogs.add(phoneCallLog);
                 }
                 return phoneCallLogs;
@@ -165,6 +173,22 @@ public class PhoneUtil {
         }
         return null;
     }
+
+    public List<PhoneCallLog> handleListPhoneCallLog() {
+        List<PhoneCallLog> list = new ArrayList<PhoneCallLog>();
+        list = getPhoneCallLog();
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = list.size() - 1; j > i; j--) {
+                String number1 = list.get(j).getNumber();
+                String number2 = list.get(i).getNumber();
+                if (number1.equals(number2)) {
+                    list.remove(j);
+                }
+            }
+        }
+        return list;
+    }
+
 
     /*
     更新联系人
@@ -296,4 +320,34 @@ public class PhoneUtil {
         }
     }
 
+    /*
+    根据电话号码查询与该电话号码的通话记录
+     */
+
+    public  List<PhoneCallLog> selectPhoneLog(String number){
+        List<PhoneCallLog> list = new ArrayList<PhoneCallLog>();
+        List<PhoneCallLog> phoneCallLogs = new ArrayList<PhoneCallLog>();
+        list = getPhoneCallLog();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getNumber().equals(number)){
+                phoneCallLogs.add(list.get(i));
+            }
+        }
+        return phoneCallLogs;
+    }
+
+    /*
+    根据电话号码查询与该电话号码的短信记录
+     */
+    public List<PhoneInformation> selectInformationLog(String number){
+        List<PhoneInformation> list = new ArrayList<PhoneInformation>();
+        List<PhoneInformation> phoneInformations = new ArrayList<PhoneInformation>();
+        list = getInformationList();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getStrAddress().equals(number)){
+                phoneInformations.add(list.get(i));
+            }
+        }
+        return phoneInformations;
+    }
 }
