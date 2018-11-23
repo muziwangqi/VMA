@@ -9,50 +9,65 @@
     <LinearLayout
         android:id="@+id/id_ll_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp">
 
         <ImageButton
             android:id="@+id/id_ib_add"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/add" />
+            android:src="@drawable/add"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/id_tv_phone"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="phone"
-            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="4dp"
+            android:text="通讯录"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
             android:gravity="center"/>
 
         <!-- music -->
 
         <TextView
             android:id="@+id/id_tv_music"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="music"
-            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="4dp"
+            android:text="音乐"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
             android:gravity="center"/>
 
         <!-- setting -->
 
         <TextView
             android:id="@+id/id_tv_setting"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="setting"
-            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:text="设置"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
             android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/ib_search"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="47dp"
+            android:layout_toEndOf="@id/ib_share"
+            android:src="@drawable/player_search_p"
+            android:background="#00000000"
+            android:visibility="visible"/>
 
     </LinearLayout>
 
@@ -61,7 +76,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/id_ll_main" >
-    </android.support.v4.view.ViewPager>
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="0dp"></android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/ll_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        android:orientation="horizontal"
+        android:background="@drawable/main_volume_bg">
+
+    </LinearLayout>
+
 
 </RelativeLayout>

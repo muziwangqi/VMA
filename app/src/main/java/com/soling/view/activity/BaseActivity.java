@@ -37,13 +37,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (App.getInstance().isTHEMEC()) {
-            App.getInstance().setTHEMEC(true);
-            setTheme(R.style.dayTheme);
-        } else {
-            App.getInstance().setTHEMEC(false);
-            setTheme(R.style.nightTheme);
-        }
+//        if (App.getInstance().isTHEMEC()) {
+//            App.getInstance().setTHEMEC(true);
+//            setTheme(R.style.dayTheme);
+//        } else {
+//            App.getInstance().setTHEMEC(false);
+//            setTheme(R.style.nightTheme);
+//        }
 
         super.onCreate(savedInstanceState);
 

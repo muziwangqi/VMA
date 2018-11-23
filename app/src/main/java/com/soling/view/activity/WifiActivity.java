@@ -151,7 +151,7 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
     class RefreshSsidThread extends Thread {
         @Override
         public void run() {
-            boolean flag = true;
+            final boolean[] flag = {true};
 /*            timer=new Timer();
             TimerTask task=(new TimerTask() {
                 @Override
@@ -160,10 +160,16 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
                 }
             };
             timer.schedule(task,60000);*/
-            while (flag) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    flag[0] = false;
+                }
+            }, 5000);
+            while (flag[0]) {
                 currWifiInfo = wifiManager.getConnectionInfo();
                 if (currWifiInfo.getSSID() != null && currWifiInfo.getIpAddress() != 0) {
-                    flag=false;
+                    flag[0] =false;
 //                    break;
                 }
             }
@@ -264,8 +270,16 @@ public class WifiActivity extends BaseActivity implements View.OnClickListener {
                     alert.create().show();
                     break;
                 case 4:
-                    shortToast("连接成功！");
-                    wifi_result_textview.setText("当前网络：" + currWifiInfo.getSSID() + " IP:" + WifiUtil.changeIP(currWifiInfo.getIpAddress()));
+                    currWifiInfo = wifiManager.getConnectionInfo();
+                    if (currWifiInfo.getSSID() != null && currWifiInfo.getIpAddress() != 0) {
+
+                        shortToast("连接成功！");
+                        wifi_result_textview.setText("当前网络：" + currWifiInfo.getSSID() + " IP:" + WifiUtil.changeIP(currWifiInfo.getIpAddress()));
+//                    break;
+                    }
+                    else {
+                        shortToast("连接失败！");
+                    }
                     break;
             }
             super.handleMessage(msg);
