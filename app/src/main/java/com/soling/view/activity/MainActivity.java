@@ -51,14 +51,14 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         //changeTheme();
         //Log.d(TAG, "onCreate: " + App.getInstance().isTHEMEC());
-        if (App.getInstance().isTHEMEC()) {
-            //Log.d(TAG, "onCreate: ");
-            App.getInstance().setTHEMEC(true);
-            setTheme(R.style.dayTheme);
-        } else {
-            App.getInstance().setTHEMEC(false);
-            setTheme(R.style.nightTheme);
-        }
+//        if (App.getInstance().isTHEMEC()) {
+//            //Log.d(TAG, "onCreate: ");
+//            App.getInstance().setTHEMEC(true);
+//            setTheme(R.style.dayTheme);
+//        } else {
+//            App.getInstance().setTHEMEC(false);
+//            setTheme(R.style.nightTheme);
+//        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);

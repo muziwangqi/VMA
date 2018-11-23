@@ -50,24 +50,6 @@ public class PhoneCallLogAdapter extends BaseAdapter {
         }else{
             holder = (SortAdapter.ViewHolder)convertView.getTag();
         }
-
-        holder = new SortAdapter.ViewHolder();
-        holder.callName= convertView.findViewById(R.id.call_name);
-        holder.callTime = convertView.findViewById(R.id.call_time);
-        holder.callNumber = convertView.findViewById(R.id.call_number);
-        holder.callType = convertView.findViewById(R.id.call_type);
-//        if(convertView==null){
-//            convertView = inflater.inflate(R.layout.person_list,null);
-//            holder = new SortAdapter.ViewHolder();
-//            holder.callName= convertView.findViewById(R.id.call_name);
-//            holder.callTime = convertView.findViewById(R.id.call_time);
-//            holder.callNumber = convertView.findViewById(R.id.call_number);
-//            holder.callType = convertView.findViewById(R.id.call_type);
-//            convertView.setTag(holder);
-//        }else{
-//            holder = (SortAdapter.ViewHolder)convertView.getTag();
-//        }
-
         PhoneCallLog cv = list.get(position);
         if(cv.getType().equals("呼入")){
             Log.e(TAG, "getView: " + holder == null ? "null" : "not null");

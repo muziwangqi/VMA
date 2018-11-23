@@ -103,6 +103,9 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
         initData();
         initEvent();
         float scale = App.getInstance().getResources().getDisplayMetrics().density;
+        Log.d(TAG, "onViewCreated: scale" + scale);
+        float fontScale = App.getInstance().getResources().getDisplayMetrics().scaledDensity;
+        Log.d(TAG, "onViewCreated: fontScale" + fontScale);
     }
 
     @Override
@@ -310,6 +313,7 @@ public class PlayerFragment extends BaseFragment implements PlayerContract.View,
     public void refreshView() {
         final Music music = presenter.getPlayingMusic();
         lyricView.reset();
+
         final RoundedBitmapDrawable drawable = BitmapUtil.roundedBitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.player_cover_default));
         ivAlbumCover.setImageDrawable(drawable);
         if (music != null) {

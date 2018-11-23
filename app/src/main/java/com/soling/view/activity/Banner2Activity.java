@@ -299,4 +299,9 @@ public class Banner2Activity extends BaseActivity implements OnClickListener {
         builder.show();
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
